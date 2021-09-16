@@ -24,14 +24,14 @@
 
   <meta name="description" content="一.cookie和session1.客户端发送请求 2.服务器接收到请求建立一个session，并在请求头中包含一个set-cookie，其中包含sessionID 3.客户端将数据存储在cookie，sessionID包含在cookie中 4.服务器根据sessionID找到session并检查数据(第一次建立数据)，返回response  XSRF就是利用用户在未关闭A网站的前提下去访问攻击者">
 <meta property="og:type" content="article">
-<meta property="og:title" content="4.session、cookie、token">
+<meta property="og:title" content="session、cookie、token">
 <meta property="og:url" content="https://yummy-zz.github.io/2021/09/05/4-session%E3%80%81cookie%E3%80%81token/index.html">
 <meta property="og:site_name" content="Yum">
 <meta property="og:description" content="一.cookie和session1.客户端发送请求 2.服务器接收到请求建立一个session，并在请求头中包含一个set-cookie，其中包含sessionID 3.客户端将数据存储在cookie，sessionID包含在cookie中 4.服务器根据sessionID找到session并检查数据(第一次建立数据)，返回response  XSRF就是利用用户在未关闭A网站的前提下去访问攻击者">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://raw.githubusercontent.com/Yummy-zZ/FigureBed/main/img/bVbmYbQ.png">
 <meta property="article:published_time" content="2021-09-05T07:58:35.000Z">
-<meta property="article:modified_time" content="2021-09-06T02:14:38.819Z">
+<meta property="article:modified_time" content="2021-09-11T02:17:34.320Z">
 <meta property="article:author" content="Eden Yi">
 <meta property="article:tag" content="每日总结">
 <meta property="article:tag" content="http">
@@ -51,7 +51,7 @@
   };
 </script>
 
-  <title>4.session、cookie、token | Yum</title>
+  <title>session、cookie、token | Yum</title>
   
 
 
@@ -181,7 +181,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          4.session、cookie、token
+          session、cookie、token
         </h1>
 
         <div class="post-meta">
@@ -198,7 +198,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-09-06 10:14:38" itemprop="dateModified" datetime="2021-09-06T10:14:38+08:00">2021-09-06</time>
+                <time title="修改时间：2021-09-11 10:17:34" itemprop="dateModified" datetime="2021-09-11T10:17:34+08:00">2021-09-11</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -236,6 +236,38 @@
 <p>XSRF就是利用用户在未关闭A网站的前提下去访问攻击者B网站，B网站发送request请求用户访问A网站并拿到用户在A网站的数据</p>
 <span id="more"></span>
 
+<h3 id="Set-Cookie属性："><a href="#Set-Cookie属性：" class="headerlink" title="Set-Cookie属性："></a>Set-Cookie属性：</h3><ul>
+<li>❤️持久性 Cookie 的生命周期取决于过期时间（<code>Expires</code>）或有效期（<code>Max-Age</code>）指定的一段时间。</li>
+</ul>
+<figure class="highlight http"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">Set-Cookie</span><span class="punctuation">: </span>id=a3fWa; Expires=Wed, 21 Oct 2015 07:28:00 GMT;</span><br><span class="line">or</span><br><span class="line"><span class="attribute">Set-Cookie</span><span class="punctuation">: </span>id=a3fWa; Max-Age=1988(单位秒);</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>🧡有两种方法可以确保 <code>Cookie</code> 被安全发送，并且不会被意外的参与者或脚本访问：<code>Secure(只能在https中携带)</code> 属性和<code>HttpOnly(cookie中不允许有js代码，预防xss攻击)</code> 属性。</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Set-Cookie: id=a3fWa; Expires=Wed, 21 Oct 2015 07:28:00 GMT; Secure; HttpOnly</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>💛<code>Domain</code> 和 <code>Path</code> 标识定义了Cookie的<em>作用域：</em>即允许 Cookie 应该发送给哪些URL。</p>
+<p>Domain 指定了哪些主机可以接受 Cookie。如果不指定，默认为 origin，<strong>不包含子域名</strong>。</p>
+<p><code>Path</code> 标识指定了主机下的哪些路径可以接受 Cookie，若为/api则/api/dos,/api都能匹配到</p>
+</li>
+<li><p>💚<code>SameSite</code>规定跨站请求时不会发送，减少<code>CSRF</code>攻击</p>
+</li>
+</ul>
+<figure class="highlight http"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">Set-Cookie</span><span class="punctuation">: </span>key=value; SameSite=Strict</span><br><span class="line"></span><br><span class="line"><span class="attribute">None</span><span class="punctuation">: </span>浏览器会在同站请求、跨站请求下继续发送 cookies，不区分大小写。</span><br><span class="line"></span><br><span class="line"><span class="attribute">Strict</span><span class="punctuation">: </span>浏览器将只在访问相同站点时发送 cookie。（在原有 Cookies 的限制条件上的加强，如上文 “Cookie 的作用域” 所述）</span><br><span class="line"></span><br><span class="line"><span class="attribute">Lax</span><span class="punctuation">: </span>与 Strict 类似，但用户从外部站点导航至URL时（例如通过链接）除外。 在新版本浏览器中，为默认选项，Same-site cookies 将会为一些跨站子请求保留，如图片加载或者 frames 的调用，但只有当用户从外部站点导航到URL时才会发送。如 link 链接</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="Cookie前缀："><a href="#Cookie前缀：" class="headerlink" title="Cookie前缀："></a>Cookie前缀：</h3><p>cookie 机制的使得服务器无法确认 cookie 是在安全来源上设置的，甚至无法确定 cookie 最初是在哪里设置的。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">__Host-</span><br></pre></td></tr></table></figure>
+
+<p>如果 cookie 名称具有此前缀，则仅当它也用 <code>Secure</code> 属性标记，是从安全来源发送的，不包括 <code>Domain</code> 属性，并将 <code>Path</code> 属性设置为 <code>/</code> 时，它才在 <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Headers/Set-Cookie"><code>Set-Cookie</code></a> 标头中接受。这样，这些 cookie 可以被视为 “domain-locked”。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">__Secure-</span><br></pre></td></tr></table></figure>
+
+<p>如果 cookie 名称具有此前缀，则仅当它也用 <code>Secure</code> 属性标记，是从安全来源发送的，它才在 <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Headers/Set-Cookie"><code>Set-Cookie</code></a> 标头中接受。该前缀限制要弱于 <code>__Host-</code> 前缀。</p>
+<h3 id="获取或设置cookie"><a href="#获取或设置cookie" class="headerlink" title="获取或设置cookie"></a>获取或设置cookie</h3><p>设置：document.cookie = “‘name = yjh’”</p>
+<p>获取:   const cookie = document.cookie，只能获取键值对 </p>
+<h3 id="Navigator-cookieEnabled"><a href="#Navigator-cookieEnabled" class="headerlink" title="Navigator.cookieEnabled"></a>Navigator.cookieEnabled</h3><p>用来检查浏览器是否开启了cookie，返回布尔值</p>
 <h2 id="二-token"><a href="#二-token" class="headerlink" title="二.token"></a>二.token</h2><h3 id="组成"><a href="#组成" class="headerlink" title="组成"></a>组成</h3><ul>
 <li>uid: 用户唯一身份标识</li>
 <li>time: 当前时间的时间戳</li>
@@ -277,12 +309,12 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2021/09/04/3-http%E7%8A%B6%E6%80%81%E7%A0%81/" rel="prev" title="3.http状态码">
-      <i class="fa fa-chevron-left"></i> 3.http状态码
+    <a href="/2021/09/04/3-http%E7%8A%B6%E6%80%81%E7%A0%81/" rel="prev" title="http状态码">
+      <i class="fa fa-chevron-left"></i> http状态码
     </a></div>
       <div class="post-nav-item">
-    <a href="/2021/09/06/5-bind,apply,call%E6%95%B0%E4%B8%8E%E6%89%8B%E5%86%99new/" rel="next" title="4.session、cookie、token">
-      4.session、cookie、token <i class="fa fa-chevron-right"></i>
+    <a href="/2021/09/06/5-bind,apply,call%E6%95%B0%E4%B8%8E%E6%89%8B%E5%86%99new/" rel="next" title="session、cookie、token">
+      session、cookie、token <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
       </footer>
@@ -342,7 +374,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80-cookie%E5%92%8Csession"><span class="nav-number">1.</span> <span class="nav-text">一.cookie和session</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C-token"><span class="nav-number">2.</span> <span class="nav-text">二.token</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BB%84%E6%88%90"><span class="nav-number">2.1.</span> <span class="nav-text">组成</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AD%98%E6%94%BE"><span class="nav-number">2.2.</span> <span class="nav-text">存放</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#token%E8%AE%A4%E8%AF%81%E6%B5%81%E7%A8%8B"><span class="nav-number">2.3.</span> <span class="nav-text">token认证流程</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89-%E6%80%BB%E7%BB%93"><span class="nav-number">3.</span> <span class="nav-text">三.总结</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80-cookie%E5%92%8Csession"><span class="nav-number">1.</span> <span class="nav-text">一.cookie和session</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Set-Cookie%E5%B1%9E%E6%80%A7%EF%BC%9A"><span class="nav-number">1.1.</span> <span class="nav-text">Set-Cookie属性：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Cookie%E5%89%8D%E7%BC%80%EF%BC%9A"><span class="nav-number">1.2.</span> <span class="nav-text">Cookie前缀：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%8E%B7%E5%8F%96%E6%88%96%E8%AE%BE%E7%BD%AEcookie"><span class="nav-number">1.3.</span> <span class="nav-text">获取或设置cookie</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Navigator-cookieEnabled"><span class="nav-number">1.4.</span> <span class="nav-text">Navigator.cookieEnabled</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C-token"><span class="nav-number">2.</span> <span class="nav-text">二.token</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BB%84%E6%88%90"><span class="nav-number">2.1.</span> <span class="nav-text">组成</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AD%98%E6%94%BE"><span class="nav-number">2.2.</span> <span class="nav-text">存放</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#token%E8%AE%A4%E8%AF%81%E6%B5%81%E7%A8%8B"><span class="nav-number">2.3.</span> <span class="nav-text">token认证流程</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89-%E6%80%BB%E7%BB%93"><span class="nav-number">3.</span> <span class="nav-text">三.总结</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -358,20 +390,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">7</span>
+          <span class="site-state-item-count">15</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-count">6</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-count">13</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
