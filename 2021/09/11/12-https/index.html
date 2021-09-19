@@ -22,15 +22,15 @@
     var CONFIG = {"hostname":"yummy-zz.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="一.http缺点明文传输： 1.数据篡改 2.数据窃听 3.数据伪装 二.数字证书如何获取首先浏览器会内嵌一些权威的证书机构的公钥 1.服务器带着自己的公钥去访问证书机构的网站，证书机构先拿自己的私钥进行解密，对公钥进行认证，颁发数字证书返回给服务器。">
+  <meta name="description" content="为什么需要数字证书？防止中间人对服务器发来的公钥进行劫持伪造服务器对客户端进行通信。 一.http缺点明文传输： 1.数据篡改 2.数据窃听 3.数据伪装 二.数字证书如何获取首先浏览器会内嵌一些权威的证书机构的公钥 1.服务器带着自己的公钥去访问证书机构的网站，证书机构先拿自己的私钥进行解密，对公钥进行认证，颁发数字证书返回给服务器。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="12-https">
 <meta property="og:url" content="https://yummy-zz.github.io/2021/09/11/12-https/index.html">
 <meta property="og:site_name" content="Yum">
-<meta property="og:description" content="一.http缺点明文传输： 1.数据篡改 2.数据窃听 3.数据伪装 二.数字证书如何获取首先浏览器会内嵌一些权威的证书机构的公钥 1.服务器带着自己的公钥去访问证书机构的网站，证书机构先拿自己的私钥进行解密，对公钥进行认证，颁发数字证书返回给服务器。">
+<meta property="og:description" content="为什么需要数字证书？防止中间人对服务器发来的公钥进行劫持伪造服务器对客户端进行通信。 一.http缺点明文传输： 1.数据篡改 2.数据窃听 3.数据伪装 二.数字证书如何获取首先浏览器会内嵌一些权威的证书机构的公钥 1.服务器带着自己的公钥去访问证书机构的网站，证书机构先拿自己的私钥进行解密，对公钥进行认证，颁发数字证书返回给服务器。">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2021-09-11T02:20:01.000Z">
-<meta property="article:modified_time" content="2021-09-15T00:02:25.622Z">
+<meta property="article:modified_time" content="2021-09-17T12:41:29.385Z">
 <meta property="article:author" content="Eden Yi">
 <meta property="article:tag" content="每日总结">
 <meta property="article:tag" content="https">
@@ -196,7 +196,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-09-15 08:02:25" itemprop="dateModified" datetime="2021-09-15T08:02:25+08:00">2021-09-15</time>
+                <time title="修改时间：2021-09-17 20:41:29" itemprop="dateModified" datetime="2021-09-17T20:41:29+08:00">2021-09-17</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -226,7 +226,8 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h2 id="一-http缺点"><a href="#一-http缺点" class="headerlink" title="一.http缺点"></a>一.http缺点</h2><p><strong>明文传输：</strong></p>
+        <h2 id="为什么需要数字证书？"><a href="#为什么需要数字证书？" class="headerlink" title="为什么需要数字证书？"></a><strong>为什么需要数字证书？</strong></h2><p>防止中间人对服务器发来的公钥进行劫持伪造服务器对客户端进行通信。</p>
+<h2 id="一-http缺点"><a href="#一-http缺点" class="headerlink" title="一.http缺点"></a>一.http缺点</h2><p><strong>明文传输：</strong></p>
 <p>1.数据篡改</p>
 <p>2.数据窃听</p>
 <p>3.数据伪装</p>
@@ -234,12 +235,22 @@
 <p>1.服务器带着自己的公钥去访问证书机构的网站，证书机构先拿自己的私钥进行解密，对公钥进行认证，颁发数字证书返回给服务器。</p>
 <span id="more"></span>
 
-<h2 id="三-https建立过程-TLS1-2"><a href="#三-https建立过程-TLS1-2" class="headerlink" title="三.https建立过程(TLS1.2)"></a>三.https建立过程(TLS1.2)</h2><p>1.<strong>客户端</strong>一个数据包：客户端发送<code>TLS</code>协议版本,生成随机数<code>client_radom</code>,加密套件列表</p>
-<p>2.<strong>服务器端</strong>四个数据包: 1.返回服务器支持的<code>TLS</code>协议版本,随机数<code>server_radom</code>，加密套件    2.发送数字证书    3.生成ECDHE参数<code>server_params</code>    4.发送完成数据包</p>
-<p>3.<strong>客户端</strong>三个数据包: 1.生成随机参数<code>client_params</code>并与服务器参数通关<code>ECDHE</code>算法形成一个随机数<code>pre_master</code>，<code>pre_master</code>将作为对称公钥对后面的http传输进行对称加密    2.将三个随机数经过哈希运算生成<code>hash</code>值    3.发送对称加密算法</p>
-<p>4.<strong>客户端</strong>能提前发送http请求</p>
-<p>5.<strong>服务器端</strong>两个数据包: 服务器将接收到的客户端参数<code>client_params</code>和自己的server_params组合成<code>pre_master</code>对称公钥    1.将三个随机数经过哈希运算生成<code>hash</code>值    2.发送对称加密算法</p>
-<p>6.<strong>服务器端</strong>返回http请求</p>
+<h2 id="三-https建立过程-TLS1-2"><a href="#三-https建立过程-TLS1-2" class="headerlink" title="三.https建立过程(TLS1.2)"></a>三.https建立过程(TLS1.2)</h2><p>①.<strong>客户端</strong>一个数据包：</p>
+<p>客户端发送<code>TLS</code>协议版本,生成随机数<code>client_radom</code>,加密套件列表，拓展列表</p>
+<p>②.<strong>服务器端</strong>四个数据包: </p>
+<p><strong>1.返回服务器支持的<code>TLS</code>协议版本,随机数<code>server_radom</code>，加密套件</strong>    </p>
+<p><strong>2.发送数字证书</strong>    </p>
+<p><strong>3.发送ECDHE加密算法参数，采用签名算法认证</strong>    </p>
+<p><strong>4.发送完成数据包</strong></p>
+<p>③.<strong>客户端</strong>三个数据包:   客户端进行数字签名认证(由浏览器内嵌的CA公钥进行明文和签名对比验证服务器) ，生成随机参数<code>client_params</code>并与服务器参数通关<code>ECDHE</code>算法形成一个随机数<code>pre_master</code>，<code>pre_master</code>将作为对称公钥对后面的http传输进行对称加密    </p>
+<p><strong>1.发送ECDHE加密算法参数</strong></p>
+<p><strong>2.将三个随机数经过哈希运算生成<code>hash</code>值作为对称加密算法公钥，发送</strong></p>
+<p><strong>3.之后改用会话秘钥加密通信</strong></p>
+<p>④.<strong>客户端</strong>能提前发送http请求</p>
+<p>⑤.<strong>服务器端</strong>两个数据包: 服务器将接收到的客户端参数<code>client_params</code>和自己的server_params组合成<code>pre_master</code>对称公钥    </p>
+<p><strong>1.将三个随机数经过哈希运算生成<code>hash</code>值, 并与客户端进行对比</strong></p>
+<p><strong>2.之后改用会话秘钥加密通信</strong></p>
+<p>⑥.<strong>服务器端</strong>返回http请求</p>
 
     </div>
 
@@ -324,7 +335,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80-http%E7%BC%BA%E7%82%B9"><span class="nav-number">1.</span> <span class="nav-text">一.http缺点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C-%E6%95%B0%E5%AD%97%E8%AF%81%E4%B9%A6%E5%A6%82%E4%BD%95%E8%8E%B7%E5%8F%96"><span class="nav-number">2.</span> <span class="nav-text">二.数字证书如何获取</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89-https%E5%BB%BA%E7%AB%8B%E8%BF%87%E7%A8%8B-TLS1-2"><span class="nav-number">3.</span> <span class="nav-text">三.https建立过程(TLS1.2)</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E9%9C%80%E8%A6%81%E6%95%B0%E5%AD%97%E8%AF%81%E4%B9%A6%EF%BC%9F"><span class="nav-number">1.</span> <span class="nav-text">为什么需要数字证书？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80-http%E7%BC%BA%E7%82%B9"><span class="nav-number">2.</span> <span class="nav-text">一.http缺点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C-%E6%95%B0%E5%AD%97%E8%AF%81%E4%B9%A6%E5%A6%82%E4%BD%95%E8%8E%B7%E5%8F%96"><span class="nav-number">3.</span> <span class="nav-text">二.数字证书如何获取</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89-https%E5%BB%BA%E7%AB%8B%E8%BF%87%E7%A8%8B-TLS1-2"><span class="nav-number">4.</span> <span class="nav-text">三.https建立过程(TLS1.2)</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -340,20 +351,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">15</span>
+          <span class="site-state-item-count">21</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-count">9</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">13</span>
+        <span class="site-state-item-count">19</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
