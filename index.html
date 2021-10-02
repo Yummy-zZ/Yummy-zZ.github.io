@@ -184,7 +184,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2021-10-02 09:22:49 / 修改时间：09:24:18" itemprop="dateCreated datePublished" datetime="2021-10-02T09:22:49+08:00">2021-10-02</time>
+              <time title="创建时间：2021-10-02 09:22:49 / 修改时间：10:36:36" itemprop="dateCreated datePublished" datetime="2021-10-02T09:22:49+08:00">2021-10-02</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -192,7 +192,7 @@
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Webpack/" itemprop="url" rel="index"><span itemprop="name">Webpack</span></a>
+                  <a href="/categories/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/" itemprop="url" rel="index"><span itemprop="name">性能优化</span></a>
                 </span>
             </span>
 
@@ -210,7 +210,14 @@
           <p>1.更上技术的迭代(Node,npm,yarn)</p>
 <p>2.减少Loader的使用</p>
 <p>3.plugin尽可能精简并确保可靠</p>
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2021/10/02/webpack-%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%961/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -254,7 +261,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2021-10-02 08:45:12 / 修改时间：09:08:44" itemprop="dateCreated datePublished" datetime="2021-10-02T08:45:12+08:00">2021-10-02</time>
+              <time title="创建时间：2021-10-02 08:45:12 / 修改时间：10:36:03" itemprop="dateCreated datePublished" datetime="2021-10-02T08:45:12+08:00">2021-10-02</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -280,19 +287,14 @@
           <h2 id="Eslint的几种使用方式"><a href="#Eslint的几种使用方式" class="headerlink" title="Eslint的几种使用方式"></a>Eslint的几种使用方式</h2><p>1.编辑器自带的插件(最推荐,方便检查,及时反馈)</p>
 <p>2.npx eslint src命令,检测src目录下的文件</p>
 <p>3.webpack配置</p>
-<h2 id="方法一"><a href="#方法一" class="headerlink" title="方法一"></a>方法一</h2><p>webstorm和vs code自带</p>
-<h2 id="方法二"><a href="#方法二" class="headerlink" title="方法二"></a>方法二</h2><figure class="highlight console"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> npm install eslint-loader --save-dev</span></span><br></pre></td></tr></table></figure>
-
-<figure class="highlight console"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> npm install eslint --save-dev</span></span><br></pre></td></tr></table></figure>
-
-<p><code>$ npx eslint src</code></p>
-<h2 id="方法三"><a href="#方法三" class="headerlink" title="方法三"></a>方法三</h2><p><code>$ npm install eslint-loader --save-dev</code></p>
-<p><code>$ npm install eslint --save-dev</code></p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">	<span class="attr">devServer</span>: &#123;</span><br><span class="line">		<span class="attr">overlay</span>: <span class="literal">true</span> <span class="comment">// 浏览器错误显示,和vue报错一样</span></span><br><span class="line">  &#125;</span><br><span class="line">	<span class="attr">module</span>: &#123;</span><br><span class="line">		<span class="attr">rules</span>: [&#123; </span><br><span class="line">			<span class="attr">test</span>: <span class="regexp">/\.js$/</span>, </span><br><span class="line">			exclude: <span class="regexp">/node_modules/</span>, </span><br><span class="line">			use: [<span class="string">&#x27;babel-loader&#x27;</span>, <span class="string">&#x27;eslint-loader&#x27;</span>] <span class="comment">// use从后往前执行</span></span><br><span class="line">		&#125;]</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2021/10/02/webpack-eslint/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -334,10 +336,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2021-10-01 09:03:41 / 修改时间：09:16:08" itemprop="dateCreated datePublished" datetime="2021-10-01T09:03:41+08:00">2021-10-01</time>
+              <time title="创建时间：2021-10-01 09:03:41" itemprop="dateCreated datePublished" datetime="2021-10-01T09:03:41+08:00">2021-10-01</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-10-02 10:41:53" itemprop="dateModified" datetime="2021-10-02T10:41:53+08:00">2021-10-02</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -360,16 +368,14 @@
 
       
           <p>1.webpack.common.js</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">  <span class="attr">module</span>: &#123;</span><br><span class="line">		<span class="attr">rules</span>: </span><br><span class="line">    [</span><br><span class="line">      &#123; </span><br><span class="line">			<span class="attr">test</span>: <span class="regexp">/\.js$/</span>, </span><br><span class="line">			exclude: <span class="regexp">/node_modules/</span>,</span><br><span class="line">			use: [&#123;</span><br><span class="line">				<span class="attr">loader</span>: <span class="string">&#x27;babel-loader&#x27;</span> <span class="comment">// babel加载文件</span></span><br><span class="line">			&#125;, &#123;</span><br><span class="line">				<span class="attr">loader</span>: <span class="string">&#x27;imports-loader?this=&gt;window&#x27;</span> <span class="comment">// js文件里this指向window</span></span><br><span class="line">			&#125;]</span><br><span class="line">    ]</span><br><span class="line">	&#125;,</span><br><span class="line">  <span class="attr">plugins</span>: [</span><br><span class="line">		<span class="keyword">new</span> webpack.ProvidePlugin(&#123;</span><br><span class="line">			<span class="attr">$</span>: <span class="string">&#x27;jquery&#x27;</span>, <span class="comment">// 使用了$的文件就引入jquery</span></span><br><span class="line">			<span class="attr">_join</span>: [<span class="string">&#x27;lodash&#x27;</span>, <span class="string">&#x27;join&#x27;</span>] <span class="comment">// 使用了_join就引入lodash的join</span></span><br><span class="line">		&#125;),</span><br><span class="line">	],</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// .babelrc文件</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="attr">presets</span>: [</span><br><span class="line">		[</span><br><span class="line">			<span class="string">&quot;@babel/preset-env&quot;</span>, &#123;  <span class="comment">// babel核心环境，转换es5的代码都在里边</span></span><br><span class="line">				<span class="attr">targets</span>: &#123;</span><br><span class="line">					<span class="attr">chrome</span>: <span class="string">&quot;67&quot;</span>, <span class="comment">// 67及以上版本</span></span><br><span class="line">				&#125;,</span><br><span class="line">				<span class="attr">useBuiltIns</span>: <span class="string">&#x27;usage&#x27;</span> <span class="comment">// 按需转换</span></span><br><span class="line">			&#125;</span><br><span class="line">		],</span><br><span class="line">		<span class="string">&quot;@babel/preset-react&quot;</span> <span class="comment">// 支持react的Jsx写法</span></span><br><span class="line">	],</span><br><span class="line">	<span class="attr">plugins</span>: [<span class="string">&quot;@babel/plugin-syntax-dynamic-import&quot;</span>] <span class="comment">// 支持异步加载引入</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-<p>2.index.js</p>
-<p>polyfill兼容低版本浏览器,支持ES6转ES5</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install --save babel-polyfill</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight diff"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">import &#x27;babel-polyfill&#x27;</span><br></pre></td></tr></table></figure>
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2021/10/01/webpack-shimming/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -411,10 +417,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2021-09-30 17:31:04 / 修改时间：17:54:24" itemprop="dateCreated datePublished" datetime="2021-09-30T17:31:04+08:00">2021-09-30</time>
+              <time title="创建时间：2021-09-30 17:31:04" itemprop="dateCreated datePublished" datetime="2021-09-30T17:31:04+08:00">2021-09-30</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-10-02 10:35:23" itemprop="dateModified" datetime="2021-10-02T10:35:23+08:00">2021-10-02</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -441,10 +453,14 @@
 <li>异步加载模块</li>
 <li>代码分割（code spliting）</li>
 </ol>
-<p>配置参数</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">  <span class="attr">optimization</span>: &#123;</span><br><span class="line">		<span class="attr">splitChunks</span>: &#123;</span><br><span class="line">      <span class="attr">chunks</span>: <span class="string">&#x27;all&#x27;</span>,  <span class="comment">// 有效值为 all，async 和 initial,</span></span><br><span class="line">      <span class="comment">// 以下都是默认项,可以不写省略</span></span><br><span class="line">      <span class="attr">minSize</span>: <span class="number">30000</span>,  <span class="comment">// 生成 chunk 的最小体积,单位Byte</span></span><br><span class="line">      <span class="attr">minChunks</span>: <span class="number">1</span>, <span class="comment">// chunk引用最小数量</span></span><br><span class="line">      <span class="attr">maxAsyncRequests</span>: <span class="number">5</span>, <span class="comment">// 最大的异步请求模块,超过后后面的异步模块会合并</span></span><br><span class="line">      <span class="attr">maxInitialRequests</span>: <span class="number">3</span>, <span class="comment">//最大初始请求数</span></span><br><span class="line">      <span class="attr">automaticNameDelimiter</span>: <span class="string">&#x27;~&#x27;</span>, <span class="comment">// 生成的chunks文件名分隔符,默认vendors~main.js</span></span><br><span class="line">      <span class="attr">name</span>: <span class="literal">true</span>,</span><br><span class="line">      <span class="attr">cacheGroups</span>: &#123;</span><br><span class="line">        <span class="attr">vendors</span>: &#123;</span><br><span class="line">          <span class="attr">test</span>: <span class="regexp">/[\\/]node_modules[\\/]/</span>,</span><br><span class="line">          priority: -<span class="number">10</span>, <span class="comment">//优先级,越大优先级越高</span></span><br><span class="line">          <span class="attr">filename</span>: <span class="string">&#x27;vendors.js&#x27;</span>, <span class="comment">// 生成文件名</span></span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="attr">default</span>: &#123;</span><br><span class="line">          <span class="attr">priority</span>: -<span class="number">20</span>,</span><br><span class="line">          <span class="attr">reuseExistingChunk</span>: <span class="literal">true</span>, <span class="comment">// 是否重复利用chunk</span></span><br><span class="line">          <span class="attr">filename</span>: <span class="string">&#x27;common.js&#x27;</span></span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2021/09/30/webpack-spliteChunks/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -486,10 +502,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2021-09-30 15:57:36 / 修改时间：15:59:38" itemprop="dateCreated datePublished" datetime="2021-09-30T15:57:36+08:00">2021-09-30</time>
+              <time title="创建时间：2021-09-30 15:57:36" itemprop="dateCreated datePublished" datetime="2021-09-30T15:57:36+08:00">2021-09-30</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-10-02 10:37:17" itemprop="dateModified" datetime="2021-10-02T10:37:17+08:00">2021-10-02</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -511,8 +533,10 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>Index.js</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getComponent</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">	<span class="keyword">return</span> <span class="keyword">import</span>(<span class="string">&#x27;lodash&#x27;</span>).then(<span class="function">(<span class="params">&#123; <span class="keyword">default</span>: _ &#125;</span>) =&gt;</span> &#123;</span><br><span class="line">		<span class="keyword">var</span> element = <span class="built_in">document</span>.createElement(<span class="string">&#x27;div&#x27;</span>);</span><br><span class="line">		element.innerHTML = _.join([<span class="string">&#x27;Dell&#x27;</span>, <span class="string">&#x27;Lee&#x27;</span>], <span class="string">&#x27;-&#x27;</span>);</span><br><span class="line">		<span class="keyword">return</span> element;</span><br><span class="line">	&#125;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">getComponent().then(<span class="function"><span class="params">element</span> =&gt;</span> &#123;</span><br><span class="line">	<span class="built_in">document</span>.body.appendChild(element);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 代码分割，和webpack无关</span></span><br><span class="line"><span class="comment">// webpack中实现代码分割，两种方式</span></span><br><span class="line"><span class="comment">// 1. 同步代码： 只需要在webpack.common.js中做optimization的配置即可</span></span><br><span class="line">optimization: &#123;</span><br><span class="line">	<span class="attr">splitChunks</span>: &#123;</span><br><span class="line">		<span class="attr">chunks</span>: <span class="string">&#x27;all&#x27;</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;,</span><br><span class="line"><span class="comment">// 2. 异步代码(import): 异步代码，无需做任何配置，会自动进行代码分割，放置到新的文件中</span></span><br></pre></td></tr></table></figure>
+          <span id="more"></span>
+
+<p>Index.js</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getComponent</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">	<span class="keyword">return</span> <span class="keyword">import</span>(<span class="string">&#x27;lodash&#x27;</span>).then(<span class="function">(<span class="params">&#123; <span class="keyword">default</span>: _ &#125;</span>) =&gt;</span> &#123;</span><br><span class="line">		<span class="keyword">var</span> element = <span class="built_in">document</span>.createElement(<span class="string">&#x27;div&#x27;</span>);</span><br><span class="line">		element.innerHTML = _.join([<span class="string">&#x27;Dell&#x27;</span>, <span class="string">&#x27;Lee&#x27;</span>], <span class="string">&#x27;-&#x27;</span>);</span><br><span class="line">		<span class="keyword">return</span> element;</span><br><span class="line">	&#125;)</span><br><span class="line">&#125;</span><br><span class="line">getComponent().then(<span class="function"><span class="params">element</span> =&gt;</span> &#123;</span><br><span class="line">	<span class="built_in">document</span>.body.appendChild(element);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 代码分割，和webpack无关</span></span><br><span class="line"><span class="comment">// webpack中实现代码分割，两种方式</span></span><br><span class="line"><span class="comment">// 1. 同步代码： 只需要在webpack.common.js中做optimization的配置即可</span></span><br><span class="line">optimization: &#123;</span><br><span class="line">	<span class="attr">splitChunks</span>: &#123;</span><br><span class="line">		<span class="attr">chunks</span>: <span class="string">&#x27;all&#x27;</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;,</span><br><span class="line"><span class="comment">// 2. 异步代码(import): 异步代码，无需做任何配置，会自动进行代码分割，放置到新的文件中</span></span><br></pre></td></tr></table></figure>
 
 
       
@@ -556,10 +580,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2021-09-30 15:03:33 / 修改时间：15:09:09" itemprop="dateCreated datePublished" datetime="2021-09-30T15:03:33+08:00">2021-09-30</time>
+              <time title="创建时间：2021-09-30 15:03:33" itemprop="dateCreated datePublished" datetime="2021-09-30T15:03:33+08:00">2021-09-30</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-10-02 10:35:13" itemprop="dateModified" datetime="2021-10-02T10:35:13+08:00">2021-10-02</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -584,23 +614,14 @@
           <p>TreeShaking: 导出了但未使用的文件将会被抖掉</p>
 <p>Package.json</p>
 <figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;sideEffects&quot;</span>: <span class="literal">false</span>, <span class="comment">// </span></span><br></pre></td></tr></table></figure>
-
-
-
-<p>Webpack.common.js</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> path = <span class="built_in">require</span>(<span class="string">&#x27;path&#x27;</span>);</span><br><span class="line"><span class="keyword">const</span> HtmlWebpackPlugin = <span class="built_in">require</span>(<span class="string">&#x27;html-webpack-plugin&#x27;</span>);</span><br><span class="line"><span class="keyword">const</span> CleanWebpackPlugin = <span class="built_in">require</span>(<span class="string">&#x27;clean-webpack-plugin&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">	<span class="attr">entry</span>: &#123;</span><br><span class="line">		<span class="attr">main</span>: <span class="string">&#x27;./src/index.js&#x27;</span></span><br><span class="line">	&#125;,</span><br><span class="line">	<span class="attr">module</span>: &#123;</span><br><span class="line">		<span class="attr">rules</span>: [&#123; </span><br><span class="line">			<span class="attr">test</span>: <span class="regexp">/\.js$/</span>, </span><br><span class="line">			exclude: <span class="regexp">/node_modules/</span>, </span><br><span class="line">			loader: <span class="string">&#x27;babel-loader&#x27;</span>,</span><br><span class="line">		&#125;, &#123;</span><br><span class="line">			<span class="attr">test</span>: <span class="regexp">/\.(jpg|png|gif)$/</span>,</span><br><span class="line">			use: &#123;</span><br><span class="line">				<span class="attr">loader</span>: <span class="string">&#x27;url-loader&#x27;</span>,</span><br><span class="line">				<span class="attr">options</span>: &#123;</span><br><span class="line">					<span class="attr">name</span>: <span class="string">&#x27;[name]_[hash].[ext]&#x27;</span>,</span><br><span class="line">					<span class="attr">outputPath</span>: <span class="string">&#x27;images/&#x27;</span>,</span><br><span class="line">					<span class="attr">limit</span>: <span class="number">10240</span></span><br><span class="line">				&#125;</span><br><span class="line">			&#125; </span><br><span class="line">		&#125;, &#123;</span><br><span class="line">			<span class="attr">test</span>: <span class="regexp">/\.(eot|ttf|svg)$/</span>,</span><br><span class="line">			use: &#123;</span><br><span class="line">				<span class="attr">loader</span>: <span class="string">&#x27;file-loader&#x27;</span></span><br><span class="line">			&#125; </span><br><span class="line">		&#125;, &#123;</span><br><span class="line">			<span class="attr">test</span>: <span class="regexp">/\.scss$/</span>,</span><br><span class="line">			use: [</span><br><span class="line">				<span class="string">&#x27;style-loader&#x27;</span>, </span><br><span class="line">				&#123;</span><br><span class="line">					<span class="attr">loader</span>: <span class="string">&#x27;css-loader&#x27;</span>,</span><br><span class="line">					<span class="attr">options</span>: &#123;</span><br><span class="line">						<span class="attr">importLoaders</span>: <span class="number">2</span></span><br><span class="line">					&#125;</span><br><span class="line">				&#125;,</span><br><span class="line">				<span class="string">&#x27;sass-loader&#x27;</span>,</span><br><span class="line">				<span class="string">&#x27;postcss-loader&#x27;</span></span><br><span class="line">			]</span><br><span class="line">		&#125;, &#123;</span><br><span class="line">			<span class="attr">test</span>: <span class="regexp">/\.css$/</span>,</span><br><span class="line">			use: [</span><br><span class="line">				<span class="string">&#x27;style-loader&#x27;</span>,</span><br><span class="line">				<span class="string">&#x27;css-loader&#x27;</span>,</span><br><span class="line">				<span class="string">&#x27;postcss-loader&#x27;</span></span><br><span class="line">			]</span><br><span class="line">		&#125;]</span><br><span class="line">	&#125;,</span><br><span class="line">	<span class="attr">plugins</span>: [</span><br><span class="line">		<span class="keyword">new</span> HtmlWebpackPlugin(&#123;</span><br><span class="line">			<span class="attr">template</span>: <span class="string">&#x27;src/index.html&#x27;</span></span><br><span class="line">		&#125;), </span><br><span class="line">		<span class="keyword">new</span> CleanWebpackPlugin([<span class="string">&#x27;dist&#x27;</span>])</span><br><span class="line">	],</span><br><span class="line">	<span class="attr">output</span>: &#123;</span><br><span class="line">		<span class="attr">filename</span>: <span class="string">&#x27;[name].js&#x27;</span>,</span><br><span class="line">		<span class="attr">path</span>: path.resolve(__dirname, <span class="string">&#x27;dist&#x27;</span>)</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-<p>Webpack.dev.js</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> webpack = <span class="built_in">require</span>(<span class="string">&#x27;webpack&#x27;</span>);</span><br><span class="line"><span class="keyword">const</span> merge = <span class="built_in">require</span>(<span class="string">&#x27;webpack-merge&#x27;</span>);</span><br><span class="line"><span class="keyword">const</span> commonConfig = <span class="built_in">require</span>(<span class="string">&#x27;./webpack.common.js&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> devConfig = &#123;</span><br><span class="line">	<span class="attr">mode</span>: <span class="string">&#x27;development&#x27;</span>,</span><br><span class="line">	<span class="attr">devtool</span>: <span class="string">&#x27;cheap-module-eval-source-map&#x27;</span>,</span><br><span class="line">	<span class="attr">devServer</span>: &#123;</span><br><span class="line">		<span class="attr">contentBase</span>: <span class="string">&#x27;./dist&#x27;</span>,</span><br><span class="line">		<span class="attr">open</span>: <span class="literal">true</span>,</span><br><span class="line">		<span class="attr">port</span>: <span class="number">8080</span>,</span><br><span class="line">		<span class="attr">hot</span>: <span class="literal">true</span></span><br><span class="line">	&#125;,</span><br><span class="line">	<span class="attr">plugins</span>: [</span><br><span class="line">		<span class="keyword">new</span> webpack.HotModuleReplacementPlugin()</span><br><span class="line">	],</span><br><span class="line">	<span class="attr">optimization</span>: &#123; <span class="comment">// 开发环境下treeShaking依然会将未使用文件打包</span></span><br><span class="line">		<span class="attr">usedExports</span>: <span class="literal">true</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports = merge(commonConfig, devConfig);</span><br></pre></td></tr></table></figure>
-
-
-
-<p>Webpack.prod.js</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> merge = <span class="built_in">require</span>(<span class="string">&#x27;webpack-merge&#x27;</span>);</span><br><span class="line"><span class="keyword">const</span> commonConfig = <span class="built_in">require</span>(<span class="string">&#x27;./webpack.common.js&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> prodConfig = &#123;</span><br><span class="line">	<span class="attr">mode</span>: <span class="string">&#x27;production&#x27;</span>,</span><br><span class="line">	<span class="attr">devtool</span>: <span class="string">&#x27;cheap-module-source-map&#x27;</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports = merge(commonConfig, prodConfig);</span><br></pre></td></tr></table></figure>
-
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2021/09/30/webpack-treeShaking/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -642,10 +663,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2021-09-30 11:23:35 / 修改时间：11:31:00" itemprop="dateCreated datePublished" datetime="2021-09-30T11:23:35+08:00">2021-09-30</time>
+              <time title="创建时间：2021-09-30 11:23:35" itemprop="dateCreated datePublished" datetime="2021-09-30T11:23:35+08:00">2021-09-30</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-10-02 10:36:31" itemprop="dateModified" datetime="2021-10-02T10:36:31+08:00">2021-10-02</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -669,20 +696,14 @@
       
           <h2 id="方法1"><a href="#方法1" class="headerlink" title="方法1"></a>方法1</h2><p>.babelrc</p>
 <figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">	<span class="attr">&quot;plugins&quot;</span>: [[<span class="string">&quot;@babel/plugin-transform-runtime&quot;</span>, &#123;</span><br><span class="line">		<span class="attr">&quot;corejs&quot;</span>: <span class="number">2</span>,</span><br><span class="line">    <span class="attr">&quot;helpers&quot;</span>: <span class="literal">true</span>,</span><br><span class="line">    <span class="attr">&quot;regenerator&quot;</span>: <span class="literal">true</span>,</span><br><span class="line">    <span class="attr">&quot;useESModules&quot;</span>: <span class="literal">false</span></span><br><span class="line">	&#125;]]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-<p>webpack.config.js</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">  <span class="attr">module</span>: &#123;</span><br><span class="line">		<span class="attr">rules</span>: [&#123; </span><br><span class="line">			<span class="attr">test</span>: <span class="regexp">/\.js$/</span>, </span><br><span class="line">			exclude: <span class="regexp">/node_modules/</span>, </span><br><span class="line">			loader: <span class="string">&#x27;babel-loader&#x27;</span></span><br><span class="line"> &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="方法2"><a href="#方法2" class="headerlink" title="方法2"></a>方法2</h2><p>webpack.config.js</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">  <span class="attr">module</span>: &#123;</span><br><span class="line">		<span class="attr">rules</span>: [&#123; </span><br><span class="line">			<span class="attr">test</span>: <span class="regexp">/\.js$/</span>, </span><br><span class="line">			exclude: <span class="regexp">/node_modules/</span>, </span><br><span class="line">			loader: <span class="string">&#x27;babel-loader&#x27;</span>,</span><br><span class="line">      </span><br><span class="line">      <span class="attr">options</span>: &#123;</span><br><span class="line">        <span class="attr">presets</span>: [[<span class="string">&#x27;@babel/preset-env&#x27;</span>, &#123; <span class="comment">// babel环境语法</span></span><br><span class="line">        <span class="attr">targets</span>: &#123;</span><br><span class="line">           <span class="attr">chrome</span>: <span class="string">&quot;67&quot;</span>, <span class="comment">// 转换成chrome 67所需语法</span></span><br><span class="line">         &#125;,</span><br><span class="line">        <span class="attr">useBuiltIns</span>: <span class="string">&#x27;usage&#x27;</span> <span class="comment">// 按需转换</span></span><br><span class="line">      &#125;]]</span><br><span class="line">    &#125;</span><br><span class="line">      </span><br><span class="line"> &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2021/09/30/webpack-babel/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -724,10 +745,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2021-09-30 10:36:20 / 修改时间：10:42:47" itemprop="dateCreated datePublished" datetime="2021-09-30T10:36:20+08:00">2021-09-30</time>
+              <time title="创建时间：2021-09-30 10:36:20" itemprop="dateCreated datePublished" datetime="2021-09-30T10:36:20+08:00">2021-09-30</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-10-02 10:42:23" itemprop="dateModified" datetime="2021-10-02T10:42:23+08:00">2021-10-02</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -751,13 +778,14 @@
       
           <p>webpack-config.js</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">  <span class="attr">devServer</span>: &#123;</span><br><span class="line">		<span class="attr">contentBase</span>: <span class="string">&#x27;./dist&#x27;</span>,</span><br><span class="line">		<span class="attr">open</span>: <span class="literal">true</span>,</span><br><span class="line">		<span class="attr">port</span>: <span class="number">8080</span>,</span><br><span class="line">		<span class="attr">hot</span>: <span class="literal">true</span>, <span class="comment">// 打开HMR(hot-module-replacement)</span></span><br><span class="line">		<span class="attr">hotOnly</span>: <span class="literal">true</span> <span class="comment">// 热模块不更新也不刷新页面</span></span><br><span class="line">	&#125;,</span><br><span class="line">  <span class="attr">plugins</span>: [</span><br><span class="line">		<span class="keyword">new</span> webpack.HotModuleReplacementPlugin() <span class="comment">// 引入热模块更新插件</span></span><br><span class="line">	],</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-<p>index.js</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// import &#x27;./style.css&#x27;;</span></span><br><span class="line"><span class="comment">// var btn = document.createElement(&#x27;button&#x27;);</span></span><br><span class="line"><span class="comment">// btn.innerHTML = &#x27;新增&#x27;;</span></span><br><span class="line"><span class="comment">// document.body.appendChild(btn);</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// btn.onclick = function() &#123;</span></span><br><span class="line"><span class="comment">// 	var div = document.createElement(&#x27;div&#x27;);</span></span><br><span class="line"><span class="comment">// 	div.innerHTML = &#x27;item&#x27;;</span></span><br><span class="line"><span class="comment">// 	document.body.appendChild(div);</span></span><br><span class="line"><span class="comment">// &#125;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// css热更新会自动HMR，不用手动配置，Vue和React大部分文件都有热更新。</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> counter <span class="keyword">from</span> <span class="string">&#x27;./counter&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> number <span class="keyword">from</span> <span class="string">&#x27;./number&#x27;</span>;</span><br><span class="line"></span><br><span class="line">counter();</span><br><span class="line">number();</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span>(<span class="built_in">module</span>.hot) &#123;</span><br><span class="line">	<span class="built_in">module</span>.hot.accept(<span class="string">&#x27;./number&#x27;</span>, <span class="function">() =&gt;</span> &#123; <span class="comment">// 对number文件HMR</span></span><br><span class="line">		<span class="built_in">document</span>.body.removeChild(<span class="built_in">document</span>.getElementById(<span class="string">&#x27;number&#x27;</span>)); <span class="comment">// 删除原有的元素</span></span><br><span class="line">		number(); <span class="comment">// 新元素替换</span></span><br><span class="line">	&#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2021/09/30/webpack-hot-module-replacement/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -807,7 +835,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-10-01 21:43:47" itemprop="dateModified" datetime="2021-10-01T21:43:47+08:00">2021-10-01</time>
+                <time title="修改时间：2021-10-02 10:36:24" itemprop="dateModified" datetime="2021-10-02T10:36:24+08:00">2021-10-02</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -832,15 +860,14 @@
       
           <p>package.json</p>
 <figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;script&quot;</span>: &#123;</span><br><span class="line">  <span class="attr">&quot;build&quot;</span>: <span class="string">&quot;webpack&quot;</span>,</span><br><span class="line">  <span class="attr">&quot;watch&quot;</span>: <span class="string">&quot;webpack --watch&quot;</span>, <span class="comment">// 1.打包文件代码变化会监视,但需要手动刷新,file文件不能发ajax</span></span><br><span class="line">  <span class="attr">&quot;start&quot;</span>: <span class="string">&quot;webpack-dev-server&quot;</span> <span class="comment">// 2.webopack创建了一个服务器,不能生成dist目录，但内容在内存中，不用手动刷新而且能发ajax</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>webpack-config.js</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">	<span class="attr">devServer</span>: &#123;</span><br><span class="line">		<span class="attr">contentBase</span>: <span class="string">&#x27;./dist&#x27;</span>, <span class="comment">// 在dist目录下开启服务器</span></span><br><span class="line">		<span class="attr">open</span>: <span class="literal">true</span>,</span><br><span class="line">		<span class="attr">port</span>: <span class="number">8080</span>, <span class="comment">// 自动打开</span></span><br><span class="line">		<span class="attr">hot</span>: <span class="literal">true</span>, <span class="comment">// 热更新</span></span><br><span class="line">		<span class="attr">hotOnly</span>: <span class="literal">true</span>, <span class="comment">// 热更新失败不刷新页面</span></span><br><span class="line">		<span class="attr">proxy</span>: &#123;</span><br><span class="line">			<span class="string">&#x27;/react/api&#x27;</span>: &#123; </span><br><span class="line">				<span class="attr">target</span>: <span class="string">&#x27;https://www.dell-lee.com&#x27;</span>, <span class="comment">//请求时不在locahost:8080/react/api下，而是在https://www.dell-lee.com/react/api下</span></span><br><span class="line">				<span class="attr">secure</span>: <span class="literal">false</span>, <span class="comment">// 关闭https跨域请求限制</span></span><br><span class="line">				<span class="attr">pathRewrite</span>: &#123; <span class="comment">// 访问header.json时访问的其实是demo.json</span></span><br><span class="line">					<span class="string">&#x27;header.json&#x27;</span>: <span class="string">&#x27;demo.json&#x27;</span></span><br><span class="line">				&#125;,</span><br><span class="line">				<span class="attr">changeOrigin</span>: <span class="literal">true</span>, <span class="comment">// 默认情况下，代理时会保留主机头的来源，可以将 changeOrigin 设置为 true 以覆盖此行为。</span></span><br><span class="line">				<span class="attr">headers</span>: &#123; <span class="comment">// 自定义请求头</span></span><br><span class="line">					<span class="attr">host</span>: <span class="string">&#x27;www.dell-lee.com&#x27;</span>,</span><br><span class="line">          <span class="attr">cookie</span>: <span class="string">&#x27;httponly&#x27;</span> </span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-<p>3.使用 webpack-dev-middleware自己配置服务器</p>
-<p><img src="/Users/web-yi/Library/Application%20Support/typora-user-images/image-20210930100231127.png" alt="image-20210930100231127"></p>
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2021/09/30/webpack-devServer/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -882,10 +909,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2021-09-30 09:28:35 / 修改时间：09:34:34" itemprop="dateCreated datePublished" datetime="2021-09-30T09:28:35+08:00">2021-09-30</time>
+              <time title="创建时间：2021-09-30 09:28:35" itemprop="dateCreated datePublished" datetime="2021-09-30T09:28:35+08:00">2021-09-30</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-10-02 10:36:14" itemprop="dateModified" datetime="2021-10-02T10:36:14+08:00">2021-10-02</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -909,22 +942,14 @@
       
           <p>开发环境: cheap-module-eval-source-map</p>
 <p>生产环境：cheap-module-eval-source-map</p>
-<p>Eval:只生成上下文映射</p>
-<p>Cheap:不会精确到列,只查到行</p>
-<p>Module:模块都会映射，比如loader</p>
-<p>Inline:生成在打包文件中并压缩成一行</p>
-<p>eval</p>
-<p>cheap-eval-source-map</p>
-<p>eval-source-map</p>
-<p>cheap-source-map</p>
-<p>cheap-module-source-map</p>
-<p>inline-cheap-source-map</p>
-<p>inline-cheap-module-source-map</p>
-<p>source-map</p>
-<p>inline-source-map</p>
-<p>hidden-source-map</p>
-<p>nosources-source-map</p>
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2021/09/30/webpack-devtool/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -1017,7 +1042,7 @@
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">14</span>
+        <span class="site-state-item-count">11</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
