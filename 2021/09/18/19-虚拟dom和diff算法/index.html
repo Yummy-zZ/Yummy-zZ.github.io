@@ -24,8 +24,8 @@
 
   <meta name="description" content="🌹虚拟DOMvnode基于js，利用到了一个h函数，这个h函数一般有三个参数，第一个参数是selector(在vue中第一个是一个 HTML 标签名、一个组件、一个异步组件、或一个函数式组件。)，以字符串的形式表示，第二个参数是data属性，也就是各种标签属性或事件，以对象的形式表示，第三个参数是子节点，以数组的形式表示。如果标签没有data属性，第二个参数可以直接是子节点。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="19-diff算法">
-<meta property="og:url" content="https://yummy-zz.github.io/2021/09/18/19-diff%E7%AE%97%E6%B3%95/index.html">
+<meta property="og:title" content="19-虚拟dom和diff算法">
+<meta property="og:url" content="https://yummy-zz.github.io/2021/09/18/19-%E8%99%9A%E6%8B%9Fdom%E5%92%8Cdiff%E7%AE%97%E6%B3%95/index.html">
 <meta property="og:site_name" content="Yum">
 <meta property="og:description" content="🌹虚拟DOMvnode基于js，利用到了一个h函数，这个h函数一般有三个参数，第一个参数是selector(在vue中第一个是一个 HTML 标签名、一个组件、一个异步组件、或一个函数式组件。)，以字符串的形式表示，第二个参数是data属性，也就是各种标签属性或事件，以对象的形式表示，第三个参数是子节点，以数组的形式表示。如果标签没有data属性，第二个参数可以直接是子节点。">
 <meta property="og:locale" content="zh_CN">
@@ -43,14 +43,14 @@
 <meta property="og:image" content="https://raw.githubusercontent.com/Yummy-zZ/FigureBed/main/img/885269d6d23340f19e9100ec60564173%7Etplv-k3u1fbpfcp-watermark.awebp">
 <meta property="og:image" content="https://raw.githubusercontent.com/Yummy-zZ/FigureBed/main/img/833e0a795a3e4893a0c03bb78a63bffc%7Etplv-k3u1fbpfcp-watermark.awebp">
 <meta property="article:published_time" content="2021-09-18T08:14:23.000Z">
-<meta property="article:modified_time" content="2021-10-02T02:44:30.678Z">
+<meta property="article:modified_time" content="2021-10-03T07:55:57.258Z">
 <meta property="article:author" content="Eden Yi">
 <meta property="article:tag" content="每日总结">
 <meta property="article:tag" content="diff算法">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://raw.githubusercontent.com/Yummy-zZ/FigureBed/main/img/1db54647698e4c76b6fc38a02067ad72%7Etplv-k3u1fbpfcp-watermark.awebp">
 
-<link rel="canonical" href="https://yummy-zz.github.io/2021/09/18/19-diff%E7%AE%97%E6%B3%95/">
+<link rel="canonical" href="https://yummy-zz.github.io/2021/09/18/19-%E8%99%9A%E6%8B%9Fdom%E5%92%8Cdiff%E7%AE%97%E6%B3%95/">
 
 
 <script id="page-configurations">
@@ -63,7 +63,7 @@
   };
 </script>
 
-  <title>19-diff算法 | Yum</title>
+  <title>19-虚拟dom和diff算法 | Yum</title>
   
 
 
@@ -180,7 +180,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://yummy-zz.github.io/2021/09/18/19-diff%E7%AE%97%E6%B3%95/">
+    <link itemprop="mainEntityOfPage" href="https://yummy-zz.github.io/2021/09/18/19-%E8%99%9A%E6%8B%9Fdom%E5%92%8Cdiff%E7%AE%97%E6%B3%95/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.jpeg">
@@ -193,7 +193,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          19-diff算法
+          19-虚拟dom和diff算法
         </h1>
 
         <div class="post-meta">
@@ -210,7 +210,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-10-02 10:44:30" itemprop="dateModified" datetime="2021-10-02T10:44:30+08:00">2021-10-02</time>
+                <time title="修改时间：2021-10-03 15:55:57" itemprop="dateModified" datetime="2021-10-03T15:55:57+08:00">2021-10-03</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -247,10 +247,9 @@
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">ul</span> <span class="attr">id</span>=<span class="string">&quot;list&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">li</span> <span class="attr">class</span>=<span class="string">&quot;item&quot;</span>&gt;</span>哈哈<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">li</span> <span class="attr">class</span>=<span class="string">&quot;item&quot;</span>&gt;</span>呵呵<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">li</span> <span class="attr">class</span>=<span class="string">&quot;item&quot;</span>&gt;</span>嘿嘿<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
 <p>对应的虚拟DOM</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> dom = &#123;</span><br><span class="line">  <span class="attr">tagName</span>: <span class="string">&#x27;ul&#x27;</span>,</span><br><span class="line">  <span class="attr">props</span>: &#123;</span><br><span class="line">    <span class="attr">id</span>: <span class="string">&#x27;list&#x27;</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">children</span>: [</span><br><span class="line">    &#123;<span class="attr">tagName</span>: <span class="string">&#x27;li&#x27;</span>, <span class="attr">props</span>: &#123;<span class="attr">class</span>: <span class="string">&#x27;item&#x27;</span>&#125;, <span class="attr">children</span>: [<span class="string">&#x27;哈哈&#x27;</span>]&#125;,</span><br><span class="line">    &#123;<span class="attr">tagName</span>: <span class="string">&#x27;li&#x27;</span>, <span class="attr">props</span>: &#123;<span class="attr">class</span>: <span class="string">&#x27;item&#x27;</span>&#125;, <span class="attr">children</span>: [<span class="string">&#x27;呵呵&#x27;</span>]&#125;,</span><br><span class="line">    &#123;<span class="attr">tagName</span>: <span class="string">&#x27;li&#x27;</span>, <span class="attr">props</span>: &#123;<span class="attr">class</span>: <span class="string">&#x27;item&#x27;</span>&#125;, <span class="attr">children</span>: [<span class="string">&#x27;嘿嘿&#x27;</span>]&#125;</span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">h(<span class="string">&quot;div#container.two.classes&quot;</span>, &#123; <span class="attr">on</span>: &#123; <span class="attr">click</span>: someFn &#125; &#125;, [ <span class="comment">// vue中第一个参数不是selector选择器了，class和id放在第二个参数表示，此写法是snabbdom </span></span><br><span class="line">  h(<span class="string">&quot;span&quot;</span>, &#123; <span class="attr">style</span>: &#123; <span class="attr">fontWeight</span>: <span class="string">&quot;bold&quot;</span> &#125; &#125;, <span class="string">&quot;This is bold&quot;</span>),</span><br><span class="line">  <span class="string">&quot; and this is just normal text&quot;</span>,</span><br><span class="line">  h(<span class="string">&quot;a&quot;</span>, &#123; <span class="attr">props</span>: &#123; <span class="attr">href</span>: <span class="string">&quot;/foo&quot;</span> &#125; &#125;, <span class="string">&quot;I&#x27;ll take you places!&quot;</span>),</span><br><span class="line">])</span><br><span class="line"></span><br><span class="line"><span class="comment">// vue中的渲染函数</span></span><br><span class="line">app.component(<span class="string">&#x27;anchored-heading&#x27;</span>, &#123;</span><br><span class="line">  <span class="function"><span class="title">render</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> h(</span><br><span class="line">      <span class="string">&#x27;h&#x27;</span> + <span class="built_in">this</span>.level, <span class="comment">// 标签名</span></span><br><span class="line">      &#123;&#125;, <span class="comment">// prop 或 attribute</span></span><br><span class="line">      <span class="built_in">this</span>.$slots.default() <span class="comment">// 包含其子节点的数组</span></span><br><span class="line">    )</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">props</span>: &#123;</span><br><span class="line">    <span class="attr">level</span>: &#123;</span><br><span class="line">      <span class="attr">type</span>: <span class="built_in">Number</span>,</span><br><span class="line">      <span class="attr">required</span>: <span class="literal">true</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> dom = &#123;</span><br><span class="line">  <span class="attr">tagName</span>: <span class="string">&#x27;ul&#x27;</span>,</span><br><span class="line">  <span class="attr">props</span>: &#123;</span><br><span class="line">    <span class="attr">id</span>: <span class="string">&#x27;list&#x27;</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">children</span>: [</span><br><span class="line">    &#123;<span class="attr">tagName</span>: <span class="string">&#x27;li&#x27;</span>, <span class="attr">props</span>: &#123;<span class="attr">class</span>: <span class="string">&#x27;item&#x27;</span>&#125;, <span class="attr">children</span>: [<span class="string">&#x27;哈哈&#x27;</span>]&#125;,</span><br><span class="line">    &#123;<span class="attr">tagName</span>: <span class="string">&#x27;li&#x27;</span>, <span class="attr">props</span>: &#123;<span class="attr">class</span>: <span class="string">&#x27;item&#x27;</span>&#125;, <span class="attr">children</span>: [<span class="string">&#x27;呵呵&#x27;</span>]&#125;,</span><br><span class="line">    &#123;<span class="attr">tagName</span>: <span class="string">&#x27;li&#x27;</span>, <span class="attr">props</span>: &#123;<span class="attr">class</span>: <span class="string">&#x27;item&#x27;</span>&#125;, <span class="attr">children</span>: [<span class="string">&#x27;嘿嘿&#x27;</span>]&#125;</span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">h(<span class="string">&quot;div#container.two.classes&quot;</span>, &#123; <span class="attr">on</span>: &#123; <span class="attr">click</span>: someFn &#125; &#125;, [ <span class="comment">// vue中第一个参数不是selector选择器了,而是tagName，class和id放在第二个参数表示，此写法是snabbdom </span></span><br><span class="line">  h(<span class="string">&quot;span&quot;</span>, &#123; <span class="attr">style</span>: &#123; <span class="attr">fontWeight</span>: <span class="string">&quot;bold&quot;</span> &#125; &#125;, <span class="string">&quot;This is bold&quot;</span>),</span><br><span class="line">  <span class="string">&quot; and this is just normal text&quot;</span>,</span><br><span class="line">  h(<span class="string">&quot;a&quot;</span>, &#123; <span class="attr">props</span>: &#123; <span class="attr">href</span>: <span class="string">&quot;/foo&quot;</span> &#125; &#125;, <span class="string">&quot;I&#x27;ll take you places!&quot;</span>),</span><br><span class="line">])</span><br><span class="line"></span><br><span class="line"><span class="comment">// vue中的渲染函数</span></span><br><span class="line">app.component(<span class="string">&#x27;anchored-heading&#x27;</span>, &#123;</span><br><span class="line">  <span class="function"><span class="title">render</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> h(</span><br><span class="line">      <span class="string">&#x27;h&#x27;</span> + <span class="built_in">this</span>.level, <span class="comment">// 标签名</span></span><br><span class="line">      &#123;&#125;, <span class="comment">// prop 或 attribute</span></span><br><span class="line">      <span class="built_in">this</span>.$slots.default() <span class="comment">// 包含其子节点的数组</span></span><br><span class="line">    )</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">props</span>: &#123;</span><br><span class="line">    <span class="attr">level</span>: &#123;</span><br><span class="line">      <span class="attr">type</span>: <span class="built_in">Number</span>,</span><br><span class="line">      <span class="attr">required</span>: <span class="literal">true</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
 
-
-
+<p>可以通过 <a target="_blank" rel="noopener" href="https://v3.cn.vuejs.org/api/instance-properties.html#slots"><code>this.$slots</code></a> 访问静态插槽的内容，每个插槽都是一个 VNode 数组,例如this.$slots.default()</p>
 <h2 id="🌈什么是diff算法"><a href="#🌈什么是diff算法" class="headerlink" title="🌈什么是diff算法"></a>🌈什么是diff算法</h2><p><strong>Diff算法是一种对比算法</strong>。对比两者是<code>旧虚拟DOM和新虚拟DOM</code>，对比出是哪个<code>虚拟节点</code>更改了，找出这个<code>虚拟节点</code>，并只更新这个虚拟节点所对应的<code>真实节点</code>，而不用更新其他数据没发生改变的节点，实现<code>精准</code>地更新真实DOM，进而<code>提高效率</code>。</p>
 <p><code>使用虚拟DOM算法的损耗计算</code>： 总损耗 = 虚拟DOM增删改+（与Diff算法效率有关）真实DOM差异增删改+（较少的节点）排版与重绘</p>
 <p><code>直接操作真实DOM的损耗计算</code>： 总损耗 = 真实DOM完全增删改+（可能较多的节点）排版与重绘</p>
@@ -458,20 +457,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">49</span>
+          <span class="site-state-item-count">55</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">11</span>
+        <span class="site-state-item-count">12</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">45</span>
+        <span class="site-state-item-count">50</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>

@@ -159,6 +159,560 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://yummy-zz.github.io/2021/10/06/%E9%A1%B9%E7%9B%AE%E5%AE%9E%E6%88%98-slide%E8%BD%AE%E6%92%AD%E5%9B%BE/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpeg">
+      <meta itemprop="name" content="Eden Yi">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Yum">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/10/06/%E9%A1%B9%E7%9B%AE%E5%AE%9E%E6%88%98-slide%E8%BD%AE%E6%92%AD%E5%9B%BE/" class="post-title-link" itemprop="url">项目实战-slide轮播图</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2021-10-06 12:51:26 / 修改时间：15:27:01" itemprop="dateCreated datePublished" datetime="2021-10-06T12:51:26+08:00">2021-10-06</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E9%A1%B9%E7%9B%AE%E5%AE%9E%E6%88%98/" itemprop="url" rel="index"><span itemprop="name">项目实战</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="vue2-x轮播图"><a href="#vue2-x轮播图" class="headerlink" title="vue2.x轮播图"></a>vue2.x轮播图</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install swiper vue-awesome-swiper --save</span><br></pre></td></tr></table></figure>
+
+<p>main.js</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> Vue <span class="keyword">from</span> <span class="string">&#x27;vue&#x27;</span></span><br><span class="line"><span class="keyword">import</span> VueAwesomeSwiper <span class="keyword">from</span> <span class="string">&#x27;vue-awesome-swiper&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// import style (&gt;= Swiper 6.x)</span></span><br><span class="line"><span class="keyword">import</span> <span class="string">&#x27;swiper/swiper-bundle.css&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// import style (&lt;= Swiper 5.x)</span></span><br><span class="line"><span class="keyword">import</span> <span class="string">&#x27;swiper/css/swiper.css&#x27;</span></span><br><span class="line"></span><br><span class="line">Vue.use(VueAwesomeSwiper, <span class="comment">/* &#123; default options with global component &#125; */</span>)</span><br></pre></td></tr></table></figure>
+
+<p>swiper.vue</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div class=&quot;wrapper&quot;&gt;</span><br><span class="line">    &lt;swiper :options=&quot;swiperOptions&quot; v-if=&quot;showSwiper&quot;&gt;</span><br><span class="line">      &lt;swiper-slide v-for=&quot;item in swiperList&quot; :key=&quot;item.id&quot;&gt;</span><br><span class="line">        &lt;img class=&quot;swiper-img&quot; :src=&quot;item.imgUrl&quot;&gt;</span><br><span class="line">      &lt;/swiper-slide&gt;</span><br><span class="line">      &lt;div class=&quot;swiper-pagination&quot; slot=&quot;pagination&quot;&gt;&lt;/div&gt;</span><br><span class="line">    &lt;/swiper&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">export default &#123;</span><br><span class="line">  name: &#x27;HomeSwiper&#x27;,</span><br><span class="line">  props: &#123;</span><br><span class="line">    swiperList: Array</span><br><span class="line">  &#125;,</span><br><span class="line">  data () &#123;</span><br><span class="line">    return &#123;</span><br><span class="line">      swiperOptions: &#123;</span><br><span class="line">        pagination: &#x27;.swiper-pagination&#x27;,</span><br><span class="line">        loop: true,</span><br><span class="line">        autoplay: 2500,</span><br><span class="line">        speed: 1200,</span><br><span class="line">        autoplayDisableOnInteraction: false</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  computed: &#123;</span><br><span class="line">    showSwiper () &#123;</span><br><span class="line">      return this.swiperList.length</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">&lt;/script&gt;</span><br><span class="line"></span><br><span class="line">&lt;style lang=&quot;stylus&quot; scoped&gt;</span><br><span class="line">  .wrapper &gt;&gt;&gt; .swiper-pagination-bullet-active</span><br><span class="line">    background-color #fff</span><br><span class="line">  .wrapper</span><br><span class="line">    overflow hidden</span><br><span class="line">    width 100%</span><br><span class="line">    height 0</span><br><span class="line">    padding-bottom  31.25%</span><br><span class="line">    background-color #eee</span><br><span class="line">    .swiper-img</span><br><span class="line">      width 100%</span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></table></figure>
+
+<p>组件使用</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">	&lt;slider v-if=&quot;sliders.length&quot; :swiperList=&quot;swiperList&quot;&gt;&lt;/slider&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">import Slider from &#x27;../../components/base/slider/slider&#x27;  </span><br><span class="line">  </span><br><span class="line">export default &#123;</span><br><span class="line">  name: &#x27;xxx&#x27;,</span><br><span class="line">  data() &#123;</span><br><span class="line">    return &#123;</span><br><span class="line">      swiperList: []</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  components: &#123;</span><br><span class="line">    Slider</span><br><span class="line">  &#125;,</span><br><span class="line">  async created () &#123; // 异步获取数据</span><br><span class="line">    const result = await getRecommend()</span><br><span class="line">    this.swiperList = result.swiperList</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h2 id="Vue3-x轮播图"><a href="#Vue3-x轮播图" class="headerlink" title="Vue3.x轮播图"></a>Vue3.x轮播图</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install @better-scroll/core --save</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install @better-scroll/slide --save</span><br></pre></td></tr></table></figure>
+
+<p>src/components/base/slider/slider.vue</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  <span class="xml"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;slider&quot;</span> <span class="attr">ref</span>=<span class="string">&quot;rootRef&quot;</span>&gt;</span></span></span><br><span class="line"><span class="xml">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;slider-group&quot;</span>&gt;</span></span></span><br><span class="line"><span class="xml">      <span class="tag">&lt;<span class="name">div</span> <span class="attr">v-for</span>=<span class="string">&quot;item in sliders&quot;</span></span></span></span><br><span class="line"><span class="tag"><span class="xml">           <span class="attr">class</span>=<span class="string">&quot;slider-page&quot;</span></span></span></span><br><span class="line"><span class="tag"><span class="xml">           <span class="attr">:key</span>=<span class="string">&quot;item.id&quot;</span></span></span></span><br><span class="line"><span class="tag"><span class="xml">      &gt;</span></span></span><br><span class="line"><span class="xml">        <span class="tag">&lt;<span class="name">a</span> <span class="attr">:href</span>=<span class="string">&quot;item.link&quot;</span>&gt;</span></span></span><br><span class="line"><span class="xml">          <span class="tag">&lt;<span class="name">img</span> <span class="attr">:src</span>=<span class="string">&quot;item.pic&quot;</span> <span class="attr">:alt</span>=<span class="string">&quot;item.link&quot;</span>&gt;</span></span></span><br><span class="line"><span class="xml">        <span class="tag">&lt;/<span class="name">a</span>&gt;</span></span></span><br><span class="line"><span class="xml">      <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="xml">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="xml">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;dots-wrapper&quot;</span>&gt;</span></span></span><br><span class="line"><span class="xml">          <span class="tag">&lt;<span class="name">span</span></span></span></span><br><span class="line"><span class="tag"><span class="xml">            <span class="attr">class</span>=<span class="string">&quot;dot&quot;</span></span></span></span><br><span class="line"><span class="tag"><span class="xml">            <span class="attr">v-for</span>=<span class="string">&quot;(item, index) in sliders&quot;</span></span></span></span><br><span class="line"><span class="tag"><span class="xml">            <span class="attr">:key</span>=<span class="string">&quot;item.id&quot;</span></span></span></span><br><span class="line"><span class="tag"><span class="xml">            <span class="attr">:class</span>=<span class="string">&quot;&#123;&#x27;active&#x27;: currentPageIndex === index&#125;&quot;</span>&gt;</span></span></span><br><span class="line"><span class="xml">          <span class="tag">&lt;/<span class="name">span</span>&gt;</span></span></span><br><span class="line"><span class="xml">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="xml">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="xml"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="xml"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></span></span><br><span class="line"><span class="javascript"><span class="xml">  <span class="keyword">import</span> &#123; ref &#125; <span class="keyword">from</span> <span class="string">&#x27;vue&#x27;</span></span></span></span><br><span class="line"><span class="javascript"><span class="xml">  <span class="keyword">import</span> useSlider <span class="keyword">from</span> <span class="string">&#x27;./use-slider&#x27;</span></span></span></span><br><span class="line"><span class="javascript"><span class="xml"></span></span></span><br><span class="line"><span class="javascript"><span class="xml">  <span class="keyword">export</span> <span class="keyword">default</span> &#123;</span></span></span><br><span class="line"><span class="javascript"><span class="xml">    <span class="attr">name</span>: <span class="string">&#x27;slider&#x27;</span>,</span></span></span><br><span class="line"><span class="javascript"><span class="xml">    <span class="attr">props</span>: &#123;</span></span></span><br><span class="line"><span class="javascript"><span class="xml">      <span class="attr">sliders</span>: &#123;</span></span></span><br><span class="line"><span class="javascript"><span class="xml">        <span class="attr">type</span>: <span class="built_in">Array</span>,</span></span></span><br><span class="line"><span class="javascript"><span class="xml">        <span class="function"><span class="title">default</span>(<span class="params"></span>)</span> &#123;</span></span></span><br><span class="line"><span class="javascript"><span class="xml">          <span class="keyword">return</span> []</span></span></span><br><span class="line"><span class="javascript"><span class="xml">        &#125;</span></span></span><br><span class="line"><span class="javascript"><span class="xml">      &#125;</span></span></span><br><span class="line"><span class="javascript"><span class="xml">    &#125;,</span></span></span><br><span class="line"><span class="javascript"><span class="xml">    <span class="function"><span class="title">setup</span>(<span class="params"></span>)</span> &#123;</span></span></span><br><span class="line"><span class="javascript"><span class="xml">      <span class="keyword">const</span> rootRef = ref(<span class="literal">null</span>)</span></span></span><br><span class="line"><span class="javascript"><span class="xml">      <span class="keyword">const</span> &#123; currentPageIndex &#125; = useSlider(rootRef)</span></span></span><br><span class="line"><span class="javascript"><span class="xml"></span></span></span><br><span class="line"><span class="javascript"><span class="xml">      <span class="keyword">return</span> &#123;</span></span></span><br><span class="line"><span class="javascript"><span class="xml">        rootRef,</span></span></span><br><span class="line"><span class="javascript"><span class="xml">        currentPageIndex</span></span></span><br><span class="line"><span class="javascript"><span class="xml">      &#125;</span></span></span><br><span class="line"><span class="javascript"><span class="xml">    &#125;</span></span></span><br><span class="line"><span class="javascript"><span class="xml">  &#125;</span></span></span><br><span class="line"><span class="javascript"><span class="xml"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="xml"><span class="tag">&lt;<span class="name">style</span> <span class="attr">lang</span>=<span class="string">&quot;scss&quot;</span> <span class="attr">scoped</span>&gt;</span><span class="css"></span></span></span><br><span class="line"><span class="css"><span class="xml">  <span class="selector-class">.slider</span> &#123;</span></span></span><br><span class="line"><span class="css"><span class="xml">    <span class="attribute">min-height</span>: <span class="number">1px</span>;</span></span></span><br><span class="line"><span class="css"><span class="xml">    <span class="attribute">font-size</span>: <span class="number">0</span>;</span></span></span><br><span class="line"><span class="css"><span class="xml">    touch-action: pan-y; // 单手指垂直移动</span></span></span><br><span class="line"><span class="css"><span class="xml">    <span class="selector-class">.slider-group</span> &#123;</span></span></span><br><span class="line"><span class="css"><span class="xml">      <span class="attribute">position</span>: relative;</span></span></span><br><span class="line"><span class="css"><span class="xml">      <span class="attribute">overflow</span>: hidden;</span></span></span><br><span class="line"><span class="css"><span class="xml">      <span class="attribute">white-space</span>: nowrap;</span></span></span><br><span class="line"><span class="css"><span class="xml">      <span class="selector-class">.slider-page</span> &#123;</span></span></span><br><span class="line"><span class="css"><span class="xml">        <span class="attribute">display</span>: inline-block;</span></span></span><br><span class="line"><span class="css"><span class="xml">        //<span class="attribute">transform</span>: <span class="built_in">translate3d</span>(<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>);</span></span></span><br><span class="line"><span class="css"><span class="xml">        //<span class="attribute">backface-visibility</span>: hidden;</span></span></span><br><span class="line"><span class="css"><span class="xml">        <span class="selector-tag">img</span> &#123;</span></span></span><br><span class="line"><span class="css"><span class="xml">          <span class="attribute">display</span>: block;</span></span></span><br><span class="line"><span class="css"><span class="xml">          <span class="attribute">width</span>: <span class="number">100%</span>;</span></span></span><br><span class="line"><span class="css"><span class="xml">        &#125;</span></span></span><br><span class="line"><span class="css"><span class="xml">      &#125;</span></span></span><br><span class="line"><span class="css"><span class="xml">    &#125;</span></span></span><br><span class="line"><span class="css"><span class="xml">    <span class="selector-class">.dots-wrapper</span> &#123;</span></span></span><br><span class="line"><span class="css"><span class="xml">      <span class="attribute">position</span>: absolute;</span></span></span><br><span class="line"><span class="css"><span class="xml">      <span class="attribute">left</span>: <span class="number">50%</span>;</span></span></span><br><span class="line"><span class="css"><span class="xml">      <span class="attribute">bottom</span>: <span class="number">12px</span>;</span></span></span><br><span class="line"><span class="css"><span class="xml">      <span class="attribute">line-height</span>: <span class="number">12px</span>;</span></span></span><br><span class="line"><span class="css"><span class="xml">      <span class="attribute">transform</span>: <span class="built_in">translateX</span>(-<span class="number">50%</span>);</span></span></span><br><span class="line"><span class="css"><span class="xml">      <span class="selector-class">.dot</span> &#123;</span></span></span><br><span class="line"><span class="css"><span class="xml">        <span class="attribute">display</span>: inline-block;</span></span></span><br><span class="line"><span class="css"><span class="xml">        <span class="attribute">margin</span>: <span class="number">0</span> <span class="number">4px</span>;</span></span></span><br><span class="line"><span class="css"><span class="xml">        <span class="attribute">width</span>: <span class="number">8px</span>;</span></span></span><br><span class="line"><span class="css"><span class="xml">        <span class="attribute">height</span>: <span class="number">8px</span>;</span></span></span><br><span class="line"><span class="css"><span class="xml">        <span class="attribute">border-radius</span>: <span class="number">50%</span>;</span></span></span><br><span class="line"><span class="css"><span class="xml">        <span class="attribute">background</span>: $color-text-l;</span></span></span><br><span class="line"><span class="css"><span class="xml">        &amp;<span class="selector-class">.active</span> &#123;</span></span></span><br><span class="line"><span class="css"><span class="xml">          <span class="attribute">width</span>: <span class="number">20px</span>;</span></span></span><br><span class="line"><span class="css"><span class="xml">          <span class="attribute">border-radius</span>: <span class="number">5px</span>;</span></span></span><br><span class="line"><span class="css"><span class="xml">          <span class="attribute">background</span>: $color-text-ll;</span></span></span><br><span class="line"><span class="css"><span class="xml">        &#125;</span></span></span><br><span class="line"><span class="css"><span class="xml">      &#125;</span></span></span><br><span class="line"><span class="css"><span class="xml">    &#125;</span></span></span><br><span class="line"><span class="css"><span class="xml">  &#125;</span></span></span><br><span class="line"><span class="css"><span class="xml"></span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
+
+<p>src/components/base/slider/use-slider.js</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> BScroll <span class="keyword">from</span> <span class="string">&#x27;@better-scroll/core&#x27;</span></span><br><span class="line"><span class="keyword">import</span> Slide <span class="keyword">from</span> <span class="string">&#x27;@better-scroll/slide&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> &#123; onMounted, onUnmounted, onActivated, onDeactivated, ref &#125; <span class="keyword">from</span> <span class="string">&#x27;vue&#x27;</span></span><br><span class="line"></span><br><span class="line">BScroll.use(Slide)</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="function"><span class="keyword">function</span> <span class="title">useSlider</span>(<span class="params">wrapperRef</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> slider = ref(<span class="literal">null</span>)</span><br><span class="line">  <span class="keyword">const</span> currentPageIndex = ref(<span class="number">0</span>)</span><br><span class="line"></span><br><span class="line">  onMounted(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> sliderVal = slider.value = <span class="keyword">new</span> BScroll(wrapperRef.value, &#123;</span><br><span class="line">      <span class="attr">click</span>: <span class="literal">true</span>, <span class="comment">// 能点击勒</span></span><br><span class="line">      <span class="attr">scrollX</span>: <span class="literal">true</span>, <span class="comment">// 横向dots</span></span><br><span class="line">      <span class="attr">scrollY</span>: <span class="literal">false</span>,</span><br><span class="line">      <span class="attr">momentum</span>: <span class="literal">false</span>, <span class="comment">// 避免页面快速滑动闪烁和滚动多页问题</span></span><br><span class="line">      <span class="attr">bounce</span>: <span class="literal">false</span>, <span class="comment">// 防止循环衔接时闪烁</span></span><br><span class="line">      <span class="attr">probeType</span>: <span class="number">2</span>, <span class="comment">// 获取pageIndex的改变</span></span><br><span class="line">      <span class="attr">slide</span>: &#123;</span><br><span class="line">        <span class="attr">loop</span>: <span class="literal">true</span>,</span><br><span class="line">        <span class="attr">threshold</span>: <span class="number">0.1</span>, <span class="comment">// 切换上下页的阈值</span></span><br><span class="line">        <span class="attr">speed</span>: <span class="number">1680</span>,</span><br><span class="line">        <span class="attr">listenFlick</span>: <span class="literal">true</span>, <span class="comment">// 轻抚过 slide 区域时，会触发上下页切换</span></span><br><span class="line">        <span class="attr">easing</span>: <span class="string">&#x27;easy-out&#x27;</span>, <span class="comment">// transition-timing-function</span></span><br><span class="line">        <span class="attr">autoplay</span>: <span class="literal">true</span>,</span><br><span class="line">        <span class="attr">interval</span>: <span class="number">2880</span></span><br><span class="line">      &#125;</span><br><span class="line">    &#125;)</span><br><span class="line"></span><br><span class="line">    sliderVal.on(<span class="string">&#x27;slideWillChange&#x27;</span>, <span class="function">(<span class="params">page</span>) =&gt;</span> &#123;</span><br><span class="line">      currentPageIndex.value = page.pageX</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;)</span><br><span class="line"></span><br><span class="line">  onUnmounted(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">    slider.value.destroy() <span class="comment">// 销毁轮播图</span></span><br><span class="line">  &#125;)</span><br><span class="line"></span><br><span class="line">  onActivated(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">    slider.value.enable()</span><br><span class="line">    slider.value.refresh()</span><br><span class="line">  &#125;)</span><br><span class="line"></span><br><span class="line">  onDeactivated(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">    slider.value.disable()</span><br><span class="line">  &#125;)</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> &#123;</span><br><span class="line">    slider,</span><br><span class="line">    currentPageIndex</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>组件使用</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">	&lt;slider v-if=&quot;sliders.length&quot; :sliders=&quot;sliders&quot;&gt;&lt;/slider&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">import Slider from &#x27;../../components/base/slider/slider&#x27;  </span><br><span class="line">  </span><br><span class="line">export default &#123;</span><br><span class="line">  name: &#x27;xxx&#x27;,</span><br><span class="line">  data() &#123;</span><br><span class="line">    return &#123;</span><br><span class="line">      sliders: []</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  components: &#123;</span><br><span class="line">    Slider</span><br><span class="line">  &#125;,</span><br><span class="line">  async created () &#123; // 异步获取数据</span><br><span class="line">    const result = await getRecommend()</span><br><span class="line">    this.sliders = result.sliders</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+
+
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://yummy-zz.github.io/2021/10/06/%E9%A1%B9%E7%9B%AE%E5%AE%9E%E6%88%98-BScroll/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpeg">
+      <meta itemprop="name" content="Eden Yi">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Yum">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/10/06/%E9%A1%B9%E7%9B%AE%E5%AE%9E%E6%88%98-BScroll/" class="post-title-link" itemprop="url">项目实战-BScroll</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2021-10-06 11:04:19 / 修改时间：15:17:29" itemprop="dateCreated datePublished" datetime="2021-10-06T11:04:19+08:00">2021-10-06</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E9%A1%B9%E7%9B%AE%E5%AE%9E%E6%88%98/" itemprop="url" rel="index"><span itemprop="name">项目实战</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="1-BScroll用法"><a href="#1-BScroll用法" class="headerlink" title="1.BScroll用法"></a>1.BScroll用法</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install @better-scroll/core --save</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install @better-scroll/observe-dom --save</span><br></pre></td></tr></table></figure>
+
+<p>…./common/scroll/scroll.vue</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  <span class="xml"><span class="tag">&lt;<span class="name">div</span> <span class="attr">ref</span>=<span class="string">&quot;rootRef&quot;</span>&gt;</span></span></span><br><span class="line"><span class="xml">    <span class="tag">&lt;<span class="name">slot</span>&gt;</span><span class="tag">&lt;/<span class="name">slot</span>&gt;</span></span></span><br><span class="line"><span class="xml">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">props: &#123;</span><br><span class="line">  <span class="attr">click</span>: &#123;</span><br><span class="line">    <span class="attr">type</span>: <span class="built_in">Boolean</span>,</span><br><span class="line">      <span class="attr">default</span>: <span class="literal">true</span></span><br><span class="line">  &#125; <span class="comment">// ...配置参数  https://better-scroll.github.io/docs/zh-CN/guide/base-scroll-options.html#startx</span></span><br><span class="line">&#125;,</span><br><span class="line"><span class="function"><span class="title">setup</span>(<span class="params">props</span>)</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> rootRef = ref(<span class="literal">null</span>)</span><br><span class="line">  <span class="keyword">const</span> scroll = useScroll(rootRef, props)</span><br><span class="line">  <span class="keyword">return</span> &#123;</span><br><span class="line">    rootRef, scroll</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<p>…/common/scroll/use-scroll</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> BScroll <span class="keyword">from</span> <span class="string">&#x27;@better-scroll/core&#x27;</span></span><br><span class="line"><span class="keyword">import</span> ObserveDOM <span class="keyword">from</span> <span class="string">&#x27;@better-scroll/observe-dom&#x27;</span> <span class="comment">// 当dom挂载时会自动检测</span></span><br><span class="line"><span class="keyword">import</span> &#123; onMounted, onUnmounted, ref &#125; <span class="keyword">from</span> <span class="string">&#x27;vue&#x27;</span></span><br><span class="line">BScroll.use(ObserveDOM) <span class="comment">// 挂载</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">useScroll</span>(<span class="params">rootRef, options</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> scroll = ref(<span class="literal">null</span>)</span><br><span class="line">  onMounted(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">    scroll.value = <span class="keyword">new</span> BScroll(rootRef.value, &#123; <span class="comment">// 配置项,由scroll.vue文件的props传递</span></span><br><span class="line">      <span class="attr">observeDOM</span>: <span class="literal">true</span>,</span><br><span class="line">      ...options <span class="comment">// 由scroll.vue文件的props传递</span></span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;)</span><br><span class="line">  onUnmounted(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">    scroll.value.destroy() <span class="comment">// 销毁BetterScroll，解绑事件</span></span><br><span class="line">  &#125;)</span><br><span class="line">  onActivated(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">    scroll.value.enable()  <span class="comment">// 启用BetterScroll</span></span><br><span class="line">    scroll.value.refresh() <span class="comment">// 重新计算BetterScroll</span></span><br><span class="line">  &#125;)</span><br><span class="line"></span><br><span class="line">  onDeactivated(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">    scroll.value.disable() <span class="comment">// 禁用BetterScroll</span></span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://yummy-zz.github.io/2021/10/04/40-setup%E4%B8%AD%E7%9A%84watch%E4%B8%8Ecomputed/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpeg">
+      <meta itemprop="name" content="Eden Yi">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Yum">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/10/04/40-setup%E4%B8%AD%E7%9A%84watch%E4%B8%8Ecomputed/" class="post-title-link" itemprop="url">40-setup中的watch与computed</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2021-10-04 11:14:59 / 修改时间：11:41:53" itemprop="dateCreated datePublished" datetime="2021-10-04T11:14:59+08:00">2021-10-04</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Vue/" itemprop="url" rel="index"><span itemprop="name">Vue</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="组件实例里的计算属性和侦听器"><a href="#组件实例里的计算属性和侦听器" class="headerlink" title="组件实例里的计算属性和侦听器"></a>组件实例里的计算属性和侦听器</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">Vue.creatApp(&#123;</span><br><span class="line">  <span class="function"><span class="title">data</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">      <span class="attr">firstName</span>: <span class="string">&#x27;Eden&#x27;</span></span><br><span class="line">      <span class="attr">lastName</span>: <span class="string">&#x27;Yi&#x27;</span></span><br><span class="line">      <span class="attr">fullName</span>: <span class="string">&#x27;&#x27;</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// 侦听器</span></span><br><span class="line">  <span class="attr">watch</span>: &#123;</span><br><span class="line">  	<span class="attr">firstName</span>: (currName, prevName) &#123;</span><br><span class="line">  		<span class="built_in">this</span>.fullName = currName + <span class="built_in">this</span>.lastName</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="attr">lastName</span>: (currName, prevName) &#123;</span><br><span class="line">  		<span class="built_in">this</span>.fullName = <span class="built_in">this</span>.lastName + currName</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">  <span class="comment">// or计算属性</span></span><br><span class="line">  <span class="attr">computed</span>: &#123; <span class="comment">// 可以用getter和setter进行数据劫持</span></span><br><span class="line">    <span class="function"><span class="title">fullName</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="built_in">this</span>.firstName + <span class="built_in">this</span>.lastName</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="computed、watcheffet和watch"><a href="#computed、watcheffet和watch" class="headerlink" title="computed、watcheffet和watch"></a>computed、watcheffet和watch</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> &#123; computed, watchEffect, watch &#125; = Vue</span><br><span class="line"><span class="keyword">const</span> msg = ref(<span class="string">&#x27;Hello World&#x27;</span>)</span><br><span class="line"><span class="keyword">const</span> count = ref(<span class="number">1</span>)</span><br><span class="line"><span class="comment">// computed</span></span><br><span class="line"><span class="keyword">const</span> plusOne = computed(<span class="function">() =&gt;</span> count.value + <span class="number">1</span>)</span><br><span class="line"><span class="built_in">console</span>.log(plusOne.value) <span class="comment">// 2</span></span><br><span class="line"><span class="comment">// watchEffect</span></span><br><span class="line">watchEffect(<span class="function">() =&gt;</span> <span class="built_in">console</span>.log(msg.value)) <span class="comment">// 立即执行传入的一个函数，同时响应式追踪其依赖，并在其依赖变更时重新运行该函数。</span></span><br><span class="line"><span class="comment">// watch</span></span><br><span class="line">	<span class="comment">// 侦听一个 getter</span></span><br><span class="line">  <span class="keyword">const</span> state = reactive(&#123; <span class="attr">count</span>: <span class="number">0</span> &#125;)</span><br><span class="line">  watch(</span><br><span class="line">    <span class="function">() =&gt;</span> state.count,</span><br><span class="line">    <span class="function">(<span class="params">count, prevCount</span>) =&gt;</span> &#123;</span><br><span class="line">      <span class="comment">/* ... */</span></span><br><span class="line">    &#125;</span><br><span class="line">  )</span><br><span class="line">	<span class="comment">// 直接侦听一个 ref</span></span><br><span class="line">  <span class="keyword">const</span> count = ref(<span class="number">0</span>)</span><br><span class="line">  watch(count, <span class="function">(<span class="params">count, prevCount</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="comment">/* ... */</span></span><br><span class="line">  &#125;)</span><br><span class="line">	<span class="comment">// 侦听多个数据</span></span><br><span class="line">  watch([fooRef, barRef], <span class="function">(<span class="params">[foo, bar], [prevFoo, prevBar]</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="comment">/* ... */</span></span><br><span class="line">  &#125;)</span><br></pre></td></tr></table></figure>
+
+<p>watchEffect和watch都可以停止监听</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> stop = watch(count, <span class="function">(<span class="params">count, prevCount</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="comment">/* ... */</span></span><br><span class="line">  <span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">    stop() <span class="comment">// 2s后停止执行</span></span><br><span class="line">  &#125;,<span class="number">2000</span>)</span><br><span class="line">&#125;, &#123;immediate = <span class="literal">true</span>, <span class="attr">deep</span>: <span class="literal">true</span>&#125;) <span class="comment">// 立即执行,可以做到watchEffect的非惰性加载,深度监听</span></span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://yummy-zz.github.io/2021/10/03/39-Vue3%E5%93%8D%E5%BA%94%E5%BC%8F%E5%8E%9F%E7%90%86/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpeg">
+      <meta itemprop="name" content="Eden Yi">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Yum">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/10/03/39-Vue3%E5%93%8D%E5%BA%94%E5%BC%8F%E5%8E%9F%E7%90%86/" class="post-title-link" itemprop="url">39-Vue3响应式原理</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-10-03 20:37:28" itemprop="dateCreated datePublished" datetime="2021-10-03T20:37:28+08:00">2021-10-03</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-10-04 09:09:28" itemprop="dateModified" datetime="2021-10-04T09:09:28+08:00">2021-10-04</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Vue/" itemprop="url" rel="index"><span itemprop="name">Vue</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <ol>
+<li><strong>当一个值被读取时进行追踪</strong>：proxy 的 <code>get</code> 处理函数中 <code>track</code> 函数记录了该 property 和当前副作用。</li>
+<li><strong>当某个值改变时进行检测</strong>：在 proxy 上调用 <code>set</code> 处理函数。</li>
+<li><strong>重新运行代码来读取原始值</strong>：<code>trigger</code> 函数查找哪些副作用依赖于该 property 并执行它们。</li>
+</ol>
+<h2 id="❤️Proxy"><a href="#❤️Proxy" class="headerlink" title="❤️Proxy"></a>❤️Proxy</h2><h3 id="术语"><a href="#术语" class="headerlink" title="术语"></a>术语</h3><ul>
+<li><p>handler</p>
+<p>包含捕捉器（trap）的占位符对象，可译为处理器对象。</p>
+</li>
+<li><p>traps</p>
+<p>提供属性访问的方法。</p>
+</li>
+<li><p>target</p>
+<p>被 Proxy 代理虚拟化的对象。它常被作为代理的存储后端。根据目标验证关于对象不可扩展性或不可配置属性的不变量（保持不变的语义）。</p>
+</li>
+</ul>
+<h3 id="参数"><a href="#参数" class="headerlink" title="参数"></a>参数</h3><p><code>target</code></p>
+<p>要使用 <code>Proxy</code> 包装的目标对象（可以是任何类型的对象，包括原生数组，函数，甚至另一个代理）。</p>
+<p><code>handler</code></p>
+<p>一个通常以函数作为属性的对象，各属性中的函数分别定义了在执行各种操作时代理 <code>p</code> 的行为。</p>
+<h3 id="get捕获器"><a href="#get捕获器" class="headerlink" title="get捕获器"></a>get捕获器</h3><p>随便返回</p>
+<h3 id="参数-1"><a href="#参数-1" class="headerlink" title="参数"></a>参数</h3><p>以下是传递给get方法的参数，<code>this上下文绑定在</code>handler对象上.</p>
+<ul>
+<li><p><code>target</code></p>
+<p>目标对象。</p>
+</li>
+<li><p><code>property</code></p>
+<p>被获取的属性名。</p>
+</li>
+<li><p><code>receiver</code></p>
+<p>Proxy或者继承Proxy的对象</p>
+</li>
+</ul>
+<h3 id="set捕获器"><a href="#set捕获器" class="headerlink" title="set捕获器"></a>set捕获器</h3><p>一般返回一个布尔值</p>
+<h3 id="参数-2"><a href="#参数-2" class="headerlink" title="参数"></a>参数</h3><p>以下是传递给 <code>set()</code> 方法的参数。<code>this</code> 绑定在 handler 对象上。</p>
+<ul>
+<li><p><code>target</code></p>
+<p>目标对象。</p>
+</li>
+<li><p><code>property</code></p>
+<p>将被设置的属性名或 <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Symbol"><code>Symbol</code></a>。</p>
+</li>
+<li><p><code>value</code></p>
+<p>新属性值。</p>
+</li>
+<li><p><code>receiver</code></p>
+<p>最初被调用的对象。通常是 proxy 本身，但 handler 的 set 方法也有可能在原型链上，或以其他方式被间接地调用（因此不一定是 proxy 本身）。</p>
+</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> monster1 = &#123; <span class="attr">eyeCount</span>: <span class="number">4</span> &#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> handler1 = &#123;</span><br><span class="line">  <span class="function"><span class="title">set</span>(<span class="params">obj, prop, value</span>)</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> ((prop === <span class="string">&#x27;eyeCount&#x27;</span>) &amp;&amp; ((value % <span class="number">2</span>) !== <span class="number">0</span>)) &#123;</span><br><span class="line">      <span class="built_in">console</span>.log(<span class="string">&#x27;Monsters must have an even number of eyes&#x27;</span>);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="built_in">Reflect</span>.set(...arguments); <span class="comment">// 设定obj,prop和value并返回</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> proxy1 = <span class="keyword">new</span> <span class="built_in">Proxy</span>(monster1, handler1);</span><br><span class="line"></span><br><span class="line">proxy1.eyeCount = <span class="number">1</span>;</span><br><span class="line"><span class="comment">// expected output: &quot;Monsters must have an even number of eyes&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(proxy1.eyeCount);</span><br><span class="line"><span class="comment">// expected output: 4</span></span><br><span class="line"></span><br><span class="line">proxy1.eyeCount = <span class="number">2</span>;</span><br><span class="line"><span class="built_in">console</span>.log(proxy1.eyeCount);</span><br><span class="line"><span class="comment">// expected output: 2</span></span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://yummy-zz.github.io/2021/10/03/38-Vue%E4%B8%AD%E7%9A%84teleport/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpeg">
+      <meta itemprop="name" content="Eden Yi">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Yum">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/10/03/38-Vue%E4%B8%AD%E7%9A%84teleport/" class="post-title-link" itemprop="url">38-Vue中的teleport</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2021-10-03 15:31:17 / 修改时间：15:38:04" itemprop="dateCreated datePublished" datetime="2021-10-03T15:31:17+08:00">2021-10-03</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Vue/" itemprop="url" rel="index"><span itemprop="name">Vue</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="Teleport"><a href="#Teleport" class="headerlink" title="Teleport"></a>Teleport</h2><p>本质上就是将teleport标签里的元素或者组件里的元素挂载到对应的节点上，可以使用父元素的逻辑</p>
+<p>如果 <code>&lt;teleport&gt;</code> 包含 Vue 组件，则它仍将是 <code>&lt;teleport&gt;</code> 父组件的逻辑子组件。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">app.component(<span class="string">&#x27;modal-button&#x27;</span>, &#123;</span><br><span class="line">  <span class="attr">template</span>: <span class="string">`</span></span><br><span class="line"><span class="string">    &lt;button @click=&quot;modalOpen = true&quot;&gt;</span></span><br><span class="line"><span class="string">        Open full screen modal! (With teleport!)</span></span><br><span class="line"><span class="string">    &lt;/button&gt;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    &lt;teleport to=&quot;body&quot;&gt; // 将下面的元素挂载到body标签上to=“CSS选择器”</span></span><br><span class="line"><span class="string">      &lt;div v-if=&quot;modalOpen&quot; class=&quot;modal&quot;&gt;</span></span><br><span class="line"><span class="string">        &lt;div&gt;</span></span><br><span class="line"><span class="string">          I&#x27;m a teleported modal! </span></span><br><span class="line"><span class="string">          (My parent is &quot;body&quot;)</span></span><br><span class="line"><span class="string">          &lt;button @click=&quot;modalOpen = false&quot;&gt;</span></span><br><span class="line"><span class="string">            Close</span></span><br><span class="line"><span class="string">          &lt;/button&gt;</span></span><br><span class="line"><span class="string">        &lt;/div&gt;</span></span><br><span class="line"><span class="string">      &lt;/div&gt;</span></span><br><span class="line"><span class="string">    &lt;/teleport&gt;</span></span><br><span class="line"><span class="string">  `</span>,</span><br><span class="line">  <span class="function"><span class="title">data</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> &#123; </span><br><span class="line">      <span class="attr">modalOpen</span>: <span class="literal">false</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="API"><a href="#API" class="headerlink" title="API"></a>API</h2><p><strong>Props：</strong></p>
+<ul>
+<li><p><code>to</code> - <code>string</code>。需要 prop，必须是有效的查询选择器或 HTMLElement (如果在浏览器环境中使用)。指定将在其中移动 <code>&lt;teleport&gt;</code> 内容的目标元素</p>
+</li>
+<li><p><code>disabled</code> - <code>boolean</code>。此可选属性可用于禁用 <code>&lt;teleport&gt;</code> 的功能，这意味着其插槽内容将不会移动到任何位置，而是在你在周围父组件中指定了 <code>&lt;teleport&gt;</code> 的位置渲染。</p>
+<p>请注意，这将移动实际的 DOM 节点，而不是被销毁和重新创建，并且它还将保持任何组件实例的活动状态。所有有状态的 HTML 元素 (即播放的视频) 都将保持其状态。</p>
+</li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://yummy-zz.github.io/2021/10/03/37-Vue%E4%B8%AD%E7%9A%84mixin%E5%92%8C%E8%87%AA%E5%AE%9A%E4%B9%89%E6%8C%87%E4%BB%A4/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpeg">
+      <meta itemprop="name" content="Eden Yi">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Yum">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/10/03/37-Vue%E4%B8%AD%E7%9A%84mixin%E5%92%8C%E8%87%AA%E5%AE%9A%E4%B9%89%E6%8C%87%E4%BB%A4/" class="post-title-link" itemprop="url">37-Vue中的mixin和自定义指令</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2021-10-03 11:15:48 / 修改时间：11:48:03" itemprop="dateCreated datePublished" datetime="2021-10-03T11:15:48+08:00">2021-10-03</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Vue/" itemprop="url" rel="index"><span itemprop="name">Vue</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="Mixin"><a href="#Mixin" class="headerlink" title="Mixin"></a>Mixin</h2><p>局部混入</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> myMixin = &#123;</span><br><span class="line">  <span class="function"><span class="title">created</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&#x27;mixin 对象的钩子被调用&#x27;</span>)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> app = Vue.createApp(&#123;</span><br><span class="line">  <span class="attr">mixins</span>: [myMixin],</span><br><span class="line">  <span class="function"><span class="title">created</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&#x27;组件钩子被调用&#x27;</span>)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<p>全局混入</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> app = Vue.createApp(&#123;</span><br><span class="line">  <span class="attr">myOption</span>: <span class="string">&#x27;hello!&#x27;</span></span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 为自定义的选项 &#x27;myOption&#x27; 注入一个处理器。</span></span><br><span class="line">app.mixin(&#123;</span><br><span class="line">  <span class="function"><span class="title">created</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> myOption = <span class="built_in">this</span>.$options.myOption <span class="comment">// 获取实例参数</span></span><br><span class="line">    <span class="keyword">if</span> (myOption) &#123;</span><br><span class="line">      <span class="built_in">console</span>.log(myOption)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">app.mount(<span class="string">&#x27;#mixins-global&#x27;</span>) <span class="comment">// =&gt; &quot;hello!&quot;</span></span><br></pre></td></tr></table></figure>
+
+
+
+<p>自定义混入方式</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> app = Vue.createApp(&#123;</span><br><span class="line">  <span class="attr">custom</span>: <span class="string">&#x27;hello!&#x27;</span></span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">app.config.optionMergeStrategies.custom = <span class="function">(<span class="params">toVal, fromVal</span>) =&gt;</span> &#123; <span class="comment">// toVal是Mixin的参数,fromVal是要混入的组件参数</span></span><br><span class="line">  <span class="built_in">console</span>.log(fromVal, toVal)</span><br><span class="line">  <span class="comment">// =&gt; &quot;goodbye!&quot;, undefined</span></span><br><span class="line">  <span class="comment">// =&gt; &quot;hello&quot;, &quot;goodbye!&quot;</span></span><br><span class="line">  <span class="keyword">return</span> toVal || fromVal</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">app.mixin(&#123;</span><br><span class="line">  <span class="attr">custom</span>: <span class="string">&#x27;goodbye!&#x27;</span>,</span><br><span class="line">  <span class="function"><span class="title">created</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="built_in">this</span>.$options.custom) <span class="comment">// =&gt; &quot;hello!&quot;</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="不足"><a href="#不足" class="headerlink" title="不足"></a>不足</h2><p>在 Vue 2 中，mixin 是将部分组件逻辑抽象成可重用块的主要工具。但是，他们有几个问题：</p>
+<ul>
+<li>Mixin 很容易发生冲突：因为每个 mixin 的 property 都被合并到同一个组件中，所以为了避免 property 名冲突，你仍然需要了解其他每个特性。</li>
+<li>可重用性是有限的：我们不能向 mixin 传递任何参数来改变它的逻辑，这降低了它们在抽象逻辑方面的灵活性。</li>
+</ul>
+<p>为了解决这些问题，我们添加了一种通过逻辑关注点组织代码的新方法：<a target="_blank" rel="noopener" href="https://v3.cn.vuejs.org/guide/composition-api-introduction.html">组合式 API</a>。</p>
+<h2 id="自定义指令"><a href="#自定义指令" class="headerlink" title="自定义指令"></a>自定义指令</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 局部自定义指令</span></span><br><span class="line">  <span class="keyword">const</span> TikTok = &#123;</span><br><span class="line">    <span class="attr">tops</span>: &#123;</span><br><span class="line">      <span class="comment">// 此种回调方法会同时触发mounted和updated,与下面写法相同</span></span><br><span class="line">      <span class="comment">// (el, binding) =&gt; &#123;</span></span><br><span class="line">        <span class="comment">// el.style.position = &#x27;fixed&#x27;</span></span><br><span class="line">        <span class="comment">// const s = binding.arg || &#x27;top&#x27;</span></span><br><span class="line">        <span class="comment">// el.style[s] = binding.value + &#x27;px&#x27;</span></span><br><span class="line">   		<span class="comment">// &#125;</span></span><br><span class="line">      <span class="function"><span class="title">mounted</span>(<span class="params">el, binding</span>)</span> &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(binding);</span><br><span class="line">        el.style.position = <span class="string">&#x27;fixed&#x27;</span></span><br><span class="line">        <span class="keyword">const</span> d = binding.arg || <span class="string">&#x27;top&#x27;</span> <span class="comment">// 输入框位置</span></span><br><span class="line">        el.style[d] = binding.value + <span class="string">&#x27;px&#x27;</span> <span class="comment">// 初始距离</span></span><br><span class="line">      &#125;,</span><br><span class="line">      <span class="function"><span class="title">updated</span>(<span class="params">el, binding</span>)</span> &#123;</span><br><span class="line">        <span class="keyword">const</span> s = binding.arg || <span class="string">&#x27;top&#x27;</span></span><br><span class="line">        el.style[s] = binding.value + <span class="string">&#x27;px&#x27;</span> <span class="comment">// 动态改变距离</span></span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">const</span> app = Vue.createApp(&#123;</span><br><span class="line">    <span class="function"><span class="title">data</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">      <span class="keyword">return</span> &#123;</span><br><span class="line">        <span class="attr">direction</span>: <span class="string">&#x27;right&#x27;</span>,</span><br><span class="line">        <span class="attr">pinPadding</span>: <span class="number">50</span></span><br><span class="line">      &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">directives</span>: TikTok</span><br><span class="line">  &#125;)</span><br><span class="line">  <span class="comment">// 全局自定义指令</span></span><br><span class="line">  app.directive(<span class="string">&#x27;focus&#x27;</span>, &#123;</span><br><span class="line">    <span class="function"><span class="title">mounted</span>(<span class="params">el</span>)</span> &#123;</span><br><span class="line">      el.focus()</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;)</span><br><span class="line">  <span class="keyword">const</span> vm = app.mount(<span class="string">&quot;#root&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">&quot;root&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;range&quot;</span> <span class="attr">min</span>=<span class="string">&quot;0&quot;</span> <span class="attr">max</span>=<span class="string">&quot;500&quot;</span> <span class="attr">v-model</span>=<span class="string">&quot;pinPadding&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">v-tops:</span>[<span class="attr">direction</span>]=<span class="string">&quot;pinPadding&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">v-focus</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="binding的参数"><a href="#binding的参数" class="headerlink" title="binding的参数"></a>binding的参数</h3><p><img src="https://raw.githubusercontent.com/Yummy-zZ/FigureBed/main/img/image-20211003112338953.png" alt="image-20211003112338953"></p>
+<h3 id="自定义指令的生命周期函数"><a href="#自定义指令的生命周期函数" class="headerlink" title="自定义指令的生命周期函数"></a>自定义指令的生命周期函数</h3><p>就少了个beforeCreate，因为这个钩子对自定义指令没用(数据和函数都还没加载)</p>
+<p>⚠️<strong>自定义指令用到组件上时会挂载到根节点上,多个根节点时会被忽略,并出现警告</strong></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://yummy-zz.github.io/2021/10/02/webpack-%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%961/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -475,499 +1029,10 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://yummy-zz.github.io/2021/09/30/webpack-%E4%BB%A3%E7%A0%81%E5%88%86%E7%A6%BB/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpeg">
-      <meta itemprop="name" content="Eden Yi">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Yum">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/09/30/webpack-%E4%BB%A3%E7%A0%81%E5%88%86%E7%A6%BB/" class="post-title-link" itemprop="url">webpack-代码分离</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2021-09-30 15:57:36" itemprop="dateCreated datePublished" datetime="2021-09-30T15:57:36+08:00">2021-09-30</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-10-02 10:37:17" itemprop="dateModified" datetime="2021-10-02T10:37:17+08:00">2021-10-02</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Webpack/" itemprop="url" rel="index"><span itemprop="name">Webpack</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <span id="more"></span>
-
-<p>Index.js</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getComponent</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">	<span class="keyword">return</span> <span class="keyword">import</span>(<span class="string">&#x27;lodash&#x27;</span>).then(<span class="function">(<span class="params">&#123; <span class="keyword">default</span>: _ &#125;</span>) =&gt;</span> &#123;</span><br><span class="line">		<span class="keyword">var</span> element = <span class="built_in">document</span>.createElement(<span class="string">&#x27;div&#x27;</span>);</span><br><span class="line">		element.innerHTML = _.join([<span class="string">&#x27;Dell&#x27;</span>, <span class="string">&#x27;Lee&#x27;</span>], <span class="string">&#x27;-&#x27;</span>);</span><br><span class="line">		<span class="keyword">return</span> element;</span><br><span class="line">	&#125;)</span><br><span class="line">&#125;</span><br><span class="line">getComponent().then(<span class="function"><span class="params">element</span> =&gt;</span> &#123;</span><br><span class="line">	<span class="built_in">document</span>.body.appendChild(element);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 代码分割，和webpack无关</span></span><br><span class="line"><span class="comment">// webpack中实现代码分割，两种方式</span></span><br><span class="line"><span class="comment">// 1. 同步代码： 只需要在webpack.common.js中做optimization的配置即可</span></span><br><span class="line">optimization: &#123;</span><br><span class="line">	<span class="attr">splitChunks</span>: &#123;</span><br><span class="line">		<span class="attr">chunks</span>: <span class="string">&#x27;all&#x27;</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;,</span><br><span class="line"><span class="comment">// 2. 异步代码(import): 异步代码，无需做任何配置，会自动进行代码分割，放置到新的文件中</span></span><br></pre></td></tr></table></figure>
-
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://yummy-zz.github.io/2021/09/30/webpack-treeShaking/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpeg">
-      <meta itemprop="name" content="Eden Yi">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Yum">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/09/30/webpack-treeShaking/" class="post-title-link" itemprop="url">webpack-treeShaking</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2021-09-30 15:03:33" itemprop="dateCreated datePublished" datetime="2021-09-30T15:03:33+08:00">2021-09-30</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-10-02 10:35:13" itemprop="dateModified" datetime="2021-10-02T10:35:13+08:00">2021-10-02</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Webpack/" itemprop="url" rel="index"><span itemprop="name">Webpack</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>TreeShaking: 导出了但未使用的文件将会被抖掉</p>
-<p>Package.json</p>
-<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;sideEffects&quot;</span>: <span class="literal">false</span>, <span class="comment">// </span></span><br></pre></td></tr></table></figure>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2021/09/30/webpack-treeShaking/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://yummy-zz.github.io/2021/09/30/webpack-babel/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpeg">
-      <meta itemprop="name" content="Eden Yi">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Yum">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/09/30/webpack-babel/" class="post-title-link" itemprop="url">webpack-babel</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2021-09-30 11:23:35" itemprop="dateCreated datePublished" datetime="2021-09-30T11:23:35+08:00">2021-09-30</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-10-02 10:36:31" itemprop="dateModified" datetime="2021-10-02T10:36:31+08:00">2021-10-02</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Webpack/" itemprop="url" rel="index"><span itemprop="name">Webpack</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="方法1"><a href="#方法1" class="headerlink" title="方法1"></a>方法1</h2><p>.babelrc</p>
-<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">	<span class="attr">&quot;plugins&quot;</span>: [[<span class="string">&quot;@babel/plugin-transform-runtime&quot;</span>, &#123;</span><br><span class="line">		<span class="attr">&quot;corejs&quot;</span>: <span class="number">2</span>,</span><br><span class="line">    <span class="attr">&quot;helpers&quot;</span>: <span class="literal">true</span>,</span><br><span class="line">    <span class="attr">&quot;regenerator&quot;</span>: <span class="literal">true</span>,</span><br><span class="line">    <span class="attr">&quot;useESModules&quot;</span>: <span class="literal">false</span></span><br><span class="line">	&#125;]]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2021/09/30/webpack-babel/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://yummy-zz.github.io/2021/09/30/webpack-hot-module-replacement/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpeg">
-      <meta itemprop="name" content="Eden Yi">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Yum">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/09/30/webpack-hot-module-replacement/" class="post-title-link" itemprop="url">webpack-hot-module-replacement</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2021-09-30 10:36:20" itemprop="dateCreated datePublished" datetime="2021-09-30T10:36:20+08:00">2021-09-30</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-10-02 10:42:23" itemprop="dateModified" datetime="2021-10-02T10:42:23+08:00">2021-10-02</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Webpack/" itemprop="url" rel="index"><span itemprop="name">Webpack</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>webpack-config.js</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">  <span class="attr">devServer</span>: &#123;</span><br><span class="line">		<span class="attr">contentBase</span>: <span class="string">&#x27;./dist&#x27;</span>,</span><br><span class="line">		<span class="attr">open</span>: <span class="literal">true</span>,</span><br><span class="line">		<span class="attr">port</span>: <span class="number">8080</span>,</span><br><span class="line">		<span class="attr">hot</span>: <span class="literal">true</span>, <span class="comment">// 打开HMR(hot-module-replacement)</span></span><br><span class="line">		<span class="attr">hotOnly</span>: <span class="literal">true</span> <span class="comment">// 热模块不更新也不刷新页面</span></span><br><span class="line">	&#125;,</span><br><span class="line">  <span class="attr">plugins</span>: [</span><br><span class="line">		<span class="keyword">new</span> webpack.HotModuleReplacementPlugin() <span class="comment">// 引入热模块更新插件</span></span><br><span class="line">	],</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2021/09/30/webpack-hot-module-replacement/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://yummy-zz.github.io/2021/09/30/webpack-devServer/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpeg">
-      <meta itemprop="name" content="Eden Yi">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Yum">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/09/30/webpack-devServer/" class="post-title-link" itemprop="url">webpack-devServer</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2021-09-30 09:49:19" itemprop="dateCreated datePublished" datetime="2021-09-30T09:49:19+08:00">2021-09-30</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-10-02 10:36:24" itemprop="dateModified" datetime="2021-10-02T10:36:24+08:00">2021-10-02</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Webpack/" itemprop="url" rel="index"><span itemprop="name">Webpack</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>package.json</p>
-<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;script&quot;</span>: &#123;</span><br><span class="line">  <span class="attr">&quot;build&quot;</span>: <span class="string">&quot;webpack&quot;</span>,</span><br><span class="line">  <span class="attr">&quot;watch&quot;</span>: <span class="string">&quot;webpack --watch&quot;</span>, <span class="comment">// 1.打包文件代码变化会监视,但需要手动刷新,file文件不能发ajax</span></span><br><span class="line">  <span class="attr">&quot;start&quot;</span>: <span class="string">&quot;webpack-dev-server&quot;</span> <span class="comment">// 2.webopack创建了一个服务器,不能生成dist目录，但内容在内存中，不用手动刷新而且能发ajax</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2021/09/30/webpack-devServer/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://yummy-zz.github.io/2021/09/30/webpack-devtool/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpeg">
-      <meta itemprop="name" content="Eden Yi">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Yum">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/09/30/webpack-devtool/" class="post-title-link" itemprop="url">webpack-devtool</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2021-09-30 09:28:35" itemprop="dateCreated datePublished" datetime="2021-09-30T09:28:35+08:00">2021-09-30</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-10-02 10:36:14" itemprop="dateModified" datetime="2021-10-02T10:36:14+08:00">2021-10-02</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Webpack/" itemprop="url" rel="index"><span itemprop="name">Webpack</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>开发环境: cheap-module-eval-source-map</p>
-<p>生产环境：cheap-module-eval-source-map</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2021/09/30/webpack-devtool/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
@@ -1035,20 +1100,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">49</span>
+          <span class="site-state-item-count">55</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">11</span>
+        <span class="site-state-item-count">12</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">45</span>
+        <span class="site-state-item-count">50</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
