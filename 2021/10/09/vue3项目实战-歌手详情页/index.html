@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/%E6%9F%A0%E6%AA%AC%E5%B9%B2.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/%E8%8D%89%E8%8E%93.svg">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/%E8%8D%89%E8%8E%93.svg">
+  <link rel="mask-icon" href="/images/%E6%9F%A0%E6%AA%AC%E5%B9%B2.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+  <link rel="stylesheet" href="/lib/pace/pace-theme-bounce.min.css">
+  <script src="/lib/pace/pace.min.js"></script>
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"yummy-zz.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="歌手详情页详情页主组件Src&#x2F;view&#x2F;singer&#x2F;child&#x2F;singer-detail.vue 12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970717273747576777879">
+<meta property="og:type" content="article">
+<meta property="og:title" content="vue3项目实战-歌手详情页">
+<meta property="og:url" content="https://yummy-zz.github.io/2021/10/09/vue3%E9%A1%B9%E7%9B%AE%E5%AE%9E%E6%88%98-%E6%AD%8C%E6%89%8B%E8%AF%A6%E6%83%85%E9%A1%B5/index.html">
+<meta property="og:site_name" content="Yum">
+<meta property="og:description" content="歌手详情页详情页主组件Src&#x2F;view&#x2F;singer&#x2F;child&#x2F;singer-detail.vue 12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970717273747576777879">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-10-09T08:40:29.000Z">
+<meta property="article:modified_time" content="2021-10-09T09:03:50.530Z">
+<meta property="article:author" content="Eden Yi">
+<meta property="article:tag" content="vue3">
+<meta property="article:tag" content="音乐轮子">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://yummy-zz.github.io/2021/10/09/vue3%E9%A1%B9%E7%9B%AE%E5%AE%9E%E6%88%98-%E6%AD%8C%E6%89%8B%E8%AF%A6%E6%83%85%E9%A1%B5/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>vue3项目实战-歌手详情页 | Yum</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <a target="_blank" rel="noopener" href="https://github.com/Yummy-zZ" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#64CEAA; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Yum</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://yummy-zz.github.io/2021/10/09/vue3%E9%A1%B9%E7%9B%AE%E5%AE%9E%E6%88%98-%E6%AD%8C%E6%89%8B%E8%AF%A6%E6%83%85%E9%A1%B5/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpeg">
+      <meta itemprop="name" content="Eden Yi">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Yum">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          vue3项目实战-歌手详情页
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2021-10-09 16:40:29 / 修改时间：17:03:50" itemprop="dateCreated datePublished" datetime="2021-10-09T16:40:29+08:00">2021-10-09</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E9%A1%B9%E7%9B%AE%E5%AE%9E%E6%88%98/" itemprop="url" rel="index"><span itemprop="name">项目实战</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h2 id="歌手详情页"><a href="#歌手详情页" class="headerlink" title="歌手详情页"></a>歌手详情页</h2><h3 id="详情页主组件"><a href="#详情页主组件" class="headerlink" title="详情页主组件"></a>详情页主组件</h3><p>Src/view/singer/child/singer-detail.vue</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div class=&quot;singer-detail&quot;&gt;</span><br><span class="line">    &lt;music-list :title=&quot;title&quot;</span><br><span class="line">                :pic=&quot;pic&quot;</span><br><span class="line">                :songs=&quot;songs&quot;</span><br><span class="line">                :loading=&quot;loading&quot;</span><br><span class="line">    &gt;&lt;/music-list&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">import &#123; getSingerDetail &#125; from &#x27;@/service/singer&#x27;</span><br><span class="line">import &#123; processSongs &#125; from &#x27;@/service/song&#x27;</span><br><span class="line">import MusicList from &#x27;@/components/music-list/music-list&#x27;</span><br><span class="line">import &#123; SINGER_KEY &#125; from &#x27;@/assets/js/constant&#x27; // sessionStorage存储singer对象</span><br><span class="line">import storage from &#x27;good-storage&#x27; // 可存储对象的storage</span><br><span class="line"></span><br><span class="line">export default &#123;</span><br><span class="line">  name: &#x27;singerDetail&#x27;,</span><br><span class="line">  components: &#123;</span><br><span class="line">    MusicList</span><br><span class="line">  &#125;,</span><br><span class="line">  props: &#123;</span><br><span class="line">    singer: Object</span><br><span class="line">  &#125;,</span><br><span class="line">  data() &#123;</span><br><span class="line">    return &#123;</span><br><span class="line">      songs: [],</span><br><span class="line">      loading: true</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  computed: &#123;</span><br><span class="line">    // 获取到来自singer点击时sessionStorage的数据</span><br><span class="line">    computedSinger() &#123;</span><br><span class="line">      let ret</span><br><span class="line">      const singer = this.singer</span><br><span class="line">      if (singer) &#123;</span><br><span class="line">        ret = singer</span><br><span class="line">      &#125; else &#123;</span><br><span class="line">        const cachedSinger = storage.session.get(SINGER_KEY)</span><br><span class="line">        // sessionStorage里有数据，而且mid和路由参数的id相等,返回singer里的数据</span><br><span class="line">        if (cachedSinger &amp;&amp; cachedSinger.mid === this.$route.params.id) &#123;</span><br><span class="line">          ret = cachedSinger</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">      return ret</span><br><span class="line">    &#125;,</span><br><span class="line">    // 获取歌手图片</span><br><span class="line">    pic() &#123;</span><br><span class="line">      const computedSinger = this.computedSinger</span><br><span class="line">      return computedSinger &amp;&amp; computedSinger.pic</span><br><span class="line">    &#125;,</span><br><span class="line">    // 获取歌手名字作为标题</span><br><span class="line">    title() &#123;</span><br><span class="line">      const computedSinger = this.computedSinger</span><br><span class="line">      return computedSinger &amp;&amp; computedSinger.name</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  async created () &#123;</span><br><span class="line">    // 歌手详情页url发生改变而且没有对应的数据,返回上一级</span><br><span class="line">    if (!this.computedSinger) &#123;</span><br><span class="line">      const path = this.$route.matched[0].path</span><br><span class="line">      console.log(path)</span><br><span class="line">      this.$router.push(&#123;</span><br><span class="line">        path</span><br><span class="line">      &#125;)</span><br><span class="line">      return</span><br><span class="line">    &#125;</span><br><span class="line">    // detail中的内容和songs是重叠的,</span><br><span class="line">    // 先获取detail在获取songs是因为后端需要detail的mid来获取歌曲的url，</span><br><span class="line">    // 而mid可能每天都在变化,算是一个防盗</span><br><span class="line">    const detail = await getSingerDetail(this.computedSinger)</span><br><span class="line">    this.songs = await processSongs(detail.songs)</span><br><span class="line">    this.loading = false</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">&lt;/script&gt;</span><br><span class="line"></span><br><span class="line">&lt;style lang=&quot;scss&quot; scoped&gt;</span><br><span class="line">// 覆盖歌手页面</span><br><span class="line">.singer-detail &#123;</span><br><span class="line">  position: fixed;</span><br><span class="line">  z-index: 10;</span><br><span class="line">  top: 0;</span><br><span class="line">  left: 0;</span><br><span class="line">  bottom: 0;</span><br><span class="line">  right: 0;</span><br><span class="line">  background: $color-background;</span><br><span class="line">&#125;</span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="通用组件——detail-list"><a href="#通用组件——detail-list" class="headerlink" title="通用组件——detail-list"></a>通用组件——detail-list</h3><p>src/components/music-list/music-list.vue</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  <span class="xml"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;music-list&quot;</span></span></span></span><br><span class="line"><span class="tag"><span class="xml">       <span class="attr">v-loading</span>=<span class="string">&quot;loading&quot;</span></span></span></span><br><span class="line"><span class="tag"><span class="xml">  &gt;</span></span></span><br><span class="line"><span class="xml"><span class="comment">&lt;!--    返回图标    --&gt;</span></span></span><br><span class="line"><span class="xml">    <span class="tag">&lt;<span class="name">div</span></span></span></span><br><span class="line"><span class="tag"><span class="xml">      <span class="attr">class</span>=<span class="string">&quot;back&quot;</span></span></span></span><br><span class="line"><span class="tag"><span class="xml">      @<span class="attr">click</span>=<span class="string">&quot;goBack&quot;</span></span></span></span><br><span class="line"><span class="tag"><span class="xml">    &gt;</span></span></span><br><span class="line"><span class="xml">      <span class="tag">&lt;<span class="name">i</span> <span class="attr">class</span>=<span class="string">&quot;icon-back&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">i</span>&gt;</span></span></span><br><span class="line"><span class="xml">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="xml"><span class="comment">&lt;!--   歌手名    --&gt;</span></span></span><br><span class="line"><span class="xml">    <span class="tag">&lt;<span class="name">h1</span> <span class="attr">class</span>=<span class="string">&quot;title&quot;</span>&gt;</span>&#123;&#123; title &#125;&#125;<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span></span><br><span class="line"><span class="xml"><span class="comment">&lt;!--    图片    --&gt;</span></span></span><br><span class="line"><span class="xml">    <span class="tag">&lt;<span class="name">div</span></span></span></span><br><span class="line"><span class="tag"><span class="xml">      <span class="attr">class</span>=<span class="string">&quot;bg-image&quot;</span></span></span></span><br><span class="line"><span class="tag"><span class="xml">      <span class="attr">:style</span>=<span class="string">&quot;bgImageStyle&quot;</span></span></span></span><br><span class="line"><span class="tag"><span class="xml">      <span class="attr">ref</span>=<span class="string">&quot;bgImage&quot;</span></span></span></span><br><span class="line"><span class="tag"><span class="xml">      <span class="attr">v-if</span>=<span class="string">&quot;!loading&quot;</span></span></span></span><br><span class="line"><span class="tag"><span class="xml">    &gt;</span></span></span><br><span class="line"><span class="xml">      <span class="tag">&lt;<span class="name">div</span></span></span></span><br><span class="line"><span class="tag"><span class="xml">        <span class="attr">class</span>=<span class="string">&quot;filter&quot;</span></span></span></span><br><span class="line"><span class="tag"><span class="xml">      &gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="xml">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="xml"><span class="comment">&lt;!--    歌曲列表    --&gt;</span></span></span><br><span class="line"><span class="xml">    <span class="tag">&lt;<span class="name">scroll</span> <span class="attr">class</span>=<span class="string">&quot;list&quot;</span></span></span></span><br><span class="line"><span class="tag"><span class="xml">            <span class="attr">:probeType</span>=<span class="string">&quot;3&quot;</span></span></span></span><br><span class="line"><span class="tag"><span class="xml">            @<span class="attr">scroll</span>=<span class="string">&quot;onScroll&quot;</span></span></span></span><br><span class="line"><span class="tag"><span class="xml">    &gt;</span></span></span><br><span class="line"><span class="xml">      <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;song-list-wrapper&quot;</span>&gt;</span></span></span><br><span class="line"><span class="xml">        <span class="tag">&lt;<span class="name">song-list</span></span></span></span><br><span class="line"><span class="tag"><span class="xml">          <span class="attr">:songs</span>=<span class="string">&quot;songs&quot;</span></span></span></span><br><span class="line"><span class="tag"><span class="xml">        &gt;</span><span class="tag">&lt;/<span class="name">song-list</span>&gt;</span></span></span><br><span class="line"><span class="xml">      <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="xml">    <span class="tag">&lt;/<span class="name">scroll</span>&gt;</span></span></span><br><span class="line"><span class="xml">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line"><span class="xml"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></span></span><br><span class="line"><span class="javascript"><span class="xml">  <span class="keyword">import</span> SongList <span class="keyword">from</span> <span class="string">&#x27;@/components/base/song-list/song-list&#x27;</span></span></span></span><br><span class="line"><span class="javascript"><span class="xml">  <span class="keyword">import</span> Scroll <span class="keyword">from</span> <span class="string">&#x27;@/components/base/scroll/scroll&#x27;</span></span></span></span><br><span class="line"><span class="javascript"><span class="xml"></span></span></span><br><span class="line"><span class="javascript"><span class="xml">  <span class="keyword">export</span> <span class="keyword">default</span> &#123;</span></span></span><br><span class="line"><span class="javascript"><span class="xml">    <span class="attr">name</span>: <span class="string">&#x27;music-list&#x27;</span>,</span></span></span><br><span class="line"><span class="javascript"><span class="xml">    <span class="attr">components</span>: &#123;</span></span></span><br><span class="line"><span class="javascript"><span class="xml">      SongList,</span></span></span><br><span class="line"><span class="javascript"><span class="xml">      Scroll</span></span></span><br><span class="line"><span class="javascript"><span class="xml">    &#125;,</span></span></span><br><span class="line"><span class="javascript"><span class="xml">    <span class="attr">props</span>: &#123;</span></span></span><br><span class="line"><span class="javascript"><span class="xml">      <span class="comment">// 歌曲数据</span></span></span></span><br><span class="line"><span class="javascript"><span class="xml">      <span class="attr">songs</span>: &#123;</span></span></span><br><span class="line"><span class="javascript"><span class="xml">        <span class="attr">type</span>: <span class="built_in">Array</span>,</span></span></span><br><span class="line"><span class="javascript"><span class="xml">        <span class="function"><span class="title">default</span>(<span class="params"></span>)</span> &#123;</span></span></span><br><span class="line"><span class="javascript"><span class="xml">          <span class="keyword">return</span> []</span></span></span><br><span class="line"><span class="javascript"><span class="xml">        &#125;</span></span></span><br><span class="line"><span class="javascript"><span class="xml">      &#125;,</span></span></span><br><span class="line"><span class="javascript"><span class="xml">      <span class="attr">title</span>: <span class="built_in">String</span>, <span class="comment">// 歌手名</span></span></span></span><br><span class="line"><span class="javascript"><span class="xml">      <span class="attr">pic</span>: <span class="built_in">String</span>, <span class="comment">// 图片</span></span></span></span><br><span class="line"><span class="javascript"><span class="xml">      <span class="attr">loading</span>: <span class="built_in">Boolean</span> <span class="comment">// 加载效果</span></span></span></span><br><span class="line"><span class="javascript"><span class="xml">    &#125;,</span></span></span><br><span class="line"><span class="javascript"><span class="xml">    <span class="function"><span class="title">data</span>(<span class="params"></span>)</span> &#123;</span></span></span><br><span class="line"><span class="javascript"><span class="xml">      <span class="keyword">return</span> &#123;</span></span></span><br><span class="line"><span class="javascript"><span class="xml">        <span class="attr">scrollY</span>: <span class="number">0</span> <span class="comment">// 滚动位置Y</span></span></span></span><br><span class="line"><span class="javascript"><span class="xml">      &#125;</span></span></span><br><span class="line"><span class="javascript"><span class="xml">    &#125;,</span></span></span><br><span class="line"><span class="javascript"><span class="xml">    <span class="attr">methods</span>: &#123;</span></span></span><br><span class="line"><span class="javascript"><span class="xml">      <span class="function"><span class="title">goBack</span>(<span class="params"></span>)</span> &#123;</span></span></span><br><span class="line"><span class="javascript"><span class="xml">        <span class="built_in">this</span>.$router.back() <span class="comment">// 返回上层级</span></span></span></span><br><span class="line"><span class="javascript"><span class="xml">      &#125;,</span></span></span><br><span class="line"><span class="javascript"><span class="xml">      <span class="function"><span class="title">onScroll</span>(<span class="params">pos</span>)</span> &#123;</span></span></span><br><span class="line"><span class="javascript"><span class="xml">        <span class="built_in">this</span>.scrollY = -pos.y <span class="comment">// 拿到歌曲list滚动位置Y</span></span></span></span><br><span class="line"><span class="javascript"><span class="xml">      &#125;</span></span></span><br><span class="line"><span class="javascript"><span class="xml">    &#125;,</span></span></span><br><span class="line"><span class="javascript"><span class="xml">    <span class="attr">computed</span>: &#123;</span></span></span><br><span class="line"><span class="javascript"><span class="xml">      <span class="function"><span class="title">bgImageStyle</span>(<span class="params"></span>)</span> &#123; <span class="comment">// 背景图片样式</span></span></span></span><br><span class="line"><span class="javascript"><span class="xml">        <span class="keyword">const</span> scrollY = <span class="built_in">this</span>.scrollY <span class="comment">// 滚动位置</span></span></span></span><br><span class="line"><span class="javascript"><span class="xml">        <span class="keyword">let</span> scale = <span class="number">1</span></span></span></span><br><span class="line"><span class="javascript"><span class="xml">        <span class="keyword">if</span> (scrollY &lt; <span class="number">0</span>) &#123;</span></span></span><br><span class="line"><span class="javascript"><span class="xml">          scale = <span class="number">1</span> + <span class="built_in">Math</span>.abs(scrollY / <span class="built_in">this</span>.imageHeight) <span class="comment">// 列表下拖图片放大效果</span></span></span></span><br><span class="line"><span class="javascript"><span class="xml">        &#125;</span></span></span><br><span class="line"><span class="javascript"><span class="xml">        <span class="keyword">return</span> &#123;</span></span></span><br><span class="line"><span class="javascript"><span class="xml">          <span class="attr">backgroundImage</span>: <span class="string">`url(<span class="subst">$&#123;<span class="built_in">this</span>.pic&#125;</span>)`</span>, <span class="comment">// 图片展示</span></span></span></span><br><span class="line"><span class="javascript"><span class="xml">          <span class="attr">transform</span>: <span class="string">`scale(<span class="subst">$&#123;scale&#125;</span>)`</span> <span class="comment">// 列表下拖图片放大效果</span></span></span></span><br><span class="line"><span class="javascript"><span class="xml">        &#125;</span></span></span><br><span class="line"><span class="javascript"><span class="xml">      &#125;,</span></span></span><br><span class="line"><span class="javascript"><span class="xml">      <span class="function"><span class="title">imageHeight</span>(<span class="params"></span>)</span> &#123; <span class="comment">// 图片高度</span></span></span></span><br><span class="line"><span class="javascript"><span class="xml">        <span class="keyword">return</span> <span class="built_in">this</span>.$refs.bgImage.offsetHeight</span></span></span><br><span class="line"><span class="javascript"><span class="xml">      &#125;</span></span></span><br><span class="line"><span class="javascript"><span class="xml">    &#125;</span></span></span><br><span class="line"><span class="javascript"><span class="xml">  &#125;</span></span></span><br><span class="line"><span class="javascript"><span class="xml"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="xml"><span class="tag">&lt;<span class="name">style</span> <span class="attr">lang</span>=<span class="string">&quot;scss&quot;</span> <span class="attr">scoped</span>&gt;</span><span class="css"></span></span></span><br><span class="line"><span class="css"><span class="xml">  <span class="selector-class">.music-list</span> &#123;</span></span></span><br><span class="line"><span class="css"><span class="xml">    <span class="attribute">position</span>: relative;</span></span></span><br><span class="line"><span class="css"><span class="xml">    <span class="attribute">height</span>: <span class="number">100%</span>;</span></span></span><br><span class="line"><span class="css"><span class="xml">    <span class="selector-class">.back</span> &#123;</span></span></span><br><span class="line"><span class="css"><span class="xml">      <span class="attribute">position</span>: absolute;</span></span></span><br><span class="line"><span class="css"><span class="xml">      <span class="attribute">top</span>: <span class="number">0</span>;</span></span></span><br><span class="line"><span class="css"><span class="xml">      <span class="attribute">left</span>: <span class="number">3px</span>;</span></span></span><br><span class="line"><span class="css"><span class="xml">      <span class="attribute">z-index</span>: <span class="number">20</span>;</span></span></span><br><span class="line"><span class="css"><span class="xml">      <span class="attribute">transform</span>: <span class="built_in">translateZ</span>(<span class="number">2px</span>);</span></span></span><br><span class="line"><span class="css"><span class="xml">      <span class="selector-class">.icon-back</span> &#123;</span></span></span><br><span class="line"><span class="css"><span class="xml">        <span class="attribute">display</span>: block;</span></span></span><br><span class="line"><span class="css"><span class="xml">        <span class="attribute">padding</span>: <span class="number">10px</span>;</span></span></span><br><span class="line"><span class="css"><span class="xml">        <span class="attribute">font-size</span>: $font-size-large-x;</span></span></span><br><span class="line"><span class="css"><span class="xml">        <span class="attribute">color</span>: $color-theme;</span></span></span><br><span class="line"><span class="css"><span class="xml">      &#125;</span></span></span><br><span class="line"><span class="css"><span class="xml">    &#125;</span></span></span><br><span class="line"><span class="css"><span class="xml">    <span class="selector-class">.title</span> &#123;</span></span></span><br><span class="line"><span class="css"><span class="xml">      <span class="attribute">position</span>: absolute;</span></span></span><br><span class="line"><span class="css"><span class="xml">      <span class="attribute">top</span>: <span class="number">0</span>;</span></span></span><br><span class="line"><span class="css"><span class="xml">      <span class="attribute">left</span>: <span class="number">10%</span>;</span></span></span><br><span class="line"><span class="css"><span class="xml">      <span class="attribute">width</span>: <span class="number">80%</span>;</span></span></span><br><span class="line"><span class="css"><span class="xml">      <span class="attribute">z-index</span>: <span class="number">20</span>;</span></span></span><br><span class="line"><span class="css"><span class="xml">      <span class="attribute">transform</span>: <span class="built_in">translateZ</span>(<span class="number">2px</span>);</span></span></span><br><span class="line"><span class="css"><span class="xml">      <span class="keyword">@include</span> no-wrap();</span></span></span><br><span class="line"><span class="css"><span class="xml">      <span class="attribute">text-align</span>: center;</span></span></span><br><span class="line"><span class="css"><span class="xml">      <span class="attribute">line-height</span>: <span class="number">40px</span>;</span></span></span><br><span class="line"><span class="css"><span class="xml">      <span class="attribute">font-size</span>: $font-size-large;</span></span></span><br><span class="line"><span class="css"><span class="xml">      <span class="attribute">color</span>: $color-theme;</span></span></span><br><span class="line"><span class="css"><span class="xml">    &#125;</span></span></span><br><span class="line"><span class="css"><span class="xml">    <span class="selector-class">.bg-image</span> &#123;</span></span></span><br><span class="line"><span class="css"><span class="xml">      <span class="attribute">position</span>: relative;</span></span></span><br><span class="line"><span class="css"><span class="xml">      //<span class="attribute">width</span>: <span class="number">100%</span>;</span></span></span><br><span class="line"><span class="css"><span class="xml">      <span class="attribute">height</span>: $image-height;</span></span></span><br><span class="line"><span class="css"><span class="xml">      <span class="attribute">transform-origin</span>: top;</span></span></span><br><span class="line"><span class="css"><span class="xml">      <span class="attribute">background-size</span>: <span class="number">100%</span>;</span></span></span><br><span class="line"><span class="css"><span class="xml">      <span class="attribute">background-repeat</span>: no-repeat;</span></span></span><br><span class="line"><span class="css"><span class="xml">      <span class="attribute">border-left</span>: <span class="number">1px</span> solid <span class="number">#ffcd32</span>;</span></span></span><br><span class="line"><span class="css"><span class="xml">      <span class="attribute">border-right</span>: <span class="number">1px</span> solid <span class="number">#ffcd32</span>;</span></span></span><br><span class="line"><span class="css"><span class="xml">      <span class="attribute">border-bottom</span>: <span class="number">5px</span> solid <span class="number">#ffcd32</span>;</span></span></span><br><span class="line"><span class="css"><span class="xml">      <span class="attribute">border-radius</span>: <span class="number">0</span> <span class="number">0</span> <span class="number">30px</span> <span class="number">30px</span>;</span></span></span><br><span class="line"><span class="css"><span class="xml">      <span class="selector-class">.filter</span> &#123;</span></span></span><br><span class="line"><span class="css"><span class="xml">        <span class="attribute">position</span>: absolute;</span></span></span><br><span class="line"><span class="css"><span class="xml">        <span class="attribute">top</span>: <span class="number">0</span>;</span></span></span><br><span class="line"><span class="css"><span class="xml">        <span class="attribute">left</span>: <span class="number">0</span>;</span></span></span><br><span class="line"><span class="css"><span class="xml">        <span class="attribute">width</span>: <span class="number">100%</span>;</span></span></span><br><span class="line"><span class="css"><span class="xml">        <span class="attribute">height</span>: <span class="number">100%</span>;</span></span></span><br><span class="line"><span class="css"><span class="xml">        <span class="attribute">padding</span>: <span class="number">0</span> <span class="number">2px</span> <span class="number">10px</span> <span class="number">2px</span>;</span></span></span><br><span class="line"><span class="css"><span class="xml">        <span class="attribute">background</span>: <span class="built_in">rgba</span>(<span class="number">7</span>, <span class="number">17</span>, <span class="number">27</span>, <span class="number">0.4</span>);</span></span></span><br><span class="line"><span class="css"><span class="xml">      &#125;</span></span></span><br><span class="line"><span class="css"><span class="xml">    &#125;</span></span></span><br><span class="line"><span class="css"><span class="xml">    <span class="selector-class">.list</span> &#123;</span></span></span><br><span class="line"><span class="css"><span class="xml">      <span class="attribute">position</span>: absolute;</span></span></span><br><span class="line"><span class="css"><span class="xml">      <span class="attribute">top</span>: $image-height - <span class="number">5px</span>;</span></span></span><br><span class="line"><span class="css"><span class="xml">      <span class="attribute">bottom</span>: <span class="number">0</span>;</span></span></span><br><span class="line"><span class="css"><span class="xml">      <span class="attribute">width</span>: <span class="number">100%</span>;</span></span></span><br><span class="line"><span class="css"><span class="xml">      <span class="attribute">z-index</span>: <span class="number">0</span>;</span></span></span><br><span class="line"><span class="css"><span class="xml">      <span class="attribute">margin-top</span>: <span class="number">10px</span>;</span></span></span><br><span class="line"><span class="css"><span class="xml">      <span class="selector-class">.song-list-wrapper</span> &#123;</span></span></span><br><span class="line"><span class="css"><span class="xml">        <span class="attribute">padding</span>: <span class="number">10px</span> <span class="number">30px</span>;</span></span></span><br><span class="line"><span class="css"><span class="xml">        <span class="attribute">background</span>: $color-background;</span></span></span><br><span class="line"><span class="css"><span class="xml">      &#125;</span></span></span><br><span class="line"><span class="css"><span class="xml">    &#125;</span></span></span><br><span class="line"><span class="css"><span class="xml">  &#125;</span></span></span><br><span class="line"><span class="css"><span class="xml"></span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="歌曲列表组件"><a href="#歌曲列表组件" class="headerlink" title="歌曲列表组件"></a>歌曲列表组件</h3><p>src/components/base/song-list.vue</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;ul class=&quot;song-list&quot;&gt;</span><br><span class="line">    &lt;li</span><br><span class="line">      class=&quot;item&quot;</span><br><span class="line">      v-for=&quot;song in songs&quot;</span><br><span class="line">      :key=&quot;song.id&quot;</span><br><span class="line">    &gt;</span><br><span class="line">      &lt;div class=&quot;content&quot;&gt;</span><br><span class="line">        &lt;h2 class=&quot;name&quot;&gt;&#123;&#123;song.name&#125;&#125;&lt;/h2&gt;</span><br><span class="line">        &lt;p class=&quot;desc&quot;&gt;&#123;&#123;getDesc(song)&#125;&#125;&lt;/p&gt;</span><br><span class="line">      &lt;/div&gt;</span><br><span class="line">    &lt;/li&gt;</span><br><span class="line">  &lt;/ul&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">  export default &#123;</span><br><span class="line">    name: &#x27;song-list&#x27;,</span><br><span class="line">    props: &#123;</span><br><span class="line">      songs: &#123;</span><br><span class="line">        type: Array,</span><br><span class="line">        default() &#123;</span><br><span class="line">          return []</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;,</span><br><span class="line">      rank: Boolean</span><br><span class="line">    &#125;,</span><br><span class="line">    emits: [&#x27;select&#x27;],</span><br><span class="line">    methods: &#123;</span><br><span class="line">      getDesc(song) &#123;</span><br><span class="line">        return `$&#123;song.singer&#125;·$&#123;song.album&#125;`</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&lt;/script&gt;</span><br><span class="line"></span><br><span class="line">&lt;style lang=&quot;scss&quot; scoped&gt;</span><br><span class="line">  .song-list &#123;</span><br><span class="line">    .item &#123;</span><br><span class="line">      display: flex;</span><br><span class="line">      align-items: center;</span><br><span class="line">      box-sizing: border-box;</span><br><span class="line">      height: 64px;</span><br><span class="line">      font-size: $font-size-medium;</span><br><span class="line">      .content &#123;</span><br><span class="line">        flex: 1;</span><br><span class="line">        line-height: 20px;</span><br><span class="line">        overflow: hidden;</span><br><span class="line">        .name &#123;</span><br><span class="line">          @include no-wrap();</span><br><span class="line">          color: $color-text</span><br><span class="line">        &#125;</span><br><span class="line">        .desc &#123;</span><br><span class="line">          @include no-wrap();</span><br><span class="line">          margin-top: 4px;</span><br><span class="line">          color: $color-text-d;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></table></figure>
+
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/vue3/" rel="tag"># vue3</a>
+              <a href="/tags/%E9%9F%B3%E4%B9%90%E8%BD%AE%E5%AD%90/" rel="tag"># 音乐轮子</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2021/10/08/41-%E5%9B%9E%E6%BA%AF%E5%9B%BA%E5%AE%9A%E5%A5%97%E8%B7%AF/" rel="prev" title="41-回溯固定套路">
+      <i class="fa fa-chevron-left"></i> 41-回溯固定套路
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%AD%8C%E6%89%8B%E8%AF%A6%E6%83%85%E9%A1%B5"><span class="nav-number">1.</span> <span class="nav-text">歌手详情页</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AF%A6%E6%83%85%E9%A1%B5%E4%B8%BB%E7%BB%84%E4%BB%B6"><span class="nav-number">1.1.</span> <span class="nav-text">详情页主组件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%80%9A%E7%94%A8%E7%BB%84%E4%BB%B6%E2%80%94%E2%80%94detail-list"><span class="nav-number">1.2.</span> <span class="nav-text">通用组件——detail-list</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%AD%8C%E6%9B%B2%E5%88%97%E8%A1%A8%E7%BB%84%E4%BB%B6"><span class="nav-number">1.3.</span> <span class="nav-text">歌曲列表组件</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Eden Yi"
+      src="/images/avatar.jpeg">
+  <p class="site-author-name" itemprop="name">Eden Yi</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">60</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">12</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">52</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/Yummy-zZ" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;Yummy-zZ" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:yjh2412750872@gmail.com" title="E-Mail → mailto:yjh2412750872@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Eden Yi</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div><script color="66,197,172" opacity="0.85" zIndex="-1" count="88" src="https://cdn.jsdelivr.net/npm/canvas-nest.js@1/dist/canvas-nest.js"></script>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+  <script defer src="/lib/three/three.min.js"></script>
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
