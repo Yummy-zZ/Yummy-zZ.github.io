@@ -22,15 +22,15 @@
     var CONFIG = {"hostname":"yummy-zz.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="src&#x2F;main.js 1234567891011121314151617181920212223242526272829303132333435363738import &amp;#123; createApp &amp;#125; from &amp;#x27;vue&amp;#x27;import App from &amp;#x27;.&#x2F;App.vue&amp;#x27;import router from &amp;#x27;.&#x2F;router">
+  <meta name="description" content="src&#x2F;main.js">
 <meta property="og:type" content="article">
 <meta property="og:title" content="vue3项目实战-路由配置和全局入口文件">
 <meta property="og:url" content="https://yummy-zz.github.io/2021/10/20/vue3%E9%A1%B9%E7%9B%AE%E5%AE%9E%E6%88%98-%E8%B7%AF%E7%94%B1%E9%85%8D%E7%BD%AE/index.html">
 <meta property="og:site_name" content="Yum">
-<meta property="og:description" content="src&#x2F;main.js 1234567891011121314151617181920212223242526272829303132333435363738import &amp;#123; createApp &amp;#125; from &amp;#x27;vue&amp;#x27;import App from &amp;#x27;.&#x2F;App.vue&amp;#x27;import router from &amp;#x27;.&#x2F;router">
+<meta property="og:description" content="src&#x2F;main.js">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2021-10-20T01:35:28.000Z">
-<meta property="article:modified_time" content="2021-10-20T01:41:33.834Z">
+<meta property="article:modified_time" content="2021-10-21T01:23:12.119Z">
 <meta property="article:author" content="Eden Yi">
 <meta property="article:tag" content="Router">
 <meta name="twitter:card" content="summary">
@@ -187,10 +187,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2021-10-20 09:35:28 / 修改时间：09:41:33" itemprop="dateCreated datePublished" datetime="2021-10-20T09:35:28+08:00">2021-10-20</time>
+              <time title="创建时间：2021-10-20 09:35:28" itemprop="dateCreated datePublished" datetime="2021-10-20T09:35:28+08:00">2021-10-20</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-10-21 09:23:12" itemprop="dateModified" datetime="2021-10-21T09:23:12+08:00">2021-10-21</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -220,6 +226,8 @@
 
       
         <p>src/main.js</p>
+<span id="more"></span>
+
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; createApp &#125; <span class="keyword">from</span> <span class="string">&#x27;vue&#x27;</span></span><br><span class="line"><span class="keyword">import</span> App <span class="keyword">from</span> <span class="string">&#x27;./App.vue&#x27;</span></span><br><span class="line"><span class="keyword">import</span> router <span class="keyword">from</span> <span class="string">&#x27;./router&#x27;</span></span><br><span class="line"><span class="keyword">import</span> store <span class="keyword">from</span> <span class="string">&#x27;./store&#x27;</span></span><br><span class="line"><span class="keyword">import</span> <span class="string">&#x27;./assets/scss/index.scss&#x27;</span> <span class="comment">// 引入全局样式,需要sass-loader10.1.0以上, node-sass5.0.0以上</span></span><br><span class="line"><span class="keyword">import</span> lazyPlugin <span class="keyword">from</span> <span class="string">&#x27;vue3-lazy&#x27;</span> <span class="comment">// 图片懒加载</span></span><br><span class="line"><span class="keyword">import</span> loadingDirective <span class="keyword">from</span> <span class="string">&#x27;./components/base/loading/directive&#x27;</span> <span class="comment">// 自定义指令</span></span><br><span class="line"><span class="keyword">import</span> noResultDirective <span class="keyword">from</span> <span class="string">&#x27;@/components/base/no-result/directive&#x27;</span> <span class="comment">// 自定义指令</span></span><br><span class="line"><span class="keyword">import</span> &#123; processSongs &#125; <span class="keyword">from</span> <span class="string">&#x27;./service/song&#x27;</span> <span class="comment">// 更新我喜欢和最近播放歌曲的url</span></span><br><span class="line"><span class="keyword">import</span> &#123; saveAll, load &#125; <span class="keyword">from</span> <span class="string">&#x27;./assets/js/array-store&#x27;</span> <span class="comment">// 存储所有歌曲并缓存</span></span><br><span class="line"><span class="keyword">import</span> &#123; FAVORITE_KEY, PLAYED_KEY &#125; <span class="keyword">from</span> <span class="string">&#x27;./assets/js/constant&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> app = createApp(App)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 页面载入时就对localStorage里的数据更新</span></span><br><span class="line"><span class="keyword">const</span> favoriteSongs = load(FAVORITE_KEY)</span><br><span class="line"><span class="keyword">if</span> (favoriteSongs.length &gt; <span class="number">0</span>) &#123;</span><br><span class="line">  processSongs(favoriteSongs).then(<span class="function">(<span class="params">songs</span>) =&gt;</span> &#123;</span><br><span class="line">    store.commit(<span class="string">&#x27;setFavoriteList&#x27;</span>, songs)</span><br><span class="line">    saveAll(songs, FAVORITE_KEY)</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 页面载入时就对localStorage里的数据更新</span></span><br><span class="line"><span class="keyword">const</span> historySongs = load(PLAYED_KEY)</span><br><span class="line"><span class="keyword">if</span> (historySongs.length &gt; <span class="number">0</span>) &#123;</span><br><span class="line">  processSongs(historySongs).then(<span class="function">(<span class="params">songs</span>) =&gt;</span> &#123;</span><br><span class="line">    store.commit(<span class="string">&#x27;setPlayHistory&#x27;</span>, songs)</span><br><span class="line">    saveAll(songs, PLAYED_KEY)</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">app.use(store)</span><br><span class="line">   .use(router)</span><br><span class="line">   .directive(<span class="string">&#x27;loading&#x27;</span>, loadingDirective)</span><br><span class="line">   .directive(<span class="string">&#x27;no-result&#x27;</span>, noResultDirective)</span><br><span class="line">   .use(lazyPlugin, &#123; <span class="attr">loading</span>: <span class="built_in">require</span>(<span class="string">&#x27;@/assets/loading/loading.gif&#x27;</span>) &#125;)</span><br><span class="line">   .mount(<span class="string">&#x27;#app&#x27;</span>)</span><br></pre></td></tr></table></figure>
 
 
