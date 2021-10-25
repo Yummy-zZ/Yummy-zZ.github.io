@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/%E6%9F%A0%E6%AA%AC%E5%B9%B2.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/%E8%8D%89%E8%8E%93.svg">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/%E8%8D%89%E8%8E%93.svg">
+  <link rel="mask-icon" href="/images/%E6%9F%A0%E6%AA%AC%E5%B9%B2.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+  <link rel="stylesheet" href="/lib/pace/pace-theme-bounce.min.css">
+  <script src="/lib/pace/pace.min.js"></script>
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"yummy-zz.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="📌前提 浏览器（多进程）包含了Browser进程（浏览器的主进程）、第三方插件进程和GPU进程（浏览器渲染进程），其中GPU进程（多线程）和Web前端密切相关，包含以下线程：  GUI渲染线程 JS引擎线程 事件触发线程（和EventLoop密切相关） 定时触发器线程 异步HTTP请求线程   GUI渲染线程和JS引擎线程是互斥的，为了防止DOM渲染的不一致性，其中一个线程执行时另一个线程会被挂">
+<meta property="og:type" content="article">
+<meta property="og:title" content="43.nextTick原理">
+<meta property="og:url" content="https://yummy-zz.github.io/2021/10/24/43-nextTick%E5%8E%9F%E7%90%86/index.html">
+<meta property="og:site_name" content="Yum">
+<meta property="og:description" content="📌前提 浏览器（多进程）包含了Browser进程（浏览器的主进程）、第三方插件进程和GPU进程（浏览器渲染进程），其中GPU进程（多线程）和Web前端密切相关，包含以下线程：  GUI渲染线程 JS引擎线程 事件触发线程（和EventLoop密切相关） 定时触发器线程 异步HTTP请求线程   GUI渲染线程和JS引擎线程是互斥的，为了防止DOM渲染的不一致性，其中一个线程执行时另一个线程会被挂">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-10-24T00:49:57.000Z">
+<meta property="article:modified_time" content="2021-10-24T02:07:21.381Z">
+<meta property="article:author" content="Eden Yi">
+<meta property="article:tag" content="vue">
+<meta property="article:tag" content="原理">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://yummy-zz.github.io/2021/10/24/43-nextTick%E5%8E%9F%E7%90%86/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>43.nextTick原理 | Yum</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <a target="_blank" rel="noopener" href="https://github.com/Yummy-zZ" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#64CEAA; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Yum</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://yummy-zz.github.io/2021/10/24/43-nextTick%E5%8E%9F%E7%90%86/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpeg">
+      <meta itemprop="name" content="Eden Yi">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Yum">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          43.nextTick原理
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2021-10-24 08:49:57 / 修改时间：10:07:21" itemprop="dateCreated datePublished" datetime="2021-10-24T08:49:57+08:00">2021-10-24</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Vue/" itemprop="url" rel="index"><span itemprop="name">Vue</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p><strong>📌前提</strong></p>
+<p>浏览器（多进程）包含了<strong>Browser进程</strong>（浏览器的主进程）、<strong>第三方插件进程</strong>和<strong>GPU进程</strong>（浏览器渲染进程），其中<strong>GPU进程</strong>（多线程）和Web前端密切相关，包含以下线程：</p>
+<ul>
+<li><strong>GUI渲染线程</strong></li>
+<li><strong>JS引擎线程</strong></li>
+<li><strong>事件触发线程</strong>（和EventLoop密切相关）</li>
+<li><strong>定时触发器线程</strong></li>
+<li><strong>异步HTTP请求线程</strong></li>
+</ul>
+<blockquote>
+<p><strong>GUI渲染线程</strong>和<strong>JS引擎线程</strong>是互斥的，为了防止DOM渲染的不一致性，其中一个线程执行时另一个线程会被挂起。</p>
+</blockquote>
+<p>这些线程中，和Vue的<code>nextTick</code>息息相关的是<strong>JS引擎线程</strong>和<strong>事件触发线程</strong>。</p>
+<h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><p>nextTick默认优先使用微任务，如果触发变化则会强制执行宏任务，宏任务的执行优先级setImmediate -&gt; MessageChannel -&gt; setTimeout，nextTick没有参数则返回一个Promise.resolve(),有参数则将回调函数push到一个数组再依次执行。</p>
+<p>源码:</p>
+<h3 id="2-5版本"><a href="#2-5版本" class="headerlink" title="2.5版本"></a>2.5版本</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br></pre></td><td class="code"><pre><span class="line">/* @flow */</span><br><span class="line">/* globals MessageChannel */</span><br><span class="line"></span><br><span class="line">import &#123; noop &#125; from &#x27;shared/util&#x27;</span><br><span class="line">import &#123; handleError &#125; from &#x27;./error&#x27;</span><br><span class="line">import &#123; isIOS, isNative &#125; from &#x27;./env&#x27;</span><br><span class="line"></span><br><span class="line">const callbacks = []</span><br><span class="line">let pending = false</span><br><span class="line"></span><br><span class="line">function flushCallbacks () &#123;</span><br><span class="line">  pending = false</span><br><span class="line">  const copies = callbacks.slice(0)</span><br><span class="line">  callbacks.length = 0</span><br><span class="line">  for (let i = 0; i &lt; copies.length; i++) &#123;</span><br><span class="line">    copies[i]()</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 在2.4中使用了microtasks ，但是还是存在问题，</span><br><span class="line">// 在2.5版本中组合使用macrotasks和microtasks，组合使用的方式是对外暴露withMacroTask函数</span><br><span class="line">// Here we have async deferring wrappers using both microtasks and (macro) tasks.</span><br><span class="line">// In &lt; 2.4 we used microtasks everywhere, but there are some scenarios where</span><br><span class="line">// microtasks have too high a priority and fire in between supposedly</span><br><span class="line">// sequential events (e.g. #4521, #6690) or even between bubbling of the same</span><br><span class="line">// event (#6566). However, using (macro) tasks everywhere also has subtle problems</span><br><span class="line">// when state is changed right before repaint (e.g. #6813, out-in transitions).</span><br><span class="line">// Here we use microtask by default, but expose a way to force (macro) task when</span><br><span class="line">// needed (e.g. in event handlers attached by v-on).</span><br><span class="line"></span><br><span class="line">// 2.5版本在nextTick中对于调用microtask（微任务）还是macrotask（宏任务）声明了两个不同的变量</span><br><span class="line">let microTimerFunc</span><br><span class="line">let macroTimerFunc</span><br><span class="line"></span><br><span class="line">// 默认使用microtask（微任务）</span><br><span class="line">let useMacroTask = false</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">// 这里主要定义macrotask（宏任务）函数</span><br><span class="line">// macrotask（宏任务）的执行优先级</span><br><span class="line">// setImmediate -&gt; MessageChannel -&gt; setTimeout</span><br><span class="line">// setImmediate是最理想的选择</span><br><span class="line">// 最Low的状况是降级执行setTimeout</span><br><span class="line"></span><br><span class="line">// Determine (macro) task defer implementation.</span><br><span class="line">// Technically setImmediate should be the ideal choice, but it&#x27;s only available</span><br><span class="line">// in IE. The only polyfill that consistently queues the callback after all DOM</span><br><span class="line">// events triggered in the same loop is by using MessageChannel.</span><br><span class="line">/* istanbul ignore if */</span><br><span class="line">if (typeof setImmediate !== &#x27;undefined&#x27; &amp;&amp; isNative(setImmediate)) &#123;</span><br><span class="line">  macroTimerFunc = () =&gt; &#123;</span><br><span class="line">    setImmediate(flushCallbacks)</span><br><span class="line">  &#125;</span><br><span class="line">&#125; else if (typeof MessageChannel !== &#x27;undefined&#x27; &amp;&amp; (</span><br><span class="line">  isNative(MessageChannel) ||</span><br><span class="line">  // PhantomJS</span><br><span class="line">  MessageChannel.toString() === &#x27;[object MessageChannelConstructor]&#x27;</span><br><span class="line">)) &#123;</span><br><span class="line">  const channel = new MessageChannel()</span><br><span class="line">  const port = channel.port2</span><br><span class="line">  channel.port1.onmessage = flushCallbacks</span><br><span class="line">  macroTimerFunc = () =&gt; &#123;</span><br><span class="line">    port.postMessage(1)</span><br><span class="line">  &#125;</span><br><span class="line">&#125; else &#123;</span><br><span class="line">  /* istanbul ignore next */</span><br><span class="line">  macroTimerFunc = () =&gt; &#123;</span><br><span class="line">    setTimeout(flushCallbacks, 0)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">// 这里主要定义microtask（微任务）函数</span><br><span class="line">// microtask（微任务）的执行优先级</span><br><span class="line">// Promise -&gt; macroTimerFunc</span><br><span class="line">// 如果原生不支持Promise，那么执行macrotask（宏任务）函数</span><br><span class="line"></span><br><span class="line">// Determine microtask defer implementation.</span><br><span class="line">/* istanbul ignore next, $flow-disable-line */</span><br><span class="line">if (typeof Promise !== &#x27;undefined&#x27; &amp;&amp; isNative(Promise)) &#123;</span><br><span class="line">  const p = Promise.resolve()</span><br><span class="line">  microTimerFunc = () =&gt; &#123;</span><br><span class="line">    p.then(flushCallbacks)</span><br><span class="line">    // in problematic UIWebViews, Promise.then doesn&#x27;t completely break, but</span><br><span class="line">    // it can get stuck in a weird state where callbacks are pushed into the</span><br><span class="line">    // microtask queue but the queue isn&#x27;t being flushed, until the browser</span><br><span class="line">    // needs to do some other work, e.g. handle a timer. Therefore we can</span><br><span class="line">    // &quot;force&quot; the microtask queue to be flushed by adding an empty timer.</span><br><span class="line">    if (isIOS) setTimeout(noop)</span><br><span class="line">  &#125;</span><br><span class="line">&#125; else &#123;</span><br><span class="line">  // fallback to macro</span><br><span class="line">  microTimerFunc = macroTimerFunc</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">// 对外暴露withMacroTask 函数</span><br><span class="line">// 触发变化执行nextTick时强制执行macrotask（宏任务）函数</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"> * Wrap a function so that if any code inside triggers state change,</span><br><span class="line"> * the changes are queued using a (macro) task instead of a microtask.</span><br><span class="line"> */</span><br><span class="line">export function withMacroTask (fn: Function): Function &#123;</span><br><span class="line">  return fn._withTask || (fn._withTask = function () &#123;</span><br><span class="line">    useMacroTask = true</span><br><span class="line">    try &#123;</span><br><span class="line">      return fn.apply(null, arguments)</span><br><span class="line">    &#125; finally &#123;</span><br><span class="line">      useMacroTask = false    </span><br><span class="line">    &#125;</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 这里需要注意pending</span><br><span class="line">export function nextTick (cb?: Function, ctx?: Object) &#123;</span><br><span class="line">  let _resolve</span><br><span class="line">  callbacks.push(() =&gt; &#123;</span><br><span class="line">    if (cb) &#123;</span><br><span class="line">      try &#123;</span><br><span class="line">        cb.call(ctx)</span><br><span class="line">      &#125; catch (e) &#123;</span><br><span class="line">        handleError(e, ctx, &#x27;nextTick&#x27;)</span><br><span class="line">      &#125;</span><br><span class="line">    &#125; else if (_resolve) &#123;</span><br><span class="line">      _resolve(ctx)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;)</span><br><span class="line">  if (!pending) &#123;</span><br><span class="line">    pending = true</span><br><span class="line">    if (useMacroTask) &#123;</span><br><span class="line">      macroTimerFunc()</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">      microTimerFunc()</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  // $flow-disable-line</span><br><span class="line">  if (!cb &amp;&amp; typeof Promise !== &#x27;undefined&#x27;) &#123;</span><br><span class="line">    return new Promise(resolve =&gt; &#123;</span><br><span class="line">      _resolve = resolve</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">复制代码</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-6版本"><a href="#2-6版本" class="headerlink" title="2.6版本"></a>2.6版本</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br></pre></td><td class="code"><pre><span class="line">/* @flow */</span><br><span class="line">/* globals MutationObserver */</span><br><span class="line"></span><br><span class="line">import &#123; noop &#125; from &#x27;shared/util&#x27;</span><br><span class="line">import &#123; handleError &#125; from &#x27;./error&#x27;</span><br><span class="line">import &#123; isIE, isIOS, isNative &#125; from &#x27;./env&#x27;</span><br><span class="line"></span><br><span class="line">export let isUsingMicroTask = false</span><br><span class="line"></span><br><span class="line">const callbacks = []</span><br><span class="line">let pending = false</span><br><span class="line"></span><br><span class="line">function flushCallbacks () &#123;</span><br><span class="line">  pending = false</span><br><span class="line">  const copies = callbacks.slice(0)</span><br><span class="line">  callbacks.length = 0</span><br><span class="line">  for (let i = 0; i &lt; copies.length; i++) &#123;</span><br><span class="line">    copies[i]()</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 在2.5版本中组合使用microtasks 和macrotasks，但是重绘的时候还是存在一些小问题，而且使用macrotasks在任务队列中会有几个特别奇怪的行为没办法避免，So又回到了之前的状态，在任何地方优先使用microtasks 。</span><br><span class="line">// Here we have async deferring wrappers using microtasks.</span><br><span class="line">// In 2.5 we used (macro) tasks (in combination with microtasks).</span><br><span class="line">// However, it has subtle problems when state is changed right before repaint</span><br><span class="line">// (e.g. #6813, out-in transitions).</span><br><span class="line">// Also, using (macro) tasks in event handler would cause some weird behaviors</span><br><span class="line">// that cannot be circumvented (e.g. #7109, #7153, #7546, #7834, #8109).</span><br><span class="line">// So we now use microtasks everywhere, again.</span><br><span class="line">// A major drawback of this tradeoff is that there are some scenarios</span><br><span class="line">// where microtasks have too high a priority and fire in between supposedly</span><br><span class="line">// sequential events (e.g. #4521, #6690, which have workarounds)</span><br><span class="line">// or even between bubbling of the same event (#6566).</span><br><span class="line">let timerFunc</span><br><span class="line"></span><br><span class="line">// The nextTick behavior leverages the microtask queue, which can be accessed</span><br><span class="line">// via either native Promise.then or MutationObserver.</span><br><span class="line">// MutationObserver has wider support, however it is seriously bugged in</span><br><span class="line">// UIWebView in iOS &gt;= 9.3.3 when triggered in touch event handlers. It</span><br><span class="line">// completely stops working after triggering a few times... so, if native</span><br><span class="line">// Promise is available, we will use it:</span><br><span class="line">/* istanbul ignore next, $flow-disable-line */</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">// task的执行优先级</span><br><span class="line">// Promise -&gt; MutationObserver -&gt; setImmediate -&gt; setTimeout</span><br><span class="line"></span><br><span class="line">if (typeof Promise !== &#x27;undefined&#x27; &amp;&amp; isNative(Promise)) &#123;</span><br><span class="line">  const p = Promise.resolve()</span><br><span class="line">  timerFunc = () =&gt; &#123;</span><br><span class="line">    p.then(flushCallbacks)</span><br><span class="line">    // In problematic UIWebViews, Promise.then doesn&#x27;t completely break, but</span><br><span class="line">    // it can get stuck in a weird state where callbacks are pushed into the</span><br><span class="line">    // microtask queue but the queue isn&#x27;t being flushed, until the browser</span><br><span class="line">    // needs to do some other work, e.g. handle a timer. Therefore we can</span><br><span class="line">    // &quot;force&quot; the microtask queue to be flushed by adding an empty timer.</span><br><span class="line">    if (isIOS) setTimeout(noop)</span><br><span class="line">  &#125;</span><br><span class="line">  isUsingMicroTask = true</span><br><span class="line">&#125; else if (!isIE &amp;&amp; typeof MutationObserver !== &#x27;undefined&#x27; &amp;&amp; (</span><br><span class="line">  isNative(MutationObserver) ||</span><br><span class="line">  // PhantomJS and iOS 7.x</span><br><span class="line">  MutationObserver.toString() === &#x27;[object MutationObserverConstructor]&#x27;</span><br><span class="line">)) &#123;</span><br><span class="line">  // Use MutationObserver where native Promise is not available,</span><br><span class="line">  // e.g. PhantomJS, iOS7, Android 4.4</span><br><span class="line">  // (#6466 MutationObserver is unreliable in IE11)</span><br><span class="line">  let counter = 1</span><br><span class="line">  const observer = new MutationObserver(flushCallbacks)</span><br><span class="line">  const textNode = document.createTextNode(String(counter))</span><br><span class="line">  observer.observe(textNode, &#123;</span><br><span class="line">    characterData: true</span><br><span class="line">  &#125;)</span><br><span class="line">  timerFunc = () =&gt; &#123;</span><br><span class="line">    counter = (counter + 1) % 2</span><br><span class="line">    textNode.data = String(counter)</span><br><span class="line">  &#125;</span><br><span class="line">  isUsingMicroTask = true</span><br><span class="line">&#125; else if (typeof setImmediate !== &#x27;undefined&#x27; &amp;&amp; isNative(setImmediate)) &#123;</span><br><span class="line">  // Fallback to setImmediate.</span><br><span class="line">  // Techinically it leverages the (macro) task queue,</span><br><span class="line">  // but it is still a better choice than setTimeout.</span><br><span class="line">  timerFunc = () =&gt; &#123;</span><br><span class="line">    setImmediate(flushCallbacks)</span><br><span class="line">  &#125;</span><br><span class="line">&#125; else &#123;</span><br><span class="line">  // Fallback to setTimeout.</span><br><span class="line">  timerFunc = () =&gt; &#123;</span><br><span class="line">    setTimeout(flushCallbacks, 0)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">export function nextTick (cb?: Function, ctx?: Object) &#123;</span><br><span class="line">  let _resolve</span><br><span class="line">  callbacks.push(() =&gt; &#123;</span><br><span class="line">    if (cb) &#123;</span><br><span class="line">      try &#123;</span><br><span class="line">        cb.call(ctx)</span><br><span class="line">      &#125; catch (e) &#123;</span><br><span class="line">        handleError(e, ctx, &#x27;nextTick&#x27;)</span><br><span class="line">      &#125;</span><br><span class="line">    &#125; else if (_resolve) &#123;</span><br><span class="line">      _resolve(ctx)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;)</span><br><span class="line">  if (!pending) &#123;</span><br><span class="line">    pending = true</span><br><span class="line">    timerFunc()</span><br><span class="line">  &#125;</span><br><span class="line">  // $flow-disable-line</span><br><span class="line">  if (!cb &amp;&amp; typeof Promise !== &#x27;undefined&#x27;) &#123;</span><br><span class="line">    return new Promise(resolve =&gt; &#123;</span><br><span class="line">      _resolve = resolve</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/vue/" rel="tag"># vue</a>
+              <a href="/tags/%E5%8E%9F%E7%90%86/" rel="tag"># 原理</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2021/10/20/42-vue3%E9%A1%B9%E7%9B%AE%E6%80%BB%E7%BB%93/" rel="prev" title="42.vue3项目总结">
+      <i class="fa fa-chevron-left"></i> 42.vue3项目总结
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2021/10/24/44-grid%E5%B8%83%E5%B1%80/" rel="next" title="44-grid布局">
+      44-grid布局 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8E%9F%E7%90%86"><span class="nav-number">1.</span> <span class="nav-text">原理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-5%E7%89%88%E6%9C%AC"><span class="nav-number">1.1.</span> <span class="nav-text">2.5版本</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-6%E7%89%88%E6%9C%AC"><span class="nav-number">1.2.</span> <span class="nav-text">2.6版本</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Eden Yi"
+      src="/images/avatar.jpeg">
+  <p class="site-author-name" itemprop="name">Eden Yi</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">71</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">14</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">57</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/Yummy-zZ" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;Yummy-zZ" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:yjh2412750872@gmail.com" title="E-Mail → mailto:yjh2412750872@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Eden Yi</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div><script color="66,197,172" opacity="0.85" zIndex="-1" count="88" src="https://cdn.jsdelivr.net/npm/canvas-nest.js@1/dist/canvas-nest.js"></script>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+  <script defer src="/lib/three/three.min.js"></script>
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
