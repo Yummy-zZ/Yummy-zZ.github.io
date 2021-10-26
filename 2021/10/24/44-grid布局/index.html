@@ -22,12 +22,12 @@
     var CONFIG = {"hostname":"yummy-zz.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="——阮一峰 1.容器属性1.1 display属性12345div &amp;#123;  display: grid;	&#x2F;* 或者 *&#x2F;  display: inline-grid&amp;#125;  注意，设为网格布局以后，容器子元素（项目）的float、display: inline-block、display: table-cell、vertical-align和column-*等设置都将失效。 1.2">
+  <meta name="description" content="——阮一峰 1.容器属性1.1 display属性12345div &amp;#123;  display: grid;	&#x2F;* 或者 *&#x2F;  display: inline-grid&amp;#125;  注意，设为网格布局以后，容器子元素（项目）的float、display: inline-block、display: table-cell、vertical-align和column-*等设置都将失效。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="44-grid布局">
 <meta property="og:url" content="https://yummy-zz.github.io/2021/10/24/44-grid%E5%B8%83%E5%B1%80/index.html">
 <meta property="og:site_name" content="Yum">
-<meta property="og:description" content="——阮一峰 1.容器属性1.1 display属性12345div &amp;#123;  display: grid;	&#x2F;* 或者 *&#x2F;  display: inline-grid&amp;#125;  注意，设为网格布局以后，容器子元素（项目）的float、display: inline-block、display: table-cell、vertical-align和column-*等设置都将失效。 1.2">
+<meta property="og:description" content="——阮一峰 1.容器属性1.1 display属性12345div &amp;#123;  display: grid;	&#x2F;* 或者 *&#x2F;  display: inline-grid&amp;#125;  注意，设为网格布局以后，容器子元素（项目）的float、display: inline-block、display: table-cell、vertical-align和column-*等设置都将失效。">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://raw.githubusercontent.com/Yummy-zZ/FigureBed/main/img/bg2019032513.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/Yummy-zZ/FigureBed/main/img/bg2019032514.png">
@@ -37,7 +37,7 @@
 <meta property="og:image" content="https://raw.githubusercontent.com/Yummy-zZ/FigureBed/main/img/bg2019032526.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/Yummy-zZ/FigureBed/main/img/bg2019032532.png">
 <meta property="article:published_time" content="2021-10-24T04:26:06.000Z">
-<meta property="article:modified_time" content="2021-10-25T01:52:33.284Z">
+<meta property="article:modified_time" content="2021-10-26T12:39:15.665Z">
 <meta property="article:author" content="Eden Yi">
 <meta property="article:tag" content="布局">
 <meta name="twitter:card" content="summary">
@@ -203,7 +203,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-10-25 09:52:33" itemprop="dateModified" datetime="2021-10-25T09:52:33+08:00">2021-10-25</time>
+                <time title="修改时间：2021-10-26 20:39:15" itemprop="dateModified" datetime="2021-10-26T20:39:15+08:00">2021-10-26</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -237,6 +237,8 @@
 <h2 id="1-容器属性"><a href="#1-容器属性" class="headerlink" title="1.容器属性"></a>1.容器属性</h2><h3 id="1-1-display属性"><a href="#1-1-display属性" class="headerlink" title="1.1 display属性"></a>1.1 display属性</h3><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">div</span> &#123;</span><br><span class="line">  <span class="attribute">display</span>: grid;</span><br><span class="line">	<span class="comment">/* 或者 */</span></span><br><span class="line">  <span class="attribute">display</span>: inline-grid</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>注意，设为网格布局以后，容器子元素（项目）的<code>float</code>、<code>display: inline-block</code>、<code>display: table-cell</code>、<code>vertical-align</code>和<code>column-*</code>等设置都将失效。</p>
+<span id="more"></span>
+
 <h3 id="1-2-grid-template-columns属性，-grid-template-rows-属性"><a href="#1-2-grid-template-columns属性，-grid-template-rows-属性" class="headerlink" title="1.2 grid-template-columns属性， grid-template-rows 属性"></a>1.2 grid-template-columns属性， grid-template-rows 属性</h3><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 1.基本使用 */</span></span><br><span class="line"><span class="selector-class">.container</span> &#123;</span><br><span class="line">  <span class="attribute">display</span>: grid;</span><br><span class="line">  grid-template-<span class="attribute">columns</span>: <span class="number">100px</span> <span class="number">100px</span> <span class="number">100px</span>;</span><br><span class="line">  || grid-template-<span class="attribute">columns</span>: <span class="number">33.33%</span> <span class="number">33.33%</span> <span class="number">33.33%</span>;</span><br><span class="line">  || grid-template-<span class="attribute">columns</span>: <span class="built_in">repeat</span>(<span class="number">3</span>, <span class="number">33.33%</span>);</span><br><span class="line">  grid-template-rows: <span class="number">100px</span> <span class="number">100px</span> <span class="number">100px</span>;</span><br><span class="line">  || grid-template-rows: <span class="number">33.33%</span> <span class="number">33.33%</span> <span class="number">33.33%</span>;</span><br><span class="line">  || grid-template-rows: <span class="built_in">repeat</span>(<span class="number">3</span>, <span class="number">33.33%</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/* 2.repeat():重复某种样式 */</span></span><br><span class="line"><span class="selector-class">.container</span> &#123;</span><br><span class="line">  <span class="attribute">display</span>: grid;</span><br><span class="line">  grid-template-<span class="attribute">columns</span>: <span class="built_in">repeat</span>(<span class="number">2</span>, <span class="number">100px</span> <span class="number">20px</span> <span class="number">80px</span>); <span class="comment">/* 代表1,4为100px;2,5为20px;3,6为80px */</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/* 3.auto-fill关键字:自动填充元素 */</span></span><br><span class="line"><span class="selector-class">.container</span> &#123;</span><br><span class="line">  <span class="attribute">display</span>: grid;</span><br><span class="line">  grid-template-<span class="attribute">columns</span>: <span class="built_in">repeat</span>(auto-fill, <span class="number">100px</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/* 4.fr关键字: 比例关系 */</span></span><br><span class="line"><span class="selector-class">.container</span> &#123;</span><br><span class="line">  <span class="attribute">display</span>: grid;</span><br><span class="line">  grid-template-<span class="attribute">columns</span>: <span class="number">1</span>fr <span class="number">1</span>fr;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/* 5.minmax():取值范围 */</span></span><br><span class="line"><span class="selector-class">.container</span> &#123;</span><br><span class="line">  grid-template-<span class="attribute">columns</span>: <span class="number">1</span>fr <span class="number">1</span>fr <span class="built_in">minmax</span>(<span class="number">100px</span>, <span class="number">1</span>fr);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/* 6.auto 关键字: 自动填充 */</span></span><br><span class="line"><span class="selector-class">.container</span> &#123;</span><br><span class="line">  grid-template-<span class="attribute">columns</span>: <span class="number">100px</span> auto <span class="number">100px</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/* 7.网格线的名称 */</span></span><br><span class="line"><span class="selector-class">.container</span> &#123;</span><br><span class="line">  <span class="attribute">display</span>: grid;</span><br><span class="line">  grid-template-<span class="attribute">columns</span>: [c1] <span class="number">100px</span> [c2] <span class="number">100px</span> [c3] auto [c4];</span><br><span class="line">  grid-template-rows: [r1] <span class="number">100px</span> [r2] <span class="number">100px</span> [r3] auto [r4];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 
@@ -440,20 +442,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">71</span>
+          <span class="site-state-item-count">73</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">14</span>
+        <span class="site-state-item-count">15</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">57</span>
+        <span class="site-state-item-count">59</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>

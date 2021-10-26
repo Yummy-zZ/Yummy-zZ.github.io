@@ -159,6 +159,168 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://yummy-zz.github.io/2021/10/26/46-websocket/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpeg">
+      <meta itemprop="name" content="Eden Yi">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Yum">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/10/26/46-websocket/" class="post-title-link" itemprop="url">46-websocket</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2021-10-26 20:38:10 / 修改时间：20:51:38" itemprop="dateCreated datePublished" datetime="2021-10-26T20:38:10+08:00">2021-10-26</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/HTTP/" itemprop="url" rel="index"><span itemprop="name">HTTP</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p><code>Websocket</code>主要用来解决<code>HTTP</code>协议不能由服务器向客户端发起请求的问题</p>
+<p>——HTTP/2 只能推送静态资源，无法推送指定的信息。</p>
+<p><strong>其他特点</strong></p>
+<p>1）建立在 TCP 协议之上，服务器端的实现比较容易。</p>
+<p>（2）与 HTTP 协议有着良好的兼容性。默认端口也是80和443，并且握手阶段采用 HTTP 协议，因此握手时不容易屏蔽，能通过各种 HTTP 代理服务器。</p>
+<p>（3）数据格式比较轻量，性能开销小，通信高效。</p>
+<p>（4）可以发送文本，也可以发送二进制数据。</p>
+<p>（5）没有同源限制，客户端可以与任意服务器通信。</p>
+<p>（6）协议标识符是<code>ws</code>（如果加密，则为<code>wss</code>），服务器网址就是 URL。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2021/10/26/46-websocket/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://yummy-zz.github.io/2021/10/26/45-setState%E6%9C%BA%E5%88%B6/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpeg">
+      <meta itemprop="name" content="Eden Yi">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Yum">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/10/26/45-setState%E6%9C%BA%E5%88%B6/" class="post-title-link" itemprop="url">45-setState机制</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2021-10-26 09:53:57 / 修改时间：20:39:08" itemprop="dateCreated datePublished" datetime="2021-10-26T09:53:57+08:00">2021-10-26</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/React/" itemprop="url" rel="index"><span itemprop="name">React</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <ol>
+<li><strong><code>setState</code> 只在合成事件和钩子函数中是“异步”的，在原生事件和 <code>setTimeout</code> 中都是同步的。</strong></li>
+<li><strong><code>setState</code>的“异步”并不是说内部由异步代码实现，其实本身执行的过程和代码都是同步的，只是合成事件和钩子函数的调用顺序在更新之前，导致在合成事件和钩子函数中没法立马拿到更新后的值，形式了所谓的“异步”，当然可以通过第二个参数 setState(partialState, callback) 中的callback拿到更新后的结果。</strong></li>
+<li><strong><code>setState</code> 的批量更新优化也是建立在“异步”（合成事件、钩子函数）之上的，在原生事件和setTimeout 中不会批量更新，在“异步”中如果对同一个值进行多次 <code>setState</code> ， <code>setState</code> 的批量更新策略会对其进行覆盖，取最后一次的执行，如果是同时 <code>setState</code> 多个不同的值，在更新时会对其进行合并批量更新。</strong></li>
+</ol>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2021/10/26/45-setState%E6%9C%BA%E5%88%B6/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://yummy-zz.github.io/2021/10/25/%E7%AE%97%E6%B3%95%E5%BF%83%E5%BE%971/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -284,7 +446,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-10-25 09:52:33" itemprop="dateModified" datetime="2021-10-25T09:52:33+08:00">2021-10-25</time>
+                <time title="修改时间：2021-10-26 20:39:15" itemprop="dateModified" datetime="2021-10-26T20:39:15+08:00">2021-10-26</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -311,111 +473,14 @@
 <h2 id="1-容器属性"><a href="#1-容器属性" class="headerlink" title="1.容器属性"></a>1.容器属性</h2><h3 id="1-1-display属性"><a href="#1-1-display属性" class="headerlink" title="1.1 display属性"></a>1.1 display属性</h3><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">div</span> &#123;</span><br><span class="line">  <span class="attribute">display</span>: grid;</span><br><span class="line">	<span class="comment">/* 或者 */</span></span><br><span class="line">  <span class="attribute">display</span>: inline-grid</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>注意，设为网格布局以后，容器子元素（项目）的<code>float</code>、<code>display: inline-block</code>、<code>display: table-cell</code>、<code>vertical-align</code>和<code>column-*</code>等设置都将失效。</p>
-<h3 id="1-2-grid-template-columns属性，-grid-template-rows-属性"><a href="#1-2-grid-template-columns属性，-grid-template-rows-属性" class="headerlink" title="1.2 grid-template-columns属性， grid-template-rows 属性"></a>1.2 grid-template-columns属性， grid-template-rows 属性</h3><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 1.基本使用 */</span></span><br><span class="line"><span class="selector-class">.container</span> &#123;</span><br><span class="line">  <span class="attribute">display</span>: grid;</span><br><span class="line">  grid-template-<span class="attribute">columns</span>: <span class="number">100px</span> <span class="number">100px</span> <span class="number">100px</span>;</span><br><span class="line">  || grid-template-<span class="attribute">columns</span>: <span class="number">33.33%</span> <span class="number">33.33%</span> <span class="number">33.33%</span>;</span><br><span class="line">  || grid-template-<span class="attribute">columns</span>: <span class="built_in">repeat</span>(<span class="number">3</span>, <span class="number">33.33%</span>);</span><br><span class="line">  grid-template-rows: <span class="number">100px</span> <span class="number">100px</span> <span class="number">100px</span>;</span><br><span class="line">  || grid-template-rows: <span class="number">33.33%</span> <span class="number">33.33%</span> <span class="number">33.33%</span>;</span><br><span class="line">  || grid-template-rows: <span class="built_in">repeat</span>(<span class="number">3</span>, <span class="number">33.33%</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/* 2.repeat():重复某种样式 */</span></span><br><span class="line"><span class="selector-class">.container</span> &#123;</span><br><span class="line">  <span class="attribute">display</span>: grid;</span><br><span class="line">  grid-template-<span class="attribute">columns</span>: <span class="built_in">repeat</span>(<span class="number">2</span>, <span class="number">100px</span> <span class="number">20px</span> <span class="number">80px</span>); <span class="comment">/* 代表1,4为100px;2,5为20px;3,6为80px */</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/* 3.auto-fill关键字:自动填充元素 */</span></span><br><span class="line"><span class="selector-class">.container</span> &#123;</span><br><span class="line">  <span class="attribute">display</span>: grid;</span><br><span class="line">  grid-template-<span class="attribute">columns</span>: <span class="built_in">repeat</span>(auto-fill, <span class="number">100px</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/* 4.fr关键字: 比例关系 */</span></span><br><span class="line"><span class="selector-class">.container</span> &#123;</span><br><span class="line">  <span class="attribute">display</span>: grid;</span><br><span class="line">  grid-template-<span class="attribute">columns</span>: <span class="number">1</span>fr <span class="number">1</span>fr;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/* 5.minmax():取值范围 */</span></span><br><span class="line"><span class="selector-class">.container</span> &#123;</span><br><span class="line">  grid-template-<span class="attribute">columns</span>: <span class="number">1</span>fr <span class="number">1</span>fr <span class="built_in">minmax</span>(<span class="number">100px</span>, <span class="number">1</span>fr);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/* 6.auto 关键字: 自动填充 */</span></span><br><span class="line"><span class="selector-class">.container</span> &#123;</span><br><span class="line">  grid-template-<span class="attribute">columns</span>: <span class="number">100px</span> auto <span class="number">100px</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/* 7.网格线的名称 */</span></span><br><span class="line"><span class="selector-class">.container</span> &#123;</span><br><span class="line">  <span class="attribute">display</span>: grid;</span><br><span class="line">  grid-template-<span class="attribute">columns</span>: [c1] <span class="number">100px</span> [c2] <span class="number">100px</span> [c3] auto [c4];</span><br><span class="line">  grid-template-rows: [r1] <span class="number">100px</span> [r2] <span class="number">100px</span> [r3] auto [r4];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="1-3-grid-row-gap-属性，-grid-column-gap-属性，-grid-gap-属性"><a href="#1-3-grid-row-gap-属性，-grid-column-gap-属性，-grid-gap-属性" class="headerlink" title="1.3 grid-row-gap 属性， grid-column-gap 属性， grid-gap 属性"></a>1.3 grid-row-gap 属性， grid-column-gap 属性， grid-gap 属性</h3><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.container</span> &#123;</span><br><span class="line">  <span class="attribute">display</span>: grid;</span><br><span class="line">  grid-template-<span class="attribute">columns</span>: <span class="built_in">repeat</span>(<span class="number">3</span>, <span class="number">33.33%</span>);</span><br><span class="line">  grid-template-rows: <span class="number">100px</span> <span class="number">100px</span>;</span><br><span class="line">  <span class="comment">/* 行中间隔,grid-前缀可以省略 */</span></span><br><span class="line">  <span class="comment">/*column-gap: 10px;*/</span></span><br><span class="line">  <span class="comment">/* 列间隔,grid-前缀可以省略 */</span></span><br><span class="line">  <span class="comment">/*row-gap: 10px;*/</span></span><br><span class="line">  <span class="comment">/* 列间隔和行间隔,如果grid-gap省略了第二个值，浏览器认为第二个值等于第一个值。 */</span></span><br><span class="line">  grid-gap: <span class="number">10px</span> <span class="number">10px</span>;</span><br><span class="line"></span><br><span class="line">  <span class="attribute">text-align</span>: center;</span><br><span class="line">  <span class="attribute">font-size</span>: <span class="number">40px</span>;</span><br><span class="line">  <span class="attribute">line-height</span>: <span class="number">100px</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="1-4-grid-template-areas-属性"><a href="#1-4-grid-template-areas-属性" class="headerlink" title="1.4 grid-template-areas 属性"></a>1.4 grid-template-areas 属性</h3><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.container</span> &#123;</span><br><span class="line">  <span class="attribute">display</span>: grid;</span><br><span class="line">  grid-template-<span class="attribute">columns</span>: <span class="number">100px</span> <span class="number">100px</span> <span class="number">100px</span>;</span><br><span class="line">  grid-template-rows: <span class="number">100px</span> <span class="number">100px</span> <span class="number">100px</span>;</span><br><span class="line">  grid-template-areas: <span class="string">&#x27;a b c&#x27;</span></span><br><span class="line">                       <span class="string">&#x27;d e f&#x27;</span></span><br><span class="line">                       <span class="string">&#x27;g h i&#x27;</span>;</span><br><span class="line">  || grid-template-areas: <span class="string">&#x27;a a a&#x27;</span></span><br><span class="line">                          <span class="string">&#x27;b b b&#x27;</span></span><br><span class="line">                          <span class="string">&#x27;c c c&#x27;</span>;</span><br><span class="line">  || grid-template-areas: <span class="string">&quot;header header header&quot;</span></span><br><span class="line">                          <span class="string">&quot;main main sidebar&quot;</span></span><br><span class="line">                          <span class="string">&quot;footer footer footer&quot;</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>注意，区域的命名会影响到网格线。每个区域的起始网格线，会自动命名为<code>区域名-start</code>，终止网格线自动命名为<code>区域名-end</code>。</p>
-<h3 id="1-5-grid-auto-flow-属性"><a href="#1-5-grid-auto-flow-属性" class="headerlink" title="1.5 grid-auto-flow 属性"></a>1.5 grid-auto-flow 属性</h3><p>填充顺序由<code>grid-auto-flow</code>属性决定，默认值是<code>row</code>，即”先行后列”。也可以将它设成<code>column</code>，变成”先列后行”。</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">grid-<span class="attribute">auto</span>-flow: column;</span><br></pre></td></tr></table></figure>
-
-
-
-<p><code>grid-auto-flow</code>属性除了设置成<code>row</code>和<code>column</code>，还可以设成<code>row dense</code>和<code>column dense</code>。这两个值主要用于，某些项目指定位置以后，剩下的项目怎么自动放置。</p>
-<p>未设置<code>dense</code></p>
-<p><img src="https://raw.githubusercontent.com/Yummy-zZ/FigureBed/main/img/bg2019032513.png" alt="img"></p>
-<p><code>grid-auto-flow: row dense;</code></p>
-<p><img src="https://raw.githubusercontent.com/Yummy-zZ/FigureBed/main/img/bg2019032514.png" alt="img"></p>
-<p><code>grid-auto-flow: column dense;</code></p>
-<p><img src="https://raw.githubusercontent.com/Yummy-zZ/FigureBed/main/img/bg2019032515.png" alt="img"></p>
-<h3 id="1-6-justify-items-属性，-align-items-属性，-place-items-属性"><a href="#1-6-justify-items-属性，-align-items-属性，-place-items-属性" class="headerlink" title="1.6 justify-items 属性， align-items 属性， place-items 属性"></a>1.6 justify-items 属性， align-items 属性， place-items 属性</h3><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.container</span> &#123;</span><br><span class="line">  justify-items: start | end | center | stretch;</span><br><span class="line">  <span class="attribute">align-items</span>: start | end | center | stretch;</span><br><span class="line">	<span class="comment">/* place-items属性是align-items属性和justify-items属性的合并简写形式。*/</span></span><br><span class="line">  <span class="comment">/* 如果省略第二个值，则浏览器认为与第一个值相等。 */</span></span><br><span class="line">	place-items: &lt;align-items&gt; &lt;justify-items&gt;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="1-7-justify-content-属性，-align-content-属性，-place-content-属性"><a href="#1-7-justify-content-属性，-align-content-属性，-place-content-属性" class="headerlink" title="1.7 justify-content 属性， align-content 属性， place-content 属性"></a>1.7 justify-content 属性， align-content 属性， place-content 属性</h3><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.container</span> &#123;</span><br><span class="line">  <span class="attribute">justify-content</span>: start | end | center | stretch | space-around | space-between | space-evenly;</span><br><span class="line">  <span class="attribute">align-content</span>: start | end | center | stretch | space-around | space-between | space-evenly;  </span><br><span class="line">  <span class="comment">/* place-content属性是align-content属性和justify-content属性的合并简写形式。 */</span></span><br><span class="line">  place-<span class="attribute">content</span>: &lt;align-content&gt; &lt;justify-content&gt;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>其他类比于flex布局</p>
-<ul>
-<li>space-evenly - 项目与项目的间隔相等，项目与容器边框之间也是同样长度的间隔。</li>
-</ul>
-<p><img src="https://raw.githubusercontent.com/Yummy-zZ/FigureBed/main/img/bg2019032524.png" alt="img"></p>
-<h3 id="1-8-grid-auto-columns-属性，-grid-auto-rows-属性"><a href="#1-8-grid-auto-columns-属性，-grid-auto-rows-属性" class="headerlink" title="1.8 grid-auto-columns 属性， grid-auto-rows 属性"></a>1.8 grid-auto-columns 属性， grid-auto-rows 属性</h3><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.container</span> &#123;</span><br><span class="line">  <span class="attribute">display</span>: grid;</span><br><span class="line">  grid-template-<span class="attribute">columns</span>: <span class="number">100px</span> <span class="number">100px</span> <span class="number">100px</span>;</span><br><span class="line">  grid-template-rows: <span class="number">100px</span> <span class="number">100px</span> <span class="number">100px</span>;</span><br><span class="line">  <span class="comment">/* 指定多余网格的列宽和行高 */</span></span><br><span class="line">  grid-<span class="attribute">auto</span>-rows: <span class="number">50px</span>; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://raw.githubusercontent.com/Yummy-zZ/FigureBed/main/img/bg2019032525.png" alt="img"></p>
-<h3 id="1-9-grid-template-属性，-grid-属性"><a href="#1-9-grid-template-属性，-grid-属性" class="headerlink" title="1.9 grid-template 属性， grid 属性"></a>1.9 grid-template 属性， grid 属性</h3><p><code>grid-template</code>属性是<code>grid-template-columns</code>、<code>grid-template-rows</code>和<code>grid-template-areas</code>这三个属性的合并简写形式。</p>
-<p><code>grid</code>属性是<code>grid-template-rows</code>、<code>grid-template-columns</code>、<code>grid-template-areas</code>、 <code>grid-auto-rows</code>、<code>grid-auto-columns</code>、<code>grid-auto-flow</code>这六个属性的合并简写形式。</p>
-<h2 id="项目属性"><a href="#项目属性" class="headerlink" title="项目属性"></a>项目属性</h2><h3 id="2-1-grid-column-start-属性，-grid-column-end-属性，-grid-row-start-属性，-grid-row-end-属性"><a href="#2-1-grid-column-start-属性，-grid-column-end-属性，-grid-row-start-属性，-grid-row-end-属性" class="headerlink" title="2.1 grid-column-start 属性， grid-column-end 属性， grid-row-start 属性， grid-row-end 属性"></a>2.1 grid-column-start 属性， grid-column-end 属性， grid-row-start 属性， grid-row-end 属性</h3><p>项目的位置是可以指定的，具体方法就是指定项目的四个边框，分别定位在哪根网格线。</p>
-<blockquote>
-<ul>
-<li><code>grid-column-start</code>属性：左边框所在的垂直网格线</li>
-<li><code>grid-column-end</code>属性：右边框所在的垂直网格线</li>
-<li><code>grid-row-start</code>属性：上边框所在的水平网格线</li>
-<li><code>grid-row-end</code>属性：下边框所在的水平网格线</li>
-</ul>
-</blockquote>
-<blockquote>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.item-1</span> &#123;</span><br><span class="line">  grid-column-start: <span class="number">2</span>;</span><br><span class="line">  grid-column-end: <span class="number">4</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</blockquote>
-<p><img src="https://raw.githubusercontent.com/Yummy-zZ/FigureBed/main/img/bg2019032526.png" alt="img"></p>
-<p>这四个属性的值还可以使用<code>span</code>关键字，表示”跨越”，即左右边框（上下边框）之间跨越多少个网格。</p>
-<blockquote>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.item-1</span> &#123;</span><br><span class="line">  grid-column-start: span <span class="number">2</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</blockquote>
-<h3 id="2-2-grid-column-属性，-grid-row-属性"><a href="#2-2-grid-column-属性，-grid-row-属性" class="headerlink" title="2.2 grid-column 属性， grid-row 属性"></a>2.2 grid-column 属性， grid-row 属性</h3><p><code>grid-column</code>属性是<code>grid-column-start</code>和<code>grid-column-end</code>的合并简写形式，<code>grid-row</code>属性是<code>grid-row-start</code>属性和<code>grid-row-end</code>的合并简写形式。</p>
-<blockquote>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.item</span> &#123;</span><br><span class="line">  grid-column: &lt;start-line&gt; / &lt;end-line&gt;;</span><br><span class="line">  grid-row: &lt;start-line&gt; / &lt;end-line&gt;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</blockquote>
-<p>下面是一个例子。</p>
-<blockquote>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.item-1</span> &#123;</span><br><span class="line">  grid-column: <span class="number">1</span> / <span class="number">3</span>;</span><br><span class="line">  grid-row: <span class="number">1</span> / <span class="number">2</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/* 等同于 */</span></span><br><span class="line"><span class="selector-class">.item-1</span> &#123;</span><br><span class="line">  grid-column-start: <span class="number">1</span>;</span><br><span class="line">  grid-column-end: <span class="number">3</span>;</span><br><span class="line">  grid-row-start: <span class="number">1</span>;</span><br><span class="line">  grid-row-end: <span class="number">2</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</blockquote>
-<h3 id="2-3-grid-area-属性"><a href="#2-3-grid-area-属性" class="headerlink" title="2.3 grid-area 属性"></a>2.3 grid-area 属性</h3><p><code>grid-area</code>属性指定项目放在哪一个区域。</p>
-<blockquote>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.item-1</span> &#123;</span><br><span class="line">  grid-area: e;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</blockquote>
-<p><code>grid-area</code>属性还可用作<code>grid-row-start</code>、<code>grid-column-start</code>、<code>grid-row-end</code>、<code>grid-column-end</code>的合并简写形式，直接指定项目的位置。</p>
-<blockquote>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.item</span> &#123;</span><br><span class="line">  grid-area: &lt;row-start&gt; / &lt;column-start&gt; / &lt;row-end&gt; / &lt;column-end&gt;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</blockquote>
-<p>下面是一个<a target="_blank" rel="noopener" href="https://jsbin.com/duyafez/edit?css,output">例子</a>。</p>
-<blockquote>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.item-1</span> &#123;</span><br><span class="line">  grid-area: <span class="number">1</span> / <span class="number">1</span> / <span class="number">3</span> / <span class="number">3</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</blockquote>
-<h3 id="2-4-justify-self-属性，-align-self-属性，-place-self-属性"><a href="#2-4-justify-self-属性，-align-self-属性，-place-self-属性" class="headerlink" title="2.4 justify-self 属性， align-self 属性， place-self 属性"></a>2.4 justify-self 属性， align-self 属性， place-self 属性</h3><p><code>justify-self</code>属性设置单元格内容的水平位置（左中右），跟<code>justify-items</code>属性的用法完全一致，但只作用于单个项目。</p>
-<p><code>align-self</code>属性设置单元格内容的垂直位置（上中下），跟<code>align-items</code>属性的用法完全一致，也是只作用于单个项目。</p>
-<blockquote>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.item</span> &#123;</span><br><span class="line">  justify-self: start | end | center | stretch;</span><br><span class="line">  <span class="attribute">align-self</span>: start | end | center | stretch;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</blockquote>
-<p>这两个属性都可以取下面四个值。</p>
-<blockquote>
-<ul>
-<li>start：对齐单元格的起始边缘。</li>
-<li>end：对齐单元格的结束边缘。</li>
-<li>center：单元格内部居中。</li>
-<li>stretch：拉伸，占满单元格的整个宽度（默认值）。</li>
-</ul>
-</blockquote>
-<p>下面是<code>justify-self: start</code>的例子。</p>
-<blockquote>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.item-1</span>  &#123;</span><br><span class="line">  justify-self: start;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</blockquote>
-<p><img src="https://raw.githubusercontent.com/Yummy-zZ/FigureBed/main/img/bg2019032532.png" alt="img"></p>
-<p><code>place-self</code>属性是<code>align-self</code>属性和<code>justify-self</code>属性的合并简写形式。</p>
-<blockquote>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">place-self: &lt;align-self&gt; &lt;justify-self&gt;;</span><br></pre></td></tr></table></figure>
-</blockquote>
-<p>下面是一个例子。</p>
-<blockquote>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">place-self: center center;</span><br></pre></td></tr></table></figure>
-</blockquote>
-<p>如果省略第二个值，<code>place-self</code>属性会认为这两个值相等。</p>
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2021/10/24/44-grid%E5%B8%83%E5%B1%80/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -457,10 +522,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2021-10-24 08:49:57 / 修改时间：10:07:21" itemprop="dateCreated datePublished" datetime="2021-10-24T08:49:57+08:00">2021-10-24</time>
+              <time title="创建时间：2021-10-24 08:49:57" itemprop="dateCreated datePublished" datetime="2021-10-24T08:49:57+08:00">2021-10-24</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-10-26 20:39:24" itemprop="dateModified" datetime="2021-10-26T20:39:24+08:00">2021-10-26</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -495,15 +566,14 @@
 <p><strong>GUI渲染线程</strong>和<strong>JS引擎线程</strong>是互斥的，为了防止DOM渲染的不一致性，其中一个线程执行时另一个线程会被挂起。</p>
 </blockquote>
 <p>这些线程中，和Vue的<code>nextTick</code>息息相关的是<strong>JS引擎线程</strong>和<strong>事件触发线程</strong>。</p>
-<h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><p>nextTick默认优先使用微任务，如果触发变化则会强制执行宏任务，宏任务的执行优先级setImmediate -&gt; MessageChannel -&gt; setTimeout，nextTick没有参数则返回一个Promise.resolve(),有参数则将回调函数push到一个数组再依次执行。</p>
-<p>源码:</p>
-<h3 id="2-5版本"><a href="#2-5版本" class="headerlink" title="2.5版本"></a>2.5版本</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br></pre></td><td class="code"><pre><span class="line">/* @flow */</span><br><span class="line">/* globals MessageChannel */</span><br><span class="line"></span><br><span class="line">import &#123; noop &#125; from &#x27;shared/util&#x27;</span><br><span class="line">import &#123; handleError &#125; from &#x27;./error&#x27;</span><br><span class="line">import &#123; isIOS, isNative &#125; from &#x27;./env&#x27;</span><br><span class="line"></span><br><span class="line">const callbacks = []</span><br><span class="line">let pending = false</span><br><span class="line"></span><br><span class="line">function flushCallbacks () &#123;</span><br><span class="line">  pending = false</span><br><span class="line">  const copies = callbacks.slice(0)</span><br><span class="line">  callbacks.length = 0</span><br><span class="line">  for (let i = 0; i &lt; copies.length; i++) &#123;</span><br><span class="line">    copies[i]()</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 在2.4中使用了microtasks ，但是还是存在问题，</span><br><span class="line">// 在2.5版本中组合使用macrotasks和microtasks，组合使用的方式是对外暴露withMacroTask函数</span><br><span class="line">// Here we have async deferring wrappers using both microtasks and (macro) tasks.</span><br><span class="line">// In &lt; 2.4 we used microtasks everywhere, but there are some scenarios where</span><br><span class="line">// microtasks have too high a priority and fire in between supposedly</span><br><span class="line">// sequential events (e.g. #4521, #6690) or even between bubbling of the same</span><br><span class="line">// event (#6566). However, using (macro) tasks everywhere also has subtle problems</span><br><span class="line">// when state is changed right before repaint (e.g. #6813, out-in transitions).</span><br><span class="line">// Here we use microtask by default, but expose a way to force (macro) task when</span><br><span class="line">// needed (e.g. in event handlers attached by v-on).</span><br><span class="line"></span><br><span class="line">// 2.5版本在nextTick中对于调用microtask（微任务）还是macrotask（宏任务）声明了两个不同的变量</span><br><span class="line">let microTimerFunc</span><br><span class="line">let macroTimerFunc</span><br><span class="line"></span><br><span class="line">// 默认使用microtask（微任务）</span><br><span class="line">let useMacroTask = false</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">// 这里主要定义macrotask（宏任务）函数</span><br><span class="line">// macrotask（宏任务）的执行优先级</span><br><span class="line">// setImmediate -&gt; MessageChannel -&gt; setTimeout</span><br><span class="line">// setImmediate是最理想的选择</span><br><span class="line">// 最Low的状况是降级执行setTimeout</span><br><span class="line"></span><br><span class="line">// Determine (macro) task defer implementation.</span><br><span class="line">// Technically setImmediate should be the ideal choice, but it&#x27;s only available</span><br><span class="line">// in IE. The only polyfill that consistently queues the callback after all DOM</span><br><span class="line">// events triggered in the same loop is by using MessageChannel.</span><br><span class="line">/* istanbul ignore if */</span><br><span class="line">if (typeof setImmediate !== &#x27;undefined&#x27; &amp;&amp; isNative(setImmediate)) &#123;</span><br><span class="line">  macroTimerFunc = () =&gt; &#123;</span><br><span class="line">    setImmediate(flushCallbacks)</span><br><span class="line">  &#125;</span><br><span class="line">&#125; else if (typeof MessageChannel !== &#x27;undefined&#x27; &amp;&amp; (</span><br><span class="line">  isNative(MessageChannel) ||</span><br><span class="line">  // PhantomJS</span><br><span class="line">  MessageChannel.toString() === &#x27;[object MessageChannelConstructor]&#x27;</span><br><span class="line">)) &#123;</span><br><span class="line">  const channel = new MessageChannel()</span><br><span class="line">  const port = channel.port2</span><br><span class="line">  channel.port1.onmessage = flushCallbacks</span><br><span class="line">  macroTimerFunc = () =&gt; &#123;</span><br><span class="line">    port.postMessage(1)</span><br><span class="line">  &#125;</span><br><span class="line">&#125; else &#123;</span><br><span class="line">  /* istanbul ignore next */</span><br><span class="line">  macroTimerFunc = () =&gt; &#123;</span><br><span class="line">    setTimeout(flushCallbacks, 0)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">// 这里主要定义microtask（微任务）函数</span><br><span class="line">// microtask（微任务）的执行优先级</span><br><span class="line">// Promise -&gt; macroTimerFunc</span><br><span class="line">// 如果原生不支持Promise，那么执行macrotask（宏任务）函数</span><br><span class="line"></span><br><span class="line">// Determine microtask defer implementation.</span><br><span class="line">/* istanbul ignore next, $flow-disable-line */</span><br><span class="line">if (typeof Promise !== &#x27;undefined&#x27; &amp;&amp; isNative(Promise)) &#123;</span><br><span class="line">  const p = Promise.resolve()</span><br><span class="line">  microTimerFunc = () =&gt; &#123;</span><br><span class="line">    p.then(flushCallbacks)</span><br><span class="line">    // in problematic UIWebViews, Promise.then doesn&#x27;t completely break, but</span><br><span class="line">    // it can get stuck in a weird state where callbacks are pushed into the</span><br><span class="line">    // microtask queue but the queue isn&#x27;t being flushed, until the browser</span><br><span class="line">    // needs to do some other work, e.g. handle a timer. Therefore we can</span><br><span class="line">    // &quot;force&quot; the microtask queue to be flushed by adding an empty timer.</span><br><span class="line">    if (isIOS) setTimeout(noop)</span><br><span class="line">  &#125;</span><br><span class="line">&#125; else &#123;</span><br><span class="line">  // fallback to macro</span><br><span class="line">  microTimerFunc = macroTimerFunc</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">// 对外暴露withMacroTask 函数</span><br><span class="line">// 触发变化执行nextTick时强制执行macrotask（宏任务）函数</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"> * Wrap a function so that if any code inside triggers state change,</span><br><span class="line"> * the changes are queued using a (macro) task instead of a microtask.</span><br><span class="line"> */</span><br><span class="line">export function withMacroTask (fn: Function): Function &#123;</span><br><span class="line">  return fn._withTask || (fn._withTask = function () &#123;</span><br><span class="line">    useMacroTask = true</span><br><span class="line">    try &#123;</span><br><span class="line">      return fn.apply(null, arguments)</span><br><span class="line">    &#125; finally &#123;</span><br><span class="line">      useMacroTask = false    </span><br><span class="line">    &#125;</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 这里需要注意pending</span><br><span class="line">export function nextTick (cb?: Function, ctx?: Object) &#123;</span><br><span class="line">  let _resolve</span><br><span class="line">  callbacks.push(() =&gt; &#123;</span><br><span class="line">    if (cb) &#123;</span><br><span class="line">      try &#123;</span><br><span class="line">        cb.call(ctx)</span><br><span class="line">      &#125; catch (e) &#123;</span><br><span class="line">        handleError(e, ctx, &#x27;nextTick&#x27;)</span><br><span class="line">      &#125;</span><br><span class="line">    &#125; else if (_resolve) &#123;</span><br><span class="line">      _resolve(ctx)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;)</span><br><span class="line">  if (!pending) &#123;</span><br><span class="line">    pending = true</span><br><span class="line">    if (useMacroTask) &#123;</span><br><span class="line">      macroTimerFunc()</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">      microTimerFunc()</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  // $flow-disable-line</span><br><span class="line">  if (!cb &amp;&amp; typeof Promise !== &#x27;undefined&#x27;) &#123;</span><br><span class="line">    return new Promise(resolve =&gt; &#123;</span><br><span class="line">      _resolve = resolve</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">复制代码</span><br></pre></td></tr></table></figure>
-
-<h3 id="2-6版本"><a href="#2-6版本" class="headerlink" title="2.6版本"></a>2.6版本</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br></pre></td><td class="code"><pre><span class="line">/* @flow */</span><br><span class="line">/* globals MutationObserver */</span><br><span class="line"></span><br><span class="line">import &#123; noop &#125; from &#x27;shared/util&#x27;</span><br><span class="line">import &#123; handleError &#125; from &#x27;./error&#x27;</span><br><span class="line">import &#123; isIE, isIOS, isNative &#125; from &#x27;./env&#x27;</span><br><span class="line"></span><br><span class="line">export let isUsingMicroTask = false</span><br><span class="line"></span><br><span class="line">const callbacks = []</span><br><span class="line">let pending = false</span><br><span class="line"></span><br><span class="line">function flushCallbacks () &#123;</span><br><span class="line">  pending = false</span><br><span class="line">  const copies = callbacks.slice(0)</span><br><span class="line">  callbacks.length = 0</span><br><span class="line">  for (let i = 0; i &lt; copies.length; i++) &#123;</span><br><span class="line">    copies[i]()</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 在2.5版本中组合使用microtasks 和macrotasks，但是重绘的时候还是存在一些小问题，而且使用macrotasks在任务队列中会有几个特别奇怪的行为没办法避免，So又回到了之前的状态，在任何地方优先使用microtasks 。</span><br><span class="line">// Here we have async deferring wrappers using microtasks.</span><br><span class="line">// In 2.5 we used (macro) tasks (in combination with microtasks).</span><br><span class="line">// However, it has subtle problems when state is changed right before repaint</span><br><span class="line">// (e.g. #6813, out-in transitions).</span><br><span class="line">// Also, using (macro) tasks in event handler would cause some weird behaviors</span><br><span class="line">// that cannot be circumvented (e.g. #7109, #7153, #7546, #7834, #8109).</span><br><span class="line">// So we now use microtasks everywhere, again.</span><br><span class="line">// A major drawback of this tradeoff is that there are some scenarios</span><br><span class="line">// where microtasks have too high a priority and fire in between supposedly</span><br><span class="line">// sequential events (e.g. #4521, #6690, which have workarounds)</span><br><span class="line">// or even between bubbling of the same event (#6566).</span><br><span class="line">let timerFunc</span><br><span class="line"></span><br><span class="line">// The nextTick behavior leverages the microtask queue, which can be accessed</span><br><span class="line">// via either native Promise.then or MutationObserver.</span><br><span class="line">// MutationObserver has wider support, however it is seriously bugged in</span><br><span class="line">// UIWebView in iOS &gt;= 9.3.3 when triggered in touch event handlers. It</span><br><span class="line">// completely stops working after triggering a few times... so, if native</span><br><span class="line">// Promise is available, we will use it:</span><br><span class="line">/* istanbul ignore next, $flow-disable-line */</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">// task的执行优先级</span><br><span class="line">// Promise -&gt; MutationObserver -&gt; setImmediate -&gt; setTimeout</span><br><span class="line"></span><br><span class="line">if (typeof Promise !== &#x27;undefined&#x27; &amp;&amp; isNative(Promise)) &#123;</span><br><span class="line">  const p = Promise.resolve()</span><br><span class="line">  timerFunc = () =&gt; &#123;</span><br><span class="line">    p.then(flushCallbacks)</span><br><span class="line">    // In problematic UIWebViews, Promise.then doesn&#x27;t completely break, but</span><br><span class="line">    // it can get stuck in a weird state where callbacks are pushed into the</span><br><span class="line">    // microtask queue but the queue isn&#x27;t being flushed, until the browser</span><br><span class="line">    // needs to do some other work, e.g. handle a timer. Therefore we can</span><br><span class="line">    // &quot;force&quot; the microtask queue to be flushed by adding an empty timer.</span><br><span class="line">    if (isIOS) setTimeout(noop)</span><br><span class="line">  &#125;</span><br><span class="line">  isUsingMicroTask = true</span><br><span class="line">&#125; else if (!isIE &amp;&amp; typeof MutationObserver !== &#x27;undefined&#x27; &amp;&amp; (</span><br><span class="line">  isNative(MutationObserver) ||</span><br><span class="line">  // PhantomJS and iOS 7.x</span><br><span class="line">  MutationObserver.toString() === &#x27;[object MutationObserverConstructor]&#x27;</span><br><span class="line">)) &#123;</span><br><span class="line">  // Use MutationObserver where native Promise is not available,</span><br><span class="line">  // e.g. PhantomJS, iOS7, Android 4.4</span><br><span class="line">  // (#6466 MutationObserver is unreliable in IE11)</span><br><span class="line">  let counter = 1</span><br><span class="line">  const observer = new MutationObserver(flushCallbacks)</span><br><span class="line">  const textNode = document.createTextNode(String(counter))</span><br><span class="line">  observer.observe(textNode, &#123;</span><br><span class="line">    characterData: true</span><br><span class="line">  &#125;)</span><br><span class="line">  timerFunc = () =&gt; &#123;</span><br><span class="line">    counter = (counter + 1) % 2</span><br><span class="line">    textNode.data = String(counter)</span><br><span class="line">  &#125;</span><br><span class="line">  isUsingMicroTask = true</span><br><span class="line">&#125; else if (typeof setImmediate !== &#x27;undefined&#x27; &amp;&amp; isNative(setImmediate)) &#123;</span><br><span class="line">  // Fallback to setImmediate.</span><br><span class="line">  // Techinically it leverages the (macro) task queue,</span><br><span class="line">  // but it is still a better choice than setTimeout.</span><br><span class="line">  timerFunc = () =&gt; &#123;</span><br><span class="line">    setImmediate(flushCallbacks)</span><br><span class="line">  &#125;</span><br><span class="line">&#125; else &#123;</span><br><span class="line">  // Fallback to setTimeout.</span><br><span class="line">  timerFunc = () =&gt; &#123;</span><br><span class="line">    setTimeout(flushCallbacks, 0)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">export function nextTick (cb?: Function, ctx?: Object) &#123;</span><br><span class="line">  let _resolve</span><br><span class="line">  callbacks.push(() =&gt; &#123;</span><br><span class="line">    if (cb) &#123;</span><br><span class="line">      try &#123;</span><br><span class="line">        cb.call(ctx)</span><br><span class="line">      &#125; catch (e) &#123;</span><br><span class="line">        handleError(e, ctx, &#x27;nextTick&#x27;)</span><br><span class="line">      &#125;</span><br><span class="line">    &#125; else if (_resolve) &#123;</span><br><span class="line">      _resolve(ctx)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;)</span><br><span class="line">  if (!pending) &#123;</span><br><span class="line">    pending = true</span><br><span class="line">    timerFunc()</span><br><span class="line">  &#125;</span><br><span class="line">  // $flow-disable-line</span><br><span class="line">  if (!cb &amp;&amp; typeof Promise !== &#x27;undefined&#x27;) &#123;</span><br><span class="line">    return new Promise(resolve =&gt; &#123;</span><br><span class="line">      _resolve = resolve</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2021/10/24/43-nextTick%E5%8E%9F%E7%90%86/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -926,159 +996,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://yummy-zz.github.io/2021/10/11/vue3%E9%A1%B9%E7%9B%AE%E5%AE%9E%E6%88%98-%E6%92%AD%E6%94%BE%E5%99%A8/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpeg">
-      <meta itemprop="name" content="Eden Yi">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Yum">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/10/11/vue3%E9%A1%B9%E7%9B%AE%E5%AE%9E%E6%88%98-%E6%92%AD%E6%94%BE%E5%99%A8/" class="post-title-link" itemprop="url">vue3项目实战-播放器</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2021-10-11 19:48:05" itemprop="dateCreated datePublished" datetime="2021-10-11T19:48:05+08:00">2021-10-11</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-10-20 09:16:16" itemprop="dateModified" datetime="2021-10-20T09:16:16+08:00">2021-10-20</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E9%A1%B9%E7%9B%AE%E5%AE%9E%E6%88%98/" itemprop="url" rel="index"><span itemprop="name">项目实战</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="播放器主逻辑"><a href="#播放器主逻辑" class="headerlink" title="播放器主逻辑"></a>播放器主逻辑</h2><p>src/components/player/player.vue</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2021/10/11/vue3%E9%A1%B9%E7%9B%AE%E5%AE%9E%E6%88%98-%E6%92%AD%E6%94%BE%E5%99%A8/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://yummy-zz.github.io/2021/10/11/vue3%E9%A1%B9%E7%9B%AE%E5%AE%9E%E6%88%98-vuex%E9%85%8D%E7%BD%AE/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpeg">
-      <meta itemprop="name" content="Eden Yi">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Yum">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/10/11/vue3%E9%A1%B9%E7%9B%AE%E5%AE%9E%E6%88%98-vuex%E9%85%8D%E7%BD%AE/" class="post-title-link" itemprop="url">vue3项目实战-播放器的vuex配置</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2021-10-11 19:47:42" itemprop="dateCreated datePublished" datetime="2021-10-11T19:47:42+08:00">2021-10-11</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-10-20 09:34:50" itemprop="dateModified" datetime="2021-10-20T09:34:50+08:00">2021-10-20</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h3 id="src-store-index-js"><a href="#src-store-index-js" class="headerlink" title="src/store/index.js"></a>src/store/index.js</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; createStore, createLogger &#125; <span class="keyword">from</span> <span class="string">&#x27;vuex&#x27;</span></span><br><span class="line"><span class="keyword">import</span> &#123; state &#125; <span class="keyword">from</span> <span class="string">&#x27;./state&#x27;</span></span><br><span class="line"><span class="keyword">import</span> &#123; mutations &#125; <span class="keyword">from</span> <span class="string">&#x27;./mutations&#x27;</span></span><br><span class="line"><span class="keyword">import</span> * <span class="keyword">as</span> getters <span class="keyword">from</span> <span class="string">&#x27;./getters&#x27;</span></span><br><span class="line"><span class="keyword">import</span> * <span class="keyword">as</span> actions <span class="keyword">from</span> <span class="string">&#x27;./actions&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> debug = process.env.NODE_ENV !== <span class="string">&#x27;production&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> createStore(&#123;</span><br><span class="line">  state,</span><br><span class="line">  getters,</span><br><span class="line">  mutations,</span><br><span class="line">  actions,</span><br><span class="line">  <span class="attr">strict</span>: debug,</span><br><span class="line">  <span class="attr">plugins</span>: debug ? [createLogger()] : [] <span class="comment">// 用来在log页面查看mutation和action状态变化</span></span><br><span class="line">&#125;)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2021/10/11/vue3%E9%A1%B9%E7%9B%AE%E5%AE%9E%E6%88%98-vuex%E9%85%8D%E7%BD%AE/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1150,20 +1067,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">71</span>
+          <span class="site-state-item-count">73</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">14</span>
+        <span class="site-state-item-count">15</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">57</span>
+        <span class="site-state-item-count">59</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
