@@ -22,20 +22,20 @@
     var CONFIG = {"hostname":"yummy-zz.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="简介 TypeScript 是添加了类型系统的 JavaScript，适用于任何规模的项目。 TypeScript 是一门静态类型、弱类型的语言。 TypeScript 是完全兼容 JavaScript 的，它不会修改 JavaScript 运行时的特性。 TypeScript 可以编译为 JavaScript，然后运行在浏览器、Node.js 等任何能运行 JavaScript 的环境中。 Ty">
+  <meta name="description" content="交叉类型 Human &amp; Person 联合类型 number | string">
 <meta property="og:type" content="article">
-<meta property="og:title" content="TypeScipt-入门">
-<meta property="og:url" content="https://yummy-zz.github.io/2021/10/10/TypeScipt-%E5%85%A5%E9%97%A8/index.html">
+<meta property="og:title" content="TypeScipt-高级类型">
+<meta property="og:url" content="https://yummy-zz.github.io/2021/11/07/TypeScipt-%E8%81%94%E5%90%88%E7%B1%BB%E5%9E%8B/index.html">
 <meta property="og:site_name" content="Yum">
-<meta property="og:description" content="简介 TypeScript 是添加了类型系统的 JavaScript，适用于任何规模的项目。 TypeScript 是一门静态类型、弱类型的语言。 TypeScript 是完全兼容 JavaScript 的，它不会修改 JavaScript 运行时的特性。 TypeScript 可以编译为 JavaScript，然后运行在浏览器、Node.js 等任何能运行 JavaScript 的环境中。 Ty">
+<meta property="og:description" content="交叉类型 Human &amp; Person 联合类型 number | string">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2021-10-10T08:48:04.000Z">
-<meta property="article:modified_time" content="2021-10-11T11:54:43.718Z">
+<meta property="article:published_time" content="2021-11-07T02:31:47.000Z">
+<meta property="article:modified_time" content="2021-11-07T02:46:54.653Z">
 <meta property="article:author" content="Eden Yi">
-<meta property="article:tag" content="TypeScript">
+<meta property="article:tag" content="typescript">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="https://yummy-zz.github.io/2021/10/10/TypeScipt-%E5%85%A5%E9%97%A8/">
+<link rel="canonical" href="https://yummy-zz.github.io/2021/11/07/TypeScipt-%E8%81%94%E5%90%88%E7%B1%BB%E5%9E%8B/">
 
 
 <script id="page-configurations">
@@ -48,7 +48,7 @@
   };
 </script>
 
-  <title>TypeScipt-入门 | Yum</title>
+  <title>TypeScipt-高级类型 | Yum</title>
   
 
 
@@ -165,7 +165,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://yummy-zz.github.io/2021/10/10/TypeScipt-%E5%85%A5%E9%97%A8/">
+    <link itemprop="mainEntityOfPage" href="https://yummy-zz.github.io/2021/11/07/TypeScipt-%E8%81%94%E5%90%88%E7%B1%BB%E5%9E%8B/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.jpeg">
@@ -178,7 +178,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          TypeScipt-入门
+          TypeScipt-高级类型
         </h1>
 
         <div class="post-meta">
@@ -187,16 +187,10 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
+              
 
-              <time title="创建时间：2021-10-10 16:48:04" itemprop="dateCreated datePublished" datetime="2021-10-10T16:48:04+08:00">2021-10-10</time>
+              <time title="创建时间：2021-11-07 10:31:47 / 修改时间：10:46:54" itemprop="dateCreated datePublished" datetime="2021-11-07T10:31:47+08:00">2021-11-07</time>
             </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-10-11 19:54:43" itemprop="dateModified" datetime="2021-10-11T19:54:43+08:00">2021-10-11</time>
-              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -225,32 +219,16 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><ul>
-<li>TypeScript 是添加了类型系统的 JavaScript，适用于任何规模的项目。</li>
-<li>TypeScript 是一门静态类型、弱类型的语言。</li>
-<li>TypeScript 是完全兼容 JavaScript 的，它不会修改 JavaScript 运行时的特性。</li>
-<li>TypeScript 可以编译为 JavaScript，然后运行在浏览器、Node.js 等任何能运行 JavaScript 的环境中。</li>
-<li>TypeScript 拥有很多编译选项，类型检查的严格程度由你决定。</li>
-<li>TypeScript 可以和 JavaScript 共存，这意味着 JavaScript 项目能够渐进式的迁移到 TypeScript。</li>
-<li>TypeScript 增强了编辑器（IDE）的功能，提供了代码补全、接口提示、跳转到定义、代码重构等能力。</li>
-<li>TypeScript 拥有活跃的社区，大多数常用的第三方库都提供了类型声明。</li>
-<li>TypeScript 与标准同步发展，符合最新的 ECMAScript 标准（stage 3）。</li>
-</ul>
+        <p>交叉类型</p>
+<p>Human &amp; Person</p>
+<p>联合类型</p>
+<p>number | string</p>
 <span id="more"></span>
 
-<h2 id="基础"><a href="#基础" class="headerlink" title="基础"></a>基础</h2><h3 id="原始数据类型"><a href="#原始数据类型" class="headerlink" title="原始数据类型"></a>原始数据类型</h3><p>Number,Boolean,String,null,undefined,Symbol,BigIng</p>
-<p>JavaScript 没有空值（Void）的概念，在 TypeScript 中，可以用 <code>void</code> 表示没有任何返回值的函数：</p>
-<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">alertName</span>(<span class="params"></span>): <span class="title">void</span> </span>&#123;</span><br><span class="line">    alert(<span class="string">&#x27;My name is Tom&#x27;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="Utility-type"><a href="#Utility-type" class="headerlink" title="Utility type"></a>Utility type</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">type Person &#123;</span><br><span class="line">	name: string,</span><br><span class="line">	age: number</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Patial&lt;Person&gt; // name 和 age可选</span><br><span class="line"></span><br><span class="line">Omit&lt;Person,  &#x27;name&#x27;&gt; // 会忽略name属性</span><br><span class="line">  </span><br><span class="line">Parameters&lt;type 某个函数&gt; // 会将函数的参数类型作为类型</span><br></pre></td></tr></table></figure>
 
-<p><code>undefined</code> 和 <code>null</code> 是所有类型的子类型。也就是说 <code>undefined</code> 类型的变量，可以赋值给 <code>number</code> 类型的变量：</p>
-<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 这样不会报错</span></span><br><span class="line"><span class="keyword">let</span> num: <span class="built_in">number</span> = <span class="literal">undefined</span>;</span><br><span class="line"><span class="comment">// 这样也不会报错</span></span><br><span class="line"><span class="keyword">let</span> u: <span class="literal">undefined</span>;</span><br><span class="line"><span class="keyword">let</span> num: <span class="built_in">number</span> = u;</span><br></pre></td></tr></table></figure>
 
-<p>而 <code>void</code> 类型的变量不能赋值给 <code>number</code> 类型的变量：</p>
-<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> u: <span class="built_in">void</span>;</span><br><span class="line"><span class="keyword">let</span> num: <span class="built_in">number</span> = u;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Type &#x27;void&#x27; is not assignable to type &#x27;number&#x27;.</span></span><br></pre></td></tr></table></figure>
 
-<h3 id="任意值"><a href="#任意值" class="headerlink" title="任意值"></a>任意值</h3><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> myFavoriteNumber: <span class="built_in">any</span> = <span class="string">&#x27;seven&#x27;</span>;</span><br><span class="line">myFavoriteNumber = <span class="number">7</span>;</span><br></pre></td></tr></table></figure>
-
-<p><strong>变量如果在声明的时候，未指定其类型，那么它会被识别为任意值类型</strong>：</p>
 
     </div>
 
@@ -260,7 +238,7 @@
 
       <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/TypeScript/" rel="tag"># TypeScript</a>
+              <a href="/tags/typescript/" rel="tag"># typescript</a>
           </div>
 
         
@@ -269,12 +247,12 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2021/10/09/vue3%E9%A1%B9%E7%9B%AE%E5%AE%9E%E6%88%98-%E6%AD%8C%E6%89%8B%E8%AF%A6%E6%83%85%E9%A1%B5/" rel="prev" title="vue3项目实战-歌手详情页">
-      <i class="fa fa-chevron-left"></i> vue3项目实战-歌手详情页
+    <a href="/2021/11/06/47-react%E4%B8%AD%E7%9A%84context/" rel="prev" title="47-react中的context">
+      <i class="fa fa-chevron-left"></i> 47-react中的context
     </a></div>
       <div class="post-nav-item">
-    <a href="/2021/10/11/vue3%E9%A1%B9%E7%9B%AE%E5%AE%9E%E6%88%98-vuex%E9%85%8D%E7%BD%AE/" rel="next" title="vue3项目实战-播放器的vuex配置">
-      vue3项目实战-播放器的vuex配置 <i class="fa fa-chevron-right"></i>
+    <a href="/2021/11/08/48-react%E4%B8%AD%E7%9A%84%E6%8F%92%E4%BB%B6%E5%92%8C%E8%BD%AE%E5%AD%90/" rel="next" title="48-react中的插件和轮子">
+      48-react中的插件和轮子 <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
       </footer>
@@ -334,7 +312,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AE%80%E4%BB%8B"><span class="nav-number">1.</span> <span class="nav-text">简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9F%BA%E7%A1%80"><span class="nav-number">2.</span> <span class="nav-text">基础</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8E%9F%E5%A7%8B%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="nav-number">2.1.</span> <span class="nav-text">原始数据类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BB%BB%E6%84%8F%E5%80%BC"><span class="nav-number">2.2.</span> <span class="nav-text">任意值</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Utility-type"><span class="nav-number">1.</span> <span class="nav-text">Utility type</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -350,20 +328,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">73</span>
+          <span class="site-state-item-count">80</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">15</span>
+        <span class="site-state-item-count">16</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">59</span>
+        <span class="site-state-item-count">64</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>

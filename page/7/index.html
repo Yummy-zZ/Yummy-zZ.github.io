@@ -159,6 +159,638 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://yummy-zz.github.io/2021/09/18/20-%E5%93%8D%E5%BA%94%E5%BC%8F%E5%8E%9F%E7%90%86/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpeg">
+      <meta itemprop="name" content="Eden Yi">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Yum">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/09/18/20-%E5%93%8D%E5%BA%94%E5%BC%8F%E5%8E%9F%E7%90%86/" class="post-title-link" itemprop="url">20-响应式原理</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-09-18 17:19:07" itemprop="dateCreated datePublished" datetime="2021-09-18T17:19:07+08:00">2021-09-18</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-09-27 09:18:04" itemprop="dateModified" datetime="2021-09-27T09:18:04+08:00">2021-09-27</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Vue/" itemprop="url" rel="index"><span itemprop="name">Vue</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="Vue2响应式原理"><a href="#Vue2响应式原理" class="headerlink" title="Vue2响应式原理"></a>Vue2响应式原理</h1><h2 id="🍆Object-defineProperty"><a href="#🍆Object-defineProperty" class="headerlink" title="🍆Object.defineProperty"></a>🍆Object.defineProperty</h2><p>点运算(obj.a = 1)和在对象里直接创建属性代表了其他描述符都为true，例如writable: true,configurable: true,enumerable: true, value: 1</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Object.defineProperty(obj, prop, descriptor)</span><br></pre></td></tr></table></figure>
+
+<h3 id="🫐参数"><a href="#🫐参数" class="headerlink" title="🫐参数"></a>🫐参数</h3><ul>
+<li><p><code>obj</code></p>
+<p>要定义属性的对象。</p>
+</li>
+<li><p><code>prop</code></p>
+<p>要定义或修改的属性的名称或 <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Symbol"><code>Symbol</code></a> 。</p>
+</li>
+<li><p><code>descriptor</code></p>
+<p>要定义或修改的属性描述符。</p>
+<h3 id="🌰例子"><a href="#🌰例子" class="headerlink" title="🌰例子"></a>🌰例子</h3></li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> object1 = &#123;&#125;;</span><br><span class="line"></span><br><span class="line"><span class="built_in">Object</span>.defineProperty(object1, <span class="string">&#x27;property1&#x27;</span>, &#123;</span><br><span class="line">  <span class="attr">value</span>: <span class="number">42</span>,</span><br><span class="line">  <span class="attr">writable</span>: <span class="literal">false</span></span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">object1.property1 = <span class="number">77</span>;</span><br><span class="line"><span class="comment">// throws an error in strict mode</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(object1.property1);</span><br><span class="line"><span class="comment">// expected output: 42</span></span><br></pre></td></tr></table></figure>
+
+<h3 id=""><a href="#" class="headerlink" title=""></a>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2021/09/18/20-%E5%93%8D%E5%BA%94%E5%BC%8F%E5%8E%9F%E7%90%86/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://yummy-zz.github.io/2021/09/18/19-%E8%99%9A%E6%8B%9Fdom%E5%92%8Cdiff%E7%AE%97%E6%B3%95/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpeg">
+      <meta itemprop="name" content="Eden Yi">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Yum">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/09/18/19-%E8%99%9A%E6%8B%9Fdom%E5%92%8Cdiff%E7%AE%97%E6%B3%95/" class="post-title-link" itemprop="url">19-虚拟dom和diff算法</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-09-18 16:14:23" itemprop="dateCreated datePublished" datetime="2021-09-18T16:14:23+08:00">2021-09-18</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-10-03 15:55:57" itemprop="dateModified" datetime="2021-10-03T15:55:57+08:00">2021-10-03</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Vue/" itemprop="url" rel="index"><span itemprop="name">Vue</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="🌹虚拟DOM"><a href="#🌹虚拟DOM" class="headerlink" title="🌹虚拟DOM"></a>🌹虚拟DOM</h2><p><code>vnode</code>基于<code>js</code>，利用到了一个h函数，这个h函数一般有三个参数，第一个参数是<code>selector</code>(<strong>在<code>vue</code>中第一个是一个 HTML 标签名、一个组件、一个异步组件、或一个函数式组件。</strong>)，以字符串的形式表示，第二个参数是<code>data</code>属性，也就是各种标签属性或事件，以对象的形式表示，第三个参数是子节点，以数组的形式表示。如果标签没有<code>data</code>属性，第二个参数可以直接是子节点。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2021/09/18/19-%E8%99%9A%E6%8B%9Fdom%E5%92%8Cdiff%E7%AE%97%E6%B3%95/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://yummy-zz.github.io/2021/09/17/18-Vue%E8%B7%AF%E7%94%B1%E5%AE%88%E5%8D%AB/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpeg">
+      <meta itemprop="name" content="Eden Yi">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Yum">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/09/17/18-Vue%E8%B7%AF%E7%94%B1%E5%AE%88%E5%8D%AB/" class="post-title-link" itemprop="url">18-Vue路由守卫</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-09-17 17:46:48" itemprop="dateCreated datePublished" datetime="2021-09-17T17:46:48+08:00">2021-09-17</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-10-02 10:33:38" itemprop="dateModified" datetime="2021-10-02T10:33:38+08:00">2021-10-02</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Vue/" itemprop="url" rel="index"><span itemprop="name">Vue</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="🌈路由守卫调用顺序"><a href="#🌈路由守卫调用顺序" class="headerlink" title="🌈路由守卫调用顺序"></a>🌈路由守卫调用顺序</h2><ol>
+<li>导航被触发。</li>
+<li>在<strong>失活的组件</strong>里调用 <code>beforeRouteLeave</code> 守卫。</li>
+<li>调用 <strong>全局</strong> 的 <code>beforeEach</code> 守卫。</li>
+<li>在<strong>重用的组件</strong>里调用 <code>beforeRouteUpdate</code> 守卫(2.2+)。</li>
+<li>在<strong>路由配置里</strong>调用 <code>beforeEnter</code>。</li>
+<li>解析异步路由组件。</li>
+<li>在被激活的<strong>组件里</strong>调用 <code>beforeRouteEnter</code>。</li>
+<li>调用<strong>全局</strong>的 <code>beforeResolve</code> 守卫(2.5+)。</li>
+<li>导航被确认。</li>
+<li>调用<strong>全局</strong>的 <code>afterEach</code> 钩子。</li>
+<li>触发 DOM 更新。</li>
+<li>调用 <code>beforeRouteEnter</code> 守卫中传给 <code>next</code> 的回调函数，创建好的组件实例会作为回调函数的参数传入。</li>
+</ol>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://yummy-zz.github.io/2021/09/17/17-axios/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpeg">
+      <meta itemprop="name" content="Eden Yi">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Yum">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/09/17/17-axios/" class="post-title-link" itemprop="url">17-axios</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-09-17 09:35:06" itemprop="dateCreated datePublished" datetime="2021-09-17T09:35:06+08:00">2021-09-17</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-10-02 10:44:01" itemprop="dateModified" datetime="2021-10-02T10:44:01+08:00">2021-10-02</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%BD%91%E7%BB%9C%E8%AF%B7%E6%B1%82/" itemprop="url" rel="index"><span itemprop="name">网络请求</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="特性"><a href="#特性" class="headerlink" title="特性"></a>特性</h2><ul>
+<li>从浏览器中创建 <a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest">XMLHttpRequests</a></li>
+<li>从 node.js 创建 <a target="_blank" rel="noopener" href="http://nodejs.org/api/http.html">http</a> 请求</li>
+<li>支持 <a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a> API</li>
+<li>拦截请求和响应</li>
+<li>转换请求数据和响应数据</li>
+<li>取消请求</li>
+<li>自动转换 JSON 数据</li>
+<li>客户端支持防御 <a target="_blank" rel="noopener" href="http://en.wikipedia.org/wiki/Cross-site_request_forgery">XSRF</a></li>
+</ul>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2021/09/17/17-axios/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://yummy-zz.github.io/2021/09/16/16-fetch/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpeg">
+      <meta itemprop="name" content="Eden Yi">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Yum">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/09/16/16-fetch/" class="post-title-link" itemprop="url">16-fetch和ajax</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-09-16 14:27:46" itemprop="dateCreated datePublished" datetime="2021-09-16T14:27:46+08:00">2021-09-16</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-10-02 10:32:37" itemprop="dateModified" datetime="2021-10-02T10:32:37+08:00">2021-10-02</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%BD%91%E7%BB%9C%E8%AF%B7%E6%B1%82/" itemprop="url" rel="index"><span itemprop="name">网络请求</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="Fetch-API-教程"><a href="#Fetch-API-教程" class="headerlink" title="Fetch API 教程"></a>Fetch API 教程</h1><p>作者： <a target="_blank" rel="noopener" href="https://www.ruanyifeng.com/">阮一峰</a></p>
+<p>日期： <a target="_blank" rel="noopener" href="https://www.ruanyifeng.com/blog/2020/12/">2020年12月28日</a></p>
+<p><code>fetch()</code>是 XMLHttpRequest 的升级版，用于在 JavaScript 脚本里面发出 HTTP 请求。</p>
+<p>浏览器原生提供这个对象。本文详细介绍它的用法。</p>
+<p><img src="https://www.wangbase.com/blogimg/asset/202012/bg2020122613.jpg" alt="img"></p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2021/09/16/16-fetch/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://yummy-zz.github.io/2021/09/15/15-cors%E8%B7%A8%E5%9F%9F/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpeg">
+      <meta itemprop="name" content="Eden Yi">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Yum">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/09/15/15-cors%E8%B7%A8%E5%9F%9F/" class="post-title-link" itemprop="url">15-cors跨域</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-09-15 21:44:40" itemprop="dateCreated datePublished" datetime="2021-09-15T21:44:40+08:00">2021-09-15</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-10-24 11:28:36" itemprop="dateModified" datetime="2021-10-24T11:28:36+08:00">2021-10-24</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%BD%91%E7%BB%9C%E8%AF%B7%E6%B1%82/" itemprop="url" rel="index"><span itemprop="name">网络请求</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h3 id="简单请求："><a href="#简单请求：" class="headerlink" title="简单请求："></a><strong>简单请求：</strong></h3><p><strong>请求头(浏览器自动添加)</strong></p>
+<p>Origin: xxx.com</p>
+<p>….</p>
+<p><strong>服务器</strong></p>
+<p>Access-Control-Allow-Origin: xxx.com</p>
+<p>Access-Control-Allow-Credentials: true // 只能为true</p>
+<p>Access-Control-Expose-Headers: Foo // 客户端ajax可以获取到的响应头</p>
+<h3 id="复杂请求"><a href="#复杂请求" class="headerlink" title="复杂请求:"></a><strong>复杂请求:</strong></h3><p><strong>请求头(浏览器自动添加)</strong></p>
+<p>Origin: xxx.com</p>
+<p>Access-Control-Request-Method: Put</p>
+<p>Access-Control-Request-Headers: Foo // 自定义请求头</p>
+<p><strong>服务器</strong></p>
+<p>Access-Control-Allow-Origin: xxx.com</p>
+<p>Access-Control-Allow-Methods: Get,Post,Put</p>
+<p>Access-Control-Allow-Headers: Foo,X-Custom-Header</p>
+<p>Access-Control-Allow-Credentials: true // 客户端ajax请求时const xhr = new XmlHttpRequest  xhr.withCredentials = true</p>
+<p>Access-Control-Max-Age: 1998  // 单位s</p>
+<h2 id="①两种请求"><a href="#①两种请求" class="headerlink" title="①两种请求"></a>①两种请求</h2><h3 id="1-简单请求"><a href="#1-简单请求" class="headerlink" title="1.简单请求"></a>1.简单请求</h3><p>（1) 请求方法是以下三种方法之一：</p>
+<ul>
+<li>HEAD</li>
+<li>GET</li>
+<li>POST</li>
+</ul>
+<p>（2）HTTP的头信息不超出以下几种字段：</p>
+<ul>
+<li>Accept</li>
+<li>Accept-Language</li>
+<li>Content-Language</li>
+<li>Last-Event-ID</li>
+<li>Content-Type：只限于三个值<code>application/x-www-form-urlencoded</code>、<code>multipart/form-data</code>、<code>text/plain</code></li>
+</ul>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2021/09/15/15-cors%E8%B7%A8%E5%9F%9F/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://yummy-zz.github.io/2021/09/15/14-%E6%87%92%E5%8A%A0%E8%BD%BD/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpeg">
+      <meta itemprop="name" content="Eden Yi">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Yum">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/09/15/14-%E6%87%92%E5%8A%A0%E8%BD%BD/" class="post-title-link" itemprop="url">14-懒加载</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-09-15 17:36:46" itemprop="dateCreated datePublished" datetime="2021-09-15T17:36:46+08:00">2021-09-15</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-10-06 11:59:19" itemprop="dateModified" datetime="2021-10-06T11:59:19+08:00">2021-10-06</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/" itemprop="url" rel="index"><span itemprop="name">性能优化</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="一-自己手写"><a href="#一-自己手写" class="headerlink" title="一.自己手写"></a>一.自己手写</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> lazyLoad = <span class="function">() =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> img = <span class="built_in">document</span>.getElementsByTagName(<span class="string">&#x27;img&#x27;</span>)</span><br><span class="line">  <span class="keyword">const</span> viewHeight = <span class="built_in">document</span>.documentElement.clientHeight <span class="comment">// 可视窗口高度</span></span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; img.length; i++) &#123;</span><br><span class="line">    <span class="keyword">if</span>(img[i].getBoundingClientRect().top &lt; viewHeight) &#123; <span class="comment">// get...图片距离可视窗口的高度</span></span><br><span class="line">      img.src = img.getAttribute(<span class="string">&#x27;data-src&#x27;</span>)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2021/09/15/14-%E6%87%92%E5%8A%A0%E8%BD%BD/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://yummy-zz.github.io/2021/09/15/13-promise%E8%AF%A6%E8%A7%A3/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -421,607 +1053,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://yummy-zz.github.io/2021/09/09/10-%E9%97%AD%E5%8C%85%E4%B8%8E%E4%BD%9C%E7%94%A8%E5%9F%9F%E9%93%BE/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpeg">
-      <meta itemprop="name" content="Eden Yi">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Yum">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/09/09/10-%E9%97%AD%E5%8C%85%E4%B8%8E%E4%BD%9C%E7%94%A8%E5%9F%9F%E9%93%BE/" class="post-title-link" itemprop="url">10-闭包与作用域链</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2021-09-09 16:32:11" itemprop="dateCreated datePublished" datetime="2021-09-09T16:32:11+08:00">2021-09-09</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-09-11 10:18:16" itemprop="dateModified" datetime="2021-09-11T10:18:16+08:00">2021-09-11</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/JS/" itemprop="url" rel="index"><span itemprop="name">JS</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p><strong>自由变量</strong>：</p>
-<p>在作用域内能访问到的变量，但是变量声明在外部</p>
-<p><strong>执行上下文：</strong></p>
-<ul>
-<li>全局执行上下文，默认的，在浏览器中是 window 对象，并且 this 在非严格模式下指向它。</li>
-<li>函数执行上下文，JS 的函数每当被调用时会创建一个上下文。</li>
-<li>Eval 执行上下文，eval 函数会产生自己的上下文，通常用于静态测试，将外部变量全部打包给内部函数。</li>
-</ul>
-<p><strong>作用域链：</strong></p>
-<p>变量或者函数或者对象等在<em><strong>创建</strong></em>的时候会依下向上形成一条作用域链</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2021/09/09/10-%E9%97%AD%E5%8C%85%E4%B8%8E%E4%BD%9C%E7%94%A8%E5%9F%9F%E9%93%BE/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://yummy-zz.github.io/2021/09/08/9-%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96(1)/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpeg">
-      <meta itemprop="name" content="Eden Yi">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Yum">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/09/08/9-%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96(1)/" class="post-title-link" itemprop="url">性能优化(1)</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2021-09-08 19:14:54" itemprop="dateCreated datePublished" datetime="2021-09-08T19:14:54+08:00">2021-09-08</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-09-11 10:18:31" itemprop="dateModified" datetime="2021-09-11T10:18:31+08:00">2021-09-11</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/" itemprop="url" rel="index"><span itemprop="name">性能优化</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="1-图片优化"><a href="#1-图片优化" class="headerlink" title="1.图片优化"></a>1.图片优化</h2><p>1.减少像素点🍉</p>
-<p>2.减少像素点能够显示的颜色🍇</p>
-<h2 id="2-图片加载优化"><a href="#2-图片加载优化" class="headerlink" title="2.图片加载优化"></a>2.图片加载优化</h2><p>1.CDN加载</p>
-<p>2.图片懒加载</p>
-<p>3.小图使用base64</p>
-<p>4.CSS能替代的用CSS</p>
-<p>5.支持webp的用webp(apng__动态png)</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2021/09/08/9-%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96(1)/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://yummy-zz.github.io/2021/09/08/8-%E6%A8%A1%E5%9D%97%E5%8C%96/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpeg">
-      <meta itemprop="name" content="Eden Yi">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Yum">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/09/08/8-%E6%A8%A1%E5%9D%97%E5%8C%96/" class="post-title-link" itemprop="url">模块化</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2021-09-08 14:51:07" itemprop="dateCreated datePublished" datetime="2021-09-08T14:51:07+08:00">2021-09-08</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-09-11 10:18:48" itemprop="dateModified" datetime="2021-09-11T10:18:48+08:00">2021-09-11</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/JS/" itemprop="url" rel="index"><span itemprop="name">JS</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="一-CommonJS"><a href="#一-CommonJS" class="headerlink" title="一.CommonJS"></a>一.CommonJS</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// main.js</span></span><br><span class="line"><span class="keyword">const</span> a = <span class="number">1</span></span><br><span class="line"><span class="keyword">export</span>.module&#123;</span><br><span class="line">  a</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//index.js</span></span><br><span class="line"><span class="keyword">const</span> <span class="built_in">module</span> = <span class="built_in">require</span>(./main)</span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">module</span>.a) <span class="comment">// 1</span></span><br></pre></td></tr></table></figure>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2021/09/08/8-%E6%A8%A1%E5%9D%97%E5%8C%96/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://yummy-zz.github.io/2021/09/07/7-%E5%8E%9F%E5%9E%8B%E7%BB%A7%E6%89%BF%E5%92%8Cclass%E7%BB%A7%E6%89%BFmd/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpeg">
-      <meta itemprop="name" content="Eden Yi">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Yum">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/09/07/7-%E5%8E%9F%E5%9E%8B%E7%BB%A7%E6%89%BF%E5%92%8Cclass%E7%BB%A7%E6%89%BFmd/" class="post-title-link" itemprop="url">原型继承和class继承</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2021-09-07 19:58:23" itemprop="dateCreated datePublished" datetime="2021-09-07T19:58:23+08:00">2021-09-07</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-09-08 19:15:33" itemprop="dateModified" datetime="2021-09-08T19:15:33+08:00">2021-09-08</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/JS/" itemprop="url" rel="index"><span itemprop="name">JS</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="一-组合继承"><a href="#一-组合继承" class="headerlink" title="一.组合继承"></a>一.组合继承</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">parent</span>(<span class="params">val</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">this</span>.val = val</span><br><span class="line">  &#125;</span><br><span class="line">  parent.prototype.outVal = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="built_in">this</span>.val)</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">child</span>(<span class="params">val</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">this</span>.name = <span class="string">&quot;hello&quot;</span></span><br><span class="line">    parent.call(<span class="built_in">this</span>, val)</span><br><span class="line">  &#125;</span><br><span class="line">  child.prototype = <span class="keyword">new</span> parent()</span><br><span class="line">  <span class="keyword">const</span> obj = <span class="keyword">new</span> child(<span class="number">1</span>)</span><br><span class="line">  <span class="built_in">console</span>.log(obj.val, obj.name); <span class="comment">// 1 &#x27;hello&#x27;</span></span><br><span class="line">  obj.outVal() <span class="comment">// 1</span></span><br></pre></td></tr></table></figure>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2021/09/07/7-%E5%8E%9F%E5%9E%8B%E7%BB%A7%E6%89%BF%E5%92%8Cclass%E7%BB%A7%E6%89%BFmd/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://yummy-zz.github.io/2021/09/07/6-%E6%B7%B1%E6%8B%B7%E8%B4%9D%E4%B8%8E%E6%B5%85%E6%8B%B7%E8%B4%9D/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpeg">
-      <meta itemprop="name" content="Eden Yi">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Yum">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/09/07/6-%E6%B7%B1%E6%8B%B7%E8%B4%9D%E4%B8%8E%E6%B5%85%E6%8B%B7%E8%B4%9D/" class="post-title-link" itemprop="url">深拷贝与浅拷贝</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2021-09-07 15:39:50" itemprop="dateCreated datePublished" datetime="2021-09-07T15:39:50+08:00">2021-09-07</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-09-16 09:06:22" itemprop="dateModified" datetime="2021-09-16T09:06:22+08:00">2021-09-16</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/JS/" itemprop="url" rel="index"><span itemprop="name">JS</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>📌补充 </p>
-<p><strong>for…in</strong> </p>
-<p>一般用来遍历对象, 参数为key值</p>
-<p><strong>for…of</strong></p>
-<p><code>for...of</code> 接受可迭代对象。可以遍历**<code>string</code><strong>、</strong>数组<strong>、</strong>类数组**、<code>set</code>、<code>map</code>、<code>DOM集合</code></p>
-<p>迭代的项目可以在就地解构<code>const &#123;&#125;</code>。</p>
-<p><strong>Array.from()</strong></p>
-<p>浅拷贝一个新的数组，参数可以是字符串，map，set，arguments</p>
-<p><strong>Array.prototype.entries()</strong></p>
-<p>返回一个数组，包括Index和val</p>
-<p><strong>Object.entries()</strong></p>
-<p>返回一个数组，包含key和val</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2021/09/07/6-%E6%B7%B1%E6%8B%B7%E8%B4%9D%E4%B8%8E%E6%B5%85%E6%8B%B7%E8%B4%9D/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://yummy-zz.github.io/2021/09/06/5-bind,apply,call%E6%95%B0%E4%B8%8E%E6%89%8B%E5%86%99new/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpeg">
-      <meta itemprop="name" content="Eden Yi">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Yum">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/09/06/5-bind,apply,call%E6%95%B0%E4%B8%8E%E6%89%8B%E5%86%99new/" class="post-title-link" itemprop="url">session、cookie、token</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2021-09-06 20:39:35" itemprop="dateCreated datePublished" datetime="2021-09-06T20:39:35+08:00">2021-09-06</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-09-09 17:44:03" itemprop="dateModified" datetime="2021-09-09T17:44:03+08:00">2021-09-09</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/JS/" itemprop="url" rel="index"><span itemprop="name">JS</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="🌶重点"><a href="#🌶重点" class="headerlink" title="🌶重点"></a>🌶重点</h2><blockquote>
-<p>new绑定优先级 &gt; 显示绑定优先级 &gt; 隐式绑定优先级 &gt; 默认绑定优先级</p>
-</blockquote>
-<h2 id="一-手写new"><a href="#一-手写new" class="headerlink" title="一.手写new"></a>一.手写new</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"> <span class="function"><span class="keyword">function</span> <span class="title">create</span>(<span class="params"></span>) </span>&#123; <span class="comment">// 不能用箭头函数，箭头函数没有arguments</span></span><br><span class="line">  <span class="comment">// 1.创建对象</span></span><br><span class="line">  <span class="keyword">const</span> obj = <span class="keyword">new</span> <span class="built_in">Object</span>()</span><br><span class="line">  <span class="comment">// 2.取出构造函数</span></span><br><span class="line">  <span class="keyword">const</span> con = [].shift.apply(<span class="built_in">arguments</span>)</span><br><span class="line">  <span class="comment">// 3.绑定原型</span></span><br><span class="line">  obj.__proto__ = con.prototype</span><br><span class="line">  <span class="comment">// 4.绑定this，并接收构造函数返回值</span></span><br><span class="line">  <span class="keyword">const</span> result = con.apply(obj, <span class="built_in">arguments</span>)</span><br><span class="line">  <span class="comment">// 5.返回</span></span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">typeof</span> result === <span class="string">&#x27;object&#x27;</span> ? result : obj</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">constructor</span>(<span class="params">name, age</span>) </span>&#123; <span class="comment">// 不能用箭头函数,箭头函数没有原型</span></span><br><span class="line">  <span class="built_in">this</span>.name = name</span><br><span class="line">  <span class="built_in">this</span>.age = age</span><br><span class="line">&#125;</span><br><span class="line"><span class="title">constructor</span>.<span class="title">prototype</span>.<span class="title">sayname</span> = <span class="title">function</span>(<span class="params"></span>) &#123; <span class="comment">//不能用箭头函数,箭头函数没有this</span></span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">`MyName is <span class="subst">$&#123;<span class="built_in">this</span>.name&#125;</span>`</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> obj = create(<span class="title">constructor</span>, &quot;易家豪&quot;, 21)</span><br><span class="line"><span class="title">console</span>.<span class="title">log</span>(<span class="params">obj.name, obj.age, obj.sayname()</span>)</span><br></pre></td></tr></table></figure>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2021/09/06/5-bind,apply,call%E6%95%B0%E4%B8%8E%E6%89%8B%E5%86%99new/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://yummy-zz.github.io/2021/09/05/4-session%E3%80%81cookie%E3%80%81token/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpeg">
-      <meta itemprop="name" content="Eden Yi">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Yum">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/09/05/4-session%E3%80%81cookie%E3%80%81token/" class="post-title-link" itemprop="url">session、cookie、token</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2021-09-05 15:58:35" itemprop="dateCreated datePublished" datetime="2021-09-05T15:58:35+08:00">2021-09-05</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-10-20 16:33:25" itemprop="dateModified" datetime="2021-10-20T16:33:25+08:00">2021-10-20</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/HTTP/" itemprop="url" rel="index"><span itemprop="name">HTTP</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="一-cookie和session"><a href="#一-cookie和session" class="headerlink" title="一.cookie和session"></a>一.cookie和session</h2><p>1.客户端发送请求</p>
-<p>2.服务器接收到请求建立一个session，并在请求头中包含一个set-cookie，其中包含sessionID</p>
-<p>3.客户端将数据存储在cookie，sessionID包含在cookie中</p>
-<p>4.服务器根据sessionID找到session并检查数据(第一次建立数据)，返回response</p>
-<p><img src="https://raw.githubusercontent.com/Yummy-zZ/FigureBed/main/img/bVbmYbQ.png" alt="请求流程"></p>
-<p>CSRF就是利用用户在未关闭A网站的前提下去访问攻击者B网站，B网站发送request请求用户访问A网站并拿到用户在A网站的数据</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2021/09/05/4-session%E3%80%81cookie%E3%80%81token/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1093,20 +1124,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">73</span>
+          <span class="site-state-item-count">80</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">15</span>
+        <span class="site-state-item-count">16</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">59</span>
+        <span class="site-state-item-count">64</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
