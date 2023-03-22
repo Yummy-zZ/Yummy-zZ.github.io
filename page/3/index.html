@@ -159,10 +159,175 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://yummy-zz.github.io/2021/10/25/%E7%AE%97%E6%B3%95%E5%BF%83%E5%BE%971/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Jason Yee">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Yee'blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/10/25/%E7%AE%97%E6%B3%95%E5%BF%83%E5%BE%971/" class="post-title-link" itemprop="url">经典算法心得1</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-10-25 19:49:10" itemprop="dateCreated datePublished" datetime="2021-10-25T19:49:10+08:00">2021-10-25</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-11-18 20:09:48" itemprop="dateModified" datetime="2021-11-18T20:09:48+08:00">2021-11-18</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/" itemprop="url" rel="index"><span itemprop="name">数据结构与算法</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="排序-双指针"><a href="#排序-双指针" class="headerlink" title="排序 + 双指针"></a>排序 + 双指针</h2><h3 id="1-三数之和"><a href="#1-三数之和" class="headerlink" title="1.三数之和"></a>1.三数之和</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> threeSum = <span class="function"><span class="keyword">function</span>(<span class="params">nums</span>) </span>&#123;</span><br><span class="line">  nums.sort(<span class="function">(<span class="params">a,b</span>) =&gt;</span> a-b)</span><br><span class="line">  <span class="built_in">console</span>.log(nums);</span><br><span class="line">  <span class="keyword">const</span> n = nums.length</span><br><span class="line">  <span class="keyword">const</span> res = []</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> first = <span class="number">0</span>; first &lt; n; first++) &#123;</span><br><span class="line">    <span class="keyword">if</span> (nums[first] === nums[first - <span class="number">1</span>]) <span class="keyword">continue</span> <span class="comment">// 不做重复处理</span></span><br><span class="line">    <span class="keyword">let</span> third = n - <span class="number">1</span> <span class="comment">// 右指针</span></span><br><span class="line">    <span class="keyword">let</span> target = -nums[first] <span class="comment">// 设立目标值</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> second = first + <span class="number">1</span>; second &lt; n; second++) &#123; <span class="comment">// 左指针</span></span><br><span class="line">      <span class="keyword">if</span> (second &gt; first + <span class="number">1</span> &amp;&amp; nums[second] === nums[second - <span class="number">1</span>]) <span class="keyword">continue</span> <span class="comment">// 不做重复处理</span></span><br><span class="line">      <span class="keyword">while</span> (second &lt; third &amp;&amp; nums[second] + nums[third] &gt; target) third-- <span class="comment">// 最小加最大都比目标值大</span></span><br><span class="line">      <span class="keyword">if</span> (second === third) <span class="keyword">break</span> <span class="comment">// 重合代表未找到</span></span><br><span class="line">      <span class="keyword">if</span> (nums[second] + nums[third] === target) res.push([nums[first], nums[second], nums[third]])</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> res</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2021/10/25/%E7%AE%97%E6%B3%95%E5%BF%83%E5%BE%971/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://yummy-zz.github.io/2021/10/24/44-grid%E5%B8%83%E5%B1%80/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Jason Yee">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Yee'blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/10/24/44-grid%E5%B8%83%E5%B1%80/" class="post-title-link" itemprop="url">44-grid布局</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-10-24 12:26:06" itemprop="dateCreated datePublished" datetime="2021-10-24T12:26:06+08:00">2021-10-24</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-10-26 20:39:15" itemprop="dateModified" datetime="2021-10-26T20:39:15+08:00">2021-10-26</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%AF%8F%E6%97%A5%E6%80%BB%E7%BB%93/" itemprop="url" rel="index"><span itemprop="name">每日总结</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>——阮一峰</p>
+<h2 id="1-容器属性"><a href="#1-容器属性" class="headerlink" title="1.容器属性"></a>1.容器属性</h2><h3 id="1-1-display属性"><a href="#1-1-display属性" class="headerlink" title="1.1 display属性"></a>1.1 display属性</h3><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">div</span> &#123;</span><br><span class="line">  <span class="attribute">display</span>: grid;</span><br><span class="line">	<span class="comment">/* 或者 */</span></span><br><span class="line">  <span class="attribute">display</span>: inline-grid</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>注意，设为网格布局以后，容器子元素（项目）的<code>float</code>、<code>display: inline-block</code>、<code>display: table-cell</code>、<code>vertical-align</code>和<code>column-*</code>等设置都将失效。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2021/10/24/44-grid%E5%B8%83%E5%B1%80/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://yummy-zz.github.io/2021/10/24/43-nextTick%E5%8E%9F%E7%90%86/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpeg">
+      <meta itemprop="image" content="/images/avatar.jpg">
       <meta itemprop="name" content="Jason Yee">
       <meta itemprop="description" content="">
     </span>
@@ -255,7 +420,7 @@
     <link itemprop="mainEntityOfPage" href="https://yummy-zz.github.io/2021/10/20/42-vue3%E9%A1%B9%E7%9B%AE%E6%80%BB%E7%BB%93/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpeg">
+      <meta itemprop="image" content="/images/avatar.jpg">
       <meta itemprop="name" content="Jason Yee">
       <meta itemprop="description" content="">
     </span>
@@ -351,7 +516,7 @@
     <link itemprop="mainEntityOfPage" href="https://yummy-zz.github.io/2021/10/20/vue3%E9%A1%B9%E7%9B%AE%E5%AE%9E%E6%88%98-%E7%94%A8%E6%88%B7%E4%B8%AD%E5%BF%83/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpeg">
+      <meta itemprop="image" content="/images/avatar.jpg">
       <meta itemprop="name" content="Jason Yee">
       <meta itemprop="description" content="">
     </span>
@@ -426,7 +591,7 @@
     <link itemprop="mainEntityOfPage" href="https://yummy-zz.github.io/2021/10/20/vue3%E9%A1%B9%E7%9B%AE%E5%AE%9E%E6%88%98-%E8%B7%AF%E7%94%B1%E9%85%8D%E7%BD%AE/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpeg">
+      <meta itemprop="image" content="/images/avatar.jpg">
       <meta itemprop="name" content="Jason Yee">
       <meta itemprop="description" content="">
     </span>
@@ -507,7 +672,7 @@
     <link itemprop="mainEntityOfPage" href="https://yummy-zz.github.io/2021/10/20/vue3%E9%A1%B9%E7%9B%AE%E5%AE%9E%E6%88%98-%E8%AF%A6%E6%83%85%E9%A1%B5%E9%80%BB%E8%BE%91%E5%B0%81%E8%A3%85/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpeg">
+      <meta itemprop="image" content="/images/avatar.jpg">
       <meta itemprop="name" content="Jason Yee">
       <meta itemprop="description" content="">
     </span>
@@ -582,7 +747,7 @@
     <link itemprop="mainEntityOfPage" href="https://yummy-zz.github.io/2021/10/16/vue3%E9%A1%B9%E7%9B%AE%E5%AE%9E%E6%88%98-%E8%BF%B7%E4%BD%A0%E6%92%AD%E6%94%BE%E5%99%A8/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpeg">
+      <meta itemprop="image" content="/images/avatar.jpg">
       <meta itemprop="name" content="Jason Yee">
       <meta itemprop="description" content="">
     </span>
@@ -663,7 +828,7 @@
     <link itemprop="mainEntityOfPage" href="https://yummy-zz.github.io/2021/10/11/vue3%E9%A1%B9%E7%9B%AE%E5%AE%9E%E6%88%98-%E6%92%AD%E6%94%BE%E5%99%A8/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpeg">
+      <meta itemprop="image" content="/images/avatar.jpg">
       <meta itemprop="name" content="Jason Yee">
       <meta itemprop="description" content="">
     </span>
@@ -744,7 +909,7 @@
     <link itemprop="mainEntityOfPage" href="https://yummy-zz.github.io/2021/10/11/vue3%E9%A1%B9%E7%9B%AE%E5%AE%9E%E6%88%98-vuex%E9%85%8D%E7%BD%AE/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpeg">
+      <meta itemprop="image" content="/images/avatar.jpg">
       <meta itemprop="name" content="Jason Yee">
       <meta itemprop="description" content="">
     </span>
@@ -790,178 +955,6 @@
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2021/10/11/vue3%E9%A1%B9%E7%9B%AE%E5%AE%9E%E6%88%98-vuex%E9%85%8D%E7%BD%AE/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://yummy-zz.github.io/2021/10/10/TypeScript-%E5%9F%BA%E6%9C%AC%E7%B1%BB%E5%9E%8B/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpeg">
-      <meta itemprop="name" content="Jason Yee">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Yee'blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/10/10/TypeScript-%E5%9F%BA%E6%9C%AC%E7%B1%BB%E5%9E%8B/" class="post-title-link" itemprop="url">TypeScript-基础类型</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2021-10-10 16:48:04" itemprop="dateCreated datePublished" datetime="2021-10-10T16:48:04+08:00">2021-10-10</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-12-07 10:50:57" itemprop="dateModified" datetime="2021-12-07T10:50:57+08:00">2021-12-07</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/TypeScript/" itemprop="url" rel="index"><span itemprop="name">TypeScript</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><ul>
-<li>TypeScript 是添加了类型系统的 JavaScript，适用于任何规模的项目。</li>
-<li>TypeScript 是一门静态类型、弱类型的语言。</li>
-<li>TypeScript 是完全兼容 JavaScript 的，它不会修改 JavaScript 运行时的特性。</li>
-<li>TypeScript 可以编译为 JavaScript，然后运行在浏览器、Node.js 等任何能运行 JavaScript 的环境中。</li>
-<li>TypeScript 拥有很多编译选项，类型检查的严格程度由你决定。</li>
-<li>TypeScript 可以和 JavaScript 共存，这意味着 JavaScript 项目能够渐进式的迁移到 TypeScript。</li>
-<li>TypeScript 增强了编辑器（IDE）的功能，提供了代码补全、接口提示、跳转到定义、代码重构等能力。</li>
-<li>TypeScript 拥有活跃的社区，大多数常用的第三方库都提供了类型声明。</li>
-<li>TypeScript 与标准同步发展，符合最新的 ECMAScript 标准（stage 3）。</li>
-</ul>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2021/10/10/TypeScript-%E5%9F%BA%E6%9C%AC%E7%B1%BB%E5%9E%8B/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://yummy-zz.github.io/2021/10/09/vue3%E9%A1%B9%E7%9B%AE%E5%AE%9E%E6%88%98-%E6%AD%8C%E6%89%8B%E8%AF%A6%E6%83%85%E9%A1%B5/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpeg">
-      <meta itemprop="name" content="Jason Yee">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Yee'blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/10/09/vue3%E9%A1%B9%E7%9B%AE%E5%AE%9E%E6%88%98-%E6%AD%8C%E6%89%8B%E8%AF%A6%E6%83%85%E9%A1%B5/" class="post-title-link" itemprop="url">vue3项目实战-歌手详情页</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2021-10-09 16:40:29" itemprop="dateCreated datePublished" datetime="2021-10-09T16:40:29+08:00">2021-10-09</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-10-10 11:33:36" itemprop="dateModified" datetime="2021-10-10T11:33:36+08:00">2021-10-10</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E9%A1%B9%E7%9B%AE%E5%AE%9E%E6%88%98/" itemprop="url" rel="index"><span itemprop="name">项目实战</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="歌手详情页"><a href="#歌手详情页" class="headerlink" title="歌手详情页"></a>歌手详情页</h2>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2021/10/09/vue3%E9%A1%B9%E7%9B%AE%E5%AE%9E%E6%88%98-%E6%AD%8C%E6%89%8B%E8%AF%A6%E6%83%85%E9%A1%B5/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -1043,7 +1036,7 @@
       <div class="site-overview-wrap sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <img class="site-author-image" itemprop="image" alt="Jason Yee"
-      src="/images/avatar.jpeg">
+      src="/images/avatar.jpg">
   <p class="site-author-name" itemprop="name">Jason Yee</p>
   <div class="site-description" itemprop="description"></div>
 </div>
@@ -1052,7 +1045,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">89</span>
+          <span class="site-state-item-count">90</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>

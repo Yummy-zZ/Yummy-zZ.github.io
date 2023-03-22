@@ -159,10 +159,10 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://yummy-zz.github.io/2021/11/25/57-web%E5%8D%8F%E8%AE%AE/">
+    <link itemprop="mainEntityOfPage" href="https://yummy-zz.github.io/2023/03/22/58-%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpeg">
+      <meta itemprop="image" content="/images/avatar.jpg">
       <meta itemprop="name" content="Jason Yee">
       <meta itemprop="description" content="">
     </span>
@@ -173,7 +173,92 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2021/11/25/57-web%E5%8D%8F%E8%AE%AE/" class="post-title-link" itemprop="url">57-websocket</a>
+            <a href="/2023/03/22/58-%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93/" class="post-title-link" itemprop="url">58-春招学习总结</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2023-03-22 09:45:23 / 修改时间：11:46:21" itemprop="dateCreated datePublished" datetime="2023-03-22T09:45:23+08:00">2023-03-22</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%AF%8F%E6%97%A5%E6%80%BB%E7%BB%93/" itemprop="url" rel="index"><span itemprop="name">每日总结</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>title: 58-春招学习总结<br>date: 2023-03-22 09:45:23<br>tags:<br>categories: 计算机网络</p>
+<p>webpack的import被打包成了什么？</p>
+<blockquote>
+<p><code>import</code>经过<code>webpack</code>打包以后变成一些<code>Map</code>对象，<code>key</code>为模块路径，<code>value</code>为模块的可执行函数；</p>
+</blockquote>
+<blockquote>
+<p>代码加载到浏览器以后从入口模块开始执行，其中执行的过程中，最重要的就是<code>webpack</code>定义的<code>__webpack_require__</code>函数，负责实际的模块加载并执行这些模块内容，返回执行结果，其实就是读取<code>Map</code>对象，然后执行相应的函数；</p>
+</blockquote>
+<blockquote>
+<p>当然其中的异步方法（import(‘xxModule’)）比较特殊一些，它会单独打成一个包，采用动态加载的方式，具体过程：当用户触发其加载的动作时，会动态的在<code>head</code>标签中创建一个<code>script</code>标签，然后发送一个<code>http</code>请求，加载模块，模块加载完成以后自动执行其中的代码，主要的工作有两个，更改缓存中模块的状态，另一个就是执行模块代码。</p>
+</blockquote>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2023/03/22/58-%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://yummy-zz.github.io/2023/03/02/webpack-spliteChunks/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Jason Yee">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Yee'blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2023/03/02/webpack-spliteChunks/" class="post-title-link" itemprop="url">webpack-spliteChunks</a>
         </h2>
 
         <div class="post-meta">
@@ -183,14 +268,102 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2021-11-25 09:45:23" itemprop="dateCreated datePublished" datetime="2021-11-25T09:45:23+08:00">2021-11-25</time>
+              <time title="创建时间：2023-03-02 17:31:04" itemprop="dateCreated datePublished" datetime="2023-03-02T17:31:04+08:00">2023-03-02</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2023-02-17 14:59:54" itemprop="dateModified" datetime="2023-02-17T14:59:54+08:00">2023-02-17</time>
+                <time title="修改时间：2023-03-22 11:49:27" itemprop="dateModified" datetime="2023-03-22T11:49:27+08:00">2023-03-22</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Webpack/" itemprop="url" rel="index"><span itemprop="name">Webpack</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h3 id="产生Chunk的三种途径"><a href="#产生Chunk的三种途径" class="headerlink" title="产生Chunk的三种途径"></a>产生Chunk的三种途径</h3><ol>
+<li>entry入口</li>
+<li>异步加载模块</li>
+<li>代码分割（code spliting）</li>
+</ol>
+<h3 id="用途"><a href="#用途" class="headerlink" title="用途"></a>用途</h3><p>1.抽离相同代码到一个共享块，减少频繁的引用</p>
+<p>2.脚本懒加载，使得初始下载的代码更小</p>
+<p><strong>脚本懒加载方式</strong>：require.ensure或者动态import，需要Babel转换</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2023/03/02/webpack-spliteChunks/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://yummy-zz.github.io/2023/02/10/57-web%E5%8D%8F%E8%AE%AE/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Jason Yee">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Yee'blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2023/02/10/57-web%E5%8D%8F%E8%AE%AE/" class="post-title-link" itemprop="url">57-websocket</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2023-02-10 09:45:23" itemprop="dateCreated datePublished" datetime="2023-02-10T09:45:23+08:00">2023-02-10</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2023-03-22 11:48:52" itemprop="dateModified" datetime="2023-03-22T11:48:52+08:00">2023-03-22</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -216,7 +389,7 @@
           <h2 id="websoket帧结构"><a href="#websoket帧结构" class="headerlink" title="websoket帧结构"></a>websoket帧结构</h2><p><img src="https://raw.githubusercontent.com/Yummy-zZ/FigureBed/main/img/image-20211125094625195.png" alt="image-20211125094625195"></p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/2021/11/25/57-web%E5%8D%8F%E8%AE%AE/#more" rel="contents">
+              <a class="btn" href="/2023/02/10/57-web%E5%8D%8F%E8%AE%AE/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -243,7 +416,7 @@
     <link itemprop="mainEntityOfPage" href="https://yummy-zz.github.io/2021/11/24/56-webpack%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpeg">
+      <meta itemprop="image" content="/images/avatar.jpg">
       <meta itemprop="name" content="Jason Yee">
       <meta itemprop="description" content="">
     </span>
@@ -324,7 +497,7 @@
     <link itemprop="mainEntityOfPage" href="https://yummy-zz.github.io/2021/11/23/55-webpack%E6%9E%84%E5%BB%BA%E9%80%9F%E5%BA%A6%E5%92%8C%E4%BD%93%E7%A7%AF%E4%BC%98%E5%8C%96/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpeg">
+      <meta itemprop="image" content="/images/avatar.jpg">
       <meta itemprop="name" content="Jason Yee">
       <meta itemprop="description" content="">
     </span>
@@ -406,7 +579,7 @@
     <link itemprop="mainEntityOfPage" href="https://yummy-zz.github.io/2021/11/22/54-eslint%E8%A7%84%E8%8C%83%E6%9E%84%E5%BB%BA%E8%84%9A%E6%9C%AC/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpeg">
+      <meta itemprop="image" content="/images/avatar.jpg">
       <meta itemprop="name" content="Jason Yee">
       <meta itemprop="description" content="">
     </span>
@@ -488,7 +661,7 @@
     <link itemprop="mainEntityOfPage" href="https://yummy-zz.github.io/2021/11/20/53-webpack%E6%96%87%E4%BB%B6%E7%9B%91%E5%90%AC%E5%92%8C%E7%83%AD%E6%9B%B4%E6%96%B0/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpeg">
+      <meta itemprop="image" content="/images/avatar.jpg">
       <meta itemprop="name" content="Jason Yee">
       <meta itemprop="description" content="">
     </span>
@@ -570,7 +743,7 @@
     <link itemprop="mainEntityOfPage" href="https://yummy-zz.github.io/2021/11/20/52-V8%E7%9A%84%E4%B8%80%E4%BA%9B%E7%BB%86%E8%8A%82/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpeg">
+      <meta itemprop="image" content="/images/avatar.jpg">
       <meta itemprop="name" content="Jason Yee">
       <meta itemprop="description" content="">
     </span>
@@ -651,7 +824,7 @@
     <link itemprop="mainEntityOfPage" href="https://yummy-zz.github.io/2021/11/19/51-%E7%BC%96%E5%86%99%E5%8F%AF%E7%BB%B4%E6%8A%A4%E7%9A%84Webpack%E9%85%8D%E7%BD%AE/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpeg">
+      <meta itemprop="image" content="/images/avatar.jpg">
       <meta itemprop="name" content="Jason Yee">
       <meta itemprop="description" content="">
     </span>
@@ -732,7 +905,7 @@
     <link itemprop="mainEntityOfPage" href="https://yummy-zz.github.io/2021/11/10/50-Proxy%E5%92%8CReflect/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpeg">
+      <meta itemprop="image" content="/images/avatar.jpg">
       <meta itemprop="name" content="Jason Yee">
       <meta itemprop="description" content="">
     </span>
@@ -787,170 +960,6 @@
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2021/11/10/50-Proxy%E5%92%8CReflect/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://yummy-zz.github.io/2021/11/10/49-es6%E8%A1%A5%E5%85%85/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpeg">
-      <meta itemprop="name" content="Jason Yee">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Yee'blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/11/10/49-es6%E8%A1%A5%E5%85%85/" class="post-title-link" itemprop="url">49.es6补充</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2021-11-10 16:03:03" itemprop="dateCreated datePublished" datetime="2021-11-10T16:03:03+08:00">2021-11-10</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-11-20 09:48:08" itemprop="dateModified" datetime="2021-11-20T09:48:08+08:00">2021-11-20</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/JS/" itemprop="url" rel="index"><span itemprop="name">JS</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="1-运算符"><a href="#1-运算符" class="headerlink" title="1. ?.运算符"></a>1. ?.运算符</h2><p>下面是<code>?.</code>运算符常见形式，以及不使用该运算符时的等价形式。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">a?.b</span><br><span class="line"><span class="comment">// 等同于</span></span><br><span class="line">a == <span class="literal">null</span> ? <span class="literal">undefined</span> : a.b</span><br><span class="line"></span><br><span class="line">a?.[x]</span><br><span class="line"><span class="comment">// 等同于</span></span><br><span class="line">a == <span class="literal">null</span> ? <span class="literal">undefined</span> : a[x]</span><br><span class="line"></span><br><span class="line">a?.b()</span><br><span class="line"><span class="comment">// 等同于</span></span><br><span class="line">a == <span class="literal">null</span> ? <span class="literal">undefined</span> : a.b()</span><br><span class="line"></span><br><span class="line">a?.()</span><br><span class="line"><span class="comment">// 等同于</span></span><br><span class="line">a == <span class="literal">null</span> ? <span class="literal">undefined</span> : a()</span><br></pre></td></tr></table></figure>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2021/11/10/49-es6%E8%A1%A5%E5%85%85/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://yummy-zz.github.io/2021/11/08/48-react%E4%B8%AD%E7%9A%84%E6%8F%92%E4%BB%B6%E5%92%8C%E8%BD%AE%E5%AD%90/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpeg">
-      <meta itemprop="name" content="Jason Yee">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Yee'blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/11/08/48-react%E4%B8%AD%E7%9A%84%E6%8F%92%E4%BB%B6%E5%92%8C%E8%BD%AE%E5%AD%90/" class="post-title-link" itemprop="url">48-react中的插件和轮子</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2021-11-08 10:42:27" itemprop="dateCreated datePublished" datetime="2021-11-08T10:42:27+08:00">2021-11-08</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-11-10 15:46:26" itemprop="dateModified" datetime="2021-11-10T15:46:26+08:00">2021-11-10</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/React/" itemprop="url" rel="index"><span itemprop="name">React</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="Prettier"><a href="#Prettier" class="headerlink" title="Prettier"></a>Prettier</h2><p><strong>功能</strong>：提交时进行代码转换</p>
-<p><strong>Github</strong>: <a target="_blank" rel="noopener" href="https://github.com/prettier/prettier">https://github.com/prettier/prettier</a></p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2021/11/08/48-react%E4%B8%AD%E7%9A%84%E6%8F%92%E4%BB%B6%E5%92%8C%E8%BD%AE%E5%AD%90/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -1032,7 +1041,7 @@
       <div class="site-overview-wrap sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <img class="site-author-image" itemprop="image" alt="Jason Yee"
-      src="/images/avatar.jpeg">
+      src="/images/avatar.jpg">
   <p class="site-author-name" itemprop="name">Jason Yee</p>
   <div class="site-description" itemprop="description"></div>
 </div>
@@ -1041,7 +1050,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">89</span>
+          <span class="site-state-item-count">90</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
